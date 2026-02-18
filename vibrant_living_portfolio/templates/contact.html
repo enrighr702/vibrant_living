@@ -1,0 +1,366 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact - Vibrant Living{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Root variables matching index.html exactly */
+    :root {
+        --primary-color: #8fc347;
+        --primary-dark: #7ab03a;
+        --primary-light: #a8d46a;
+        --text-primary: #111;
+        --text-secondary: #444;
+        --text-light: #666;
+        --bg-light: #f9f9f9;
+        --bg-white: #fff;
+        --bg-black: #111;
+        --shadow-light: rgba(0, 0, 0, 0.06);
+        --shadow-strong: rgba(0, 0, 0, 0.12);
+        --border-radius: 16px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Full-width sections matching index format */
+    .section-wrapper {
+        width: 100%;
+        padding: 0 2rem;
+    }
+
+    .section-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 5rem 0;
+    }
+
+    /* Hero Section - Black background like index */
+    .contact-hero {
+        background: black;
+        color: var(--bg-white);
+        padding: 6rem 2rem;
+        text-align: center;
+        position: relative;
+    }
+
+    .contact-hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero-title {
+        font-size: 3.4rem;
+        margin-bottom: 1rem;
+        font-weight: 800;
+        line-height: 1.1;
+    }
+
+    .hero-title span {
+        color: var(--primary-color);
+    }
+
+    .hero-subtitle {
+        font-weight: 400;
+        font-size: 1.25rem;
+        margin-bottom: 2.5rem;
+        opacity: 0.85;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        color: #ccc;
+    }
+
+    /* Contact Details Section - White */
+    .details-section {
+        background: var(--bg-white);
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+    }
+
+    .contact-item {
+        text-align: center;
+        padding: 2.5rem 2rem;
+        background: var(--bg-light);
+        border-radius: var(--border-radius);
+        border: 1px solid #eee;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .contact-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--primary-color);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .contact-item:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 50px var(--shadow-strong);
+        border-color: var(--primary-color);
+    }
+
+    .contact-item:hover::before {
+        transform: scaleX(1);
+    }
+
+    .contact-icon {
+        width: 80px;
+        height: 80px;
+        background: var(--primary-color);
+        border-radius: 20px;
+        margin: 0 auto 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.2rem;
+        box-shadow: 0 8px 25px rgba(143,195,71,0.3);
+    }
+
+    .contact-item h3 {
+        color: var(--text-primary);
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+
+    .contact-item p {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.6;
+    }
+
+    .contact-link {
+        color: var(--primary-color);
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 1.1rem;
+    }
+
+    .contact-link:hover {
+        text-decoration: underline;
+    }
+
+    /* CTA Section - Light grey */
+    .cta-section {
+        background: var(--bg-light);
+        text-align: center;
+    }
+
+    .cta-content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .cta-content h2 {
+        font-size: 2.4rem;
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+        font-weight: 800;
+    }
+
+    .cta-content h2 span {
+        color: var(--primary-color);
+    }
+
+    .cta-content p {
+        color: var(--text-light);
+        font-size: 1.1rem;
+        margin-bottom: 2.5rem;
+    }
+
+    /* Form Section - White */
+    .form-section {
+        background: var(--bg-white);
+    }
+
+    .contact-form {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .form-group {
+        margin-bottom: 2rem;
+    }
+
+    .form-group label {
+        display: block;
+        color: var(--text-primary);
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 1.25rem 1.5rem;
+        border: 2px solid #eee;
+        border-radius: var(--border-radius);
+        font-size: 1rem;
+        font-family: inherit;
+        transition: all 0.3s ease;
+        background: var(--bg-light);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 4px rgba(143,195,71,0.1);
+        background: var(--bg-white);
+    }
+
+    .form-group textarea {
+        height: 150px;
+        resize: vertical;
+    }
+
+    /* Buttons matching index */
+    .btn {
+        font-weight: 600;
+        padding: 16px 36px;
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+        letter-spacing: 0.03em;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .btn-primary {
+        background-color: var(--primary-color);
+        color: var(--bg-black);
+        box-shadow: 0 4px 20px rgba(143,195,71,0.3);
+    }
+
+    .btn-primary:hover {
+        background-color: var(--primary-light);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(143,195,71,0.4);
+    }
+
+    /* Responsive matching index */
+    @media(max-width: 768px) {
+        .contact-hero {
+            padding: 4rem 1.5rem;
+        }
+        .hero-title {
+            font-size: 2.4rem;
+        }
+        .contact-grid {
+            grid-template-columns: 1fr;
+        }
+        .section-content {
+            padding: 3.5rem 0;
+        }
+        .section-wrapper {
+            padding: 0 1.25rem;
+        }
+        .contact-form {
+            padding: 0 1rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="contact-hero">
+    <div class="contact-hero-content">
+        <h1 class="hero-title">Get In <span>Touch</span></h1>
+        <p class="hero-subtitle">Ready to start your transformation? Let's talk about your goals.</p>
+    </div>
+</div>
+
+<!-- Contact Details Section (White) -->
+<div class="section-wrapper details-section">
+    <div class="section-content">
+        <div class="contact-grid">
+            <div class="contact-item">
+                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                <h3>Email</h3>
+                <p>For detailed inquiries and questions</p>
+                <a href="mailto:sean@vibrantliving.com" class="contact-link">sean@vibrantliving.com</a>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                <h3>WhatsApp</h3>
+                <p>Quick questions and instant support</p>
+                <a href="https://wa.me/353871234567" class="contact-link">Message Me</a>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon"><i class="fas fa-calendar-check"></i></div>
+                <h3>Free Consultation</h3>
+                <p>15-minute discovery call to discuss your goals</p>
+                <a href="#" class="btn btn-primary">Book Your Call</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CTA Section (Light grey) -->
+<div class="section-wrapper cta-section">
+    <div class="section-content">
+        <div class="cta-content">
+            <h2>Ready to <span>Transform?</span></h2>
+            <p>Send a quick message below and let's discuss how I can help you reach your goals.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Contact Form Section (White) -->
+<div class="section-wrapper form-section">
+    <div class="section-content">
+        <form class="contact-form" method="POST" action="{% url 'contact' %}">
+            {% csrf_token %}
+            
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone (Optional)</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+            <div class="form-group">
+                <label for="message">Tell me about your goals</label>
+                <textarea id="message" name="message" placeholder="What are you looking to achieve? Any challenges you're facing? What's your timeline?" required></textarea>
+            </div>
+            <div style="text-align: center;">
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

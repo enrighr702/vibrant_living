@@ -1,0 +1,567 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Coaching - Vibrant Living{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Root variables matching index.html exactly */
+    :root {
+        --primary-color: #8fc347;
+        --primary-dark: #7ab03a;
+        --primary-light: #a8d46a;
+        --text-primary: #111;
+        --text-secondary: #444;
+        --text-light: #666;
+        --bg-light: #f9f9f9;
+        --bg-white: #fff;
+        --bg-black: #111;
+        --shadow-light: rgba(0, 0, 0, 0.06);
+        --shadow-strong: rgba(0, 0, 0, 0.12);
+        --border-radius: 16px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Full-width sections matching index format */
+    .section-wrapper {
+        width: 100%;
+        padding: 0 2rem;
+    }
+
+    .section-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 5rem 0;
+    }
+
+    /* Hero Section - Black background like index */
+    .coaching-hero {
+        background: black;
+        color: var(--bg-white);
+        padding: 6rem 2rem;
+        text-align: center;
+        position: relative;
+    }
+
+    .coaching-hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero-title {
+        font-size: 3.4rem;
+        margin-bottom: 1rem;
+        font-weight: 800;
+        line-height: 1.1;
+    }
+
+    .hero-title span {
+        color: var(--primary-color);
+    }
+
+    .hero-subtitle {
+        font-weight: 400;
+        font-size: 1.25rem;
+        margin-bottom: 2.5rem;
+        opacity: 0.85;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        color: #ccc;
+    }
+
+    /* Services Section - Light grey like services */
+    .services-section {
+        background: var(--bg-light);
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 3.5rem;
+    }
+
+    .section-header h2 {
+        font-size: 2.4rem;
+        color: var(--text-primary);
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+    }
+
+    .section-header h2 span {
+        color: var(--primary-color);
+    }
+
+    .section-header p {
+        color: var(--text-light);
+        font-size: 1.1rem;
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+
+    .service-card {
+        background: var(--bg-white);
+        border-radius: var(--border-radius);
+        padding: 2.5rem 2rem;
+        box-shadow: 0 4px 20px var(--shadow-light);
+        transition: all 0.3s ease;
+        text-align: left;
+        border: 1px solid #eee;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--primary-color);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 50px var(--shadow-strong);
+        border-color: var(--primary-color);
+    }
+
+    .service-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .service-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--primary-color);
+        border-radius: 16px;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        box-shadow: 0 4px 15px rgba(143,195,71,0.3);
+    }
+
+    .service-card h3 {
+        color: var(--text-primary);
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+
+    .service-card p {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    /* What to Expect Section - White */
+    .expect-section {
+        background: var(--bg-white);
+    }
+
+    .expect-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .expect-image {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        border-radius: var(--border-radius);
+        box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+    }
+
+    .expect-text h2 {
+        font-size: 2.4rem;
+        color: var(--text-primary);
+        margin-bottom: 1.5rem;
+        font-weight: 800;
+    }
+
+    .expect-text h2 span {
+        color: var(--primary-color);
+    }
+
+    .expect-text p {
+        font-size: 1.15rem;
+        line-height: 1.8;
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+    }
+
+    .expect-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .expect-list li {
+        font-size: 1.1rem;
+        color: var(--text-primary);
+        margin-bottom: 1.2rem;
+        padding-left: 2rem;
+        position: relative;
+    }
+
+    .expect-list li::before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: var(--primary-color);
+        font-weight: 800;
+        font-size: 1.2rem;
+    }
+
+    /* CTA Section - Green like final CTA */
+    .cta-final {
+        background: var(--primary-color);
+        text-align: center;
+    }
+
+    .cta-final h2 {
+        font-size: 2.4rem;
+        color: var(--bg-black);
+        margin-bottom: 1rem;
+        font-weight: 800;
+    }
+
+    .cta-final p {
+        color: rgba(0,0,0,0.7);
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Buttons matching index */
+    .btn {
+        font-weight: 600;
+        padding: 16px 36px;
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+        letter-spacing: 0.03em;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .btn-primary {
+        background-color: var(--bg-black);
+        color: var(--bg-white);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .btn-primary:hover {
+        background-color: #222;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    }
+
+    /* Responsive matching index */
+    @media(max-width: 1024px) {
+        .services-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .expect-content {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            text-align: center;
+        }
+    }
+
+    @media(max-width: 768px) {
+        .coaching-hero {
+            padding: 4rem 1.5rem;
+        }
+        .hero-title {
+            font-size: 2.4rem;
+        }
+        .services-grid {
+            grid-template-columns: 1fr;
+        }
+        .expect-image {
+            height: 350px;
+        }
+        .section-content {
+            padding: 3.5rem 0;
+        }
+        .section-wrapper {
+            padding: 0 1.25rem;
+        }
+    }
+
+    .services-comparison {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    @media (min-width: 768px) {
+        .services-comparison {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    .service-tier {
+        background: #fff;
+        border: 2px solid #e0e0e0;
+        border-radius: 15px;
+        padding: 40px 30px;
+        position: relative;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-tier:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .service-tier.premium {
+        border-color: var(--primary-color);
+        border-width: 3px;
+    }
+
+    .popular-badge {
+        position: absolute;
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--primary-color);
+        color: white;
+        padding: 8px 20px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: bold;
+    }
+
+    .tier-header {
+        text-align: center;
+        margin-bottom: 30px;
+        padding-bottom: 30px;
+        border-bottom: 2px solid #f0f0f0;
+    }
+
+    .tier-header h3 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .tier-price {
+        margin: 15px 0;
+    }
+
+    .tier-price .price {
+        font-size: 3rem;
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+
+    .tier-price .period {
+        font-size: 1.1rem;
+        color: #666;
+    }
+
+    .tier-tagline {
+        color: #666;
+        font-size: 0.95rem;
+        margin-top: 10px;
+    }
+
+    .tier-features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 30px 0;
+    }
+
+    .tier-features li {
+        display: flex;
+        gap: 15px;
+        padding: 15px 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .tier-features li:last-child {
+        border-bottom: none;
+    }
+
+    .tier-features i {
+        font-size: 1.2rem;
+        flex-shrink: 0;
+        margin-top: 3px;
+    }
+
+    .tier-features .included i {
+        color: #4caf50;
+    }
+
+    .tier-features .not-included i {
+        color: #ccc;
+    }
+
+    .tier-features .premium-feature {
+        background: #f8f9ff;
+        margin: 0 -15px;
+        padding: 15px 15px;
+    }
+
+    .tier-features strong {
+        display: block;
+        font-size: 1rem;
+        margin-bottom: 3px;
+        color: #333;
+    }
+
+    .tier-features span {
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    .tier-features .not-included strong,
+    .tier-features .not-included span {
+        color: #999;
+    }
+
+    .service-tier .btn,
+    .service-tier .btn-outline {
+        width: 100%;
+        text-align: center;
+    }
+
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="coaching-hero">
+    <div class="coaching-hero-content">
+        <h1 class="hero-title">Personalised <span>Coaching</span></h1>
+        <p class="hero-subtitle">Everything you need for complete transformation, tailored specifically to your goals and lifestyle.</p>
+    </div>
+</div>
+
+<div class="section-wrapper services-section">
+    <div class="section-content">
+        <div class="section-header">
+            <h2>What's <span>Included</span></h2>
+            <p>Choose the coaching level that fits your needs and budget</p>
+        </div>
+        
+<div class="services-comparison">
+    <!-- Single Comprehensive Package -->
+    <div class="service-tier premium">
+        <div class="popular-badge">Comprehensive Coaching</div>
+        <div class="tier-header">
+            <h3>Online Coaching</h3>
+            <div class="tier-price">
+                <span class="price">€250</span>
+                <span class="period">/month</span>
+            </div>
+            <p class="tier-tagline">Comprehensive coaching services designed for results that last</p>
+        </div>
+        
+        <ul class="tier-features">
+            <li class="included">
+                <i class="fas fa-check"></i>
+                <div>
+                    <strong>Custom Training Programs</strong>
+                    <span>Periodized workout plans built around your schedule, experience & goals</span>
+                </div>
+            </li>
+            <li class="included">
+                <i class="fas fa-check"></i>
+                <div>
+                    <strong>Nutritional Guidance</strong>
+                    <span>Flexible eating plans that fit your taste but fuel your performance</span>
+                </div>
+            </li>
+            <li class="included">
+                <i class="fas fa-check"></i>
+                <div>
+                    <strong>Progress Tracking</strong>
+                    <span>Weekly check ins, data analysis and necessary adjustments</span>
+                </div>
+            </li>
+            <li class="included">
+                <i class="fas fa-check"></i>
+                <div>
+                    <strong>App Access</strong>
+                    <span>One main hub for you to monitor your training, food, habits & progress</span>
+                </div>
+            </li>
+            <li class="included">
+                <i class="fas fa-check"></i>
+                <div>
+                    <strong>Unlimited Support</strong>
+                    <span>Direct messaging access for questions, feedback + accountability</span>
+                </div>
+            </li>
+            <li class="included">
+                <i class="fas fa-check"></i>
+                <div>
+                    <strong>Goal Setting</strong>
+                    <span>Clear milestones, timeframes & strategies to keep you aligned with your goals</span>
+                </div>
+            </li>
+        </ul>
+        
+        <a href="https://form.jotform.com/250676883261364" class="btn btn-primary">Get Started</a>
+    </div>
+</div>
+
+<!-- 2. WHAT TO EXPECT (White like intro) -->
+<div class="section-wrapper expect-section">
+    <div class="section-content">
+        <div class="expect-content">
+            <div class="expect-text">
+                <h2>What to <span>Expect</span></h2>
+                <p>The coaching experience is structured, supportive & designed for real results.</p>
+                <ul class="expect-list">
+                    <li>
+                        <strong>Empathy</strong> – Our coaching is built on empathy, offering the support that you need to grow, push through difficulty and feel truly understood every step of the way.
+                    </li>
+                    <li>
+                        <strong>Empowerment</strong> – We cultivate empowerment by reframing your mindset, prioritizing daily movement and provide ongoing encouragement throughout the entire process.
+                    </li>
+                    <li>
+                        <strong>Expertise</strong> – We provide evidence based coaching around training & nutrition designed to give you the best result possible.
+                    </li>
+                    <li>
+                        <strong>Accountability</strong> – Our coaches will never fail to keep you accountable. If we notice a pattern of slip ups on your behalf - it will be made known. You're paying us for a service - it's our duty to provide it.
+                    </li>
+                    <li>
+                        <strong>Honesty</strong> – In a world of sugarcoating poor behaviour - we don't shy away from keeping things real. Excuses won't give you the transformation that you're looking for & we'll be sure to keep it real if we see them.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Final CTA (Green like final CTA) -->
+<div class="section-wrapper cta-final">
+    <div class="section-content">
+        <h2>Ready to Get Started?</h2>
+        <p>Book your free discovery call and let's build your transformation plan together.</p>
+        <a href="" class="btn btn-primary">Book Free Consultation</a>
+    </div>
+</div>
+{% endblock %}

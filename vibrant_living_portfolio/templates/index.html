@@ -1,0 +1,647 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - Vibrant Living{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Root variables for color palette */
+    :root {
+        --primary-color: #8fc347;
+        --primary-dark: #7ab03a;
+        --primary-light: #a8d46a;
+        --text-primary: #111;
+        --text-secondary: #444;
+        --text-light: #666;
+        --bg-light: #f9f9f9;
+        --bg-white: #fff;
+        --bg-black: #111;
+        --shadow-light: rgba(0, 0, 0, 0.06);
+        --shadow-strong: rgba(0, 0, 0, 0.12);
+        --border-radius: 16px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--text-primary);
+        background: var(--bg-white);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* Full-width sections */
+    .section-wrapper {
+        width: 100%;
+        padding: 0 2rem;
+    }
+
+    .section-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 5rem 0;
+    }
+
+    /* Hero Section - Black background */
+    .hero {
+        background: black;
+        color: var(--bg-white);
+        padding: 6rem 2rem;
+        text-align: center;
+        position: relative;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .logo {
+        display: inline-block;
+        margin-bottom: 2.5rem;
+    }
+
+    .logo img {
+        height: 60px;
+        width: auto;
+    }
+
+    .logo-text {
+        display: inline-block;
+        background: var(--primary-color);
+        color: var(--bg-black);
+        font-weight: 800;
+        font-size: 1.1rem;
+        letter-spacing: 0.2em;
+        padding: 0.6rem 1.5rem;
+        border-radius: 50px;
+    }
+
+    .hero h1 {
+        font-size: 3.4rem;
+        margin-bottom: 1rem;
+        font-weight: 800;
+        line-height: 1.1;
+    }
+
+    .hero h1 span {
+        color: var(--primary-color);
+    }
+
+    .hero-subtitle {
+        font-weight: 400;
+        font-size: 1.25rem;
+        margin-bottom: 2.5rem;
+        opacity: 0.85;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        color: #ccc;
+    }
+
+    .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        font-weight: 600;
+        padding: 16px 36px;
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+        letter-spacing: 0.03em;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .btn-primary {
+        background-color: var(--primary-color);
+        color: var(--bg-black);
+        box-shadow: 0 4px 20px rgba(143, 195, 71, 0.3);
+    }
+
+    .btn-primary:hover {
+        background-color: var(--primary-light);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(143, 195, 71, 0.4);
+    }
+
+    .btn-secondary {
+        background-color: transparent;
+        color: var(--bg-white);
+        border: 2px solid var(--bg-white);
+    }
+
+    .btn-secondary:hover {
+        background-color: var(--bg-white);
+        color: var(--bg-black);
+        transform: translateY(-3px);
+    }
+
+    /* Intro/About Section - White */
+    .intro {
+        background: var(--bg-white);
+    }
+
+    .intro-content {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .photo {
+        width: 100%;
+        height: 650px;
+        min-height: 650px;
+        object-fit: cover;
+        border-radius: var(--border-radius);
+        box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+    }
+
+    .philosophy-content h2 {
+        font-size: 2.4rem;
+        color: var(--text-primary);
+        margin-bottom: 1.5rem;
+        font-weight: 800;
+    }
+
+    .philosophy-content h2 span {
+        color: var(--primary-color);
+    }
+
+    .philosophy-content p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+    }
+
+    .philosophy-highlights {
+        display: flex;
+        gap: 2.5rem;
+        margin-top: 2.5rem;
+        padding-top: 2rem;
+        border-top: 1px solid #eee;
+    }
+
+    .highlight-item {
+        text-align: left;
+    }
+
+    .highlight-number {
+        font-size: 2.8rem;
+        font-weight: 800;
+        color: var(--primary-color);
+        display: block;
+        line-height: 1;
+    }
+
+    .highlight-label {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-top: 0.3rem;
+    }
+
+    /* Services Section - Light grey */
+    .services {
+        background: var(--bg-light);
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 3.5rem;
+    }
+
+    .section-header h2 {
+        font-size: 2.4rem;
+        color: var(--text-primary);
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+    }
+
+    .section-header h2 span {
+        color: var(--primary-color);
+    }
+
+    .section-header p {
+        color: var(--text-light);
+        font-size: 1.1rem;
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+
+    .service-card {
+        background: var(--bg-white);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        box-shadow: 0 4px 20px var(--shadow-light);
+        transition: all 0.3s ease;
+        text-align: left;
+        border: 1px solid #eee;
+    }
+
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px var(--shadow-strong);
+        border-color: var(--primary-color);
+    }
+
+    .service-icon {
+        width: 50px;
+        height: 50px;
+        background: var(--primary-color);
+        border-radius: 12px;
+        margin-bottom: 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+    }
+
+    .service-card h3 {
+        color: var(--text-primary);
+        font-size: 1.15rem;
+        margin-bottom: 0.6rem;
+        font-weight: 700;
+    }
+
+    .service-card p {
+        font-size: 0.95rem;
+        color: var(--text-light);
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* Packages Section - Black */
+    .packages-section {
+        background: black;
+        color: var(--bg-white);
+    }
+
+    .packages-section .section-header h2 {
+        color: var(--bg-white);
+    }
+
+    .packages-section .section-header p {
+        color: #999;
+    }
+
+    .packages-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+    }
+
+    .package {
+        background: rgba(255,255,255,0.05);
+        border-radius: var(--border-radius);
+        padding: 2.5rem 1.5rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .package:hover {
+        background: rgba(255,255,255,0.08);
+        transform: translateY(-5px);
+        border-color: var(--primary-color);
+    }
+
+    .package.featured {
+        background: var(--primary-color);
+        color: var(--bg-black);
+        border-color: var(--primary-color);
+        transform: scale(1.02);
+    }
+
+    .package.featured:hover {
+        transform: scale(1.02) translateY(-5px);
+        background: var(--primary-light);
+    }
+
+    .package h4 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+    }
+
+    .package p {
+        font-size: 0.9rem;
+        opacity: 0.7;
+        margin-bottom: 1.5rem;
+    }
+
+    .package.featured p {
+        opacity: 0.8;
+    }
+
+    .package .btn {
+        padding: 12px 28px;
+        font-size: 0.9rem;
+    }
+
+    .package .btn-outline {
+        background: transparent;
+        border: 2px solid var(--bg-white);
+        color: var(--bg-white);
+    }
+
+    .package .btn-outline:hover {
+        background: var(--bg-white);
+        color: var(--bg-black);
+    }
+
+    .package.featured .btn {
+        background: var(--bg-black);
+        color: var(--bg-white);
+    }
+
+    .package.featured .btn:hover {
+        background: #222;
+    }
+
+    /* Testimonials Section - White */
+    .testimonials {
+        background: var(--bg-white);
+    }
+
+    .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .testimonial {
+        background: var(--bg-light);
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        text-align: left;
+        border: 1px solid #eee;
+        transition: all 0.3s ease;
+    }
+
+    .testimonial:hover {
+        box-shadow: 0 15px 40px var(--shadow-light);
+        border-color: var(--primary-color);
+    }
+
+    .testimonial-photo {
+        width: 55px;
+        height: 55px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        margin-bottom: 1.2rem;
+    }
+
+    .testimonial blockquote {
+        font-style: italic;
+        font-size: 1rem;
+        line-height: 1.7;
+        margin: 0 0 1rem 0;
+        color: var(--text-secondary);
+    }
+
+    .testimonial cite {
+        font-weight: 700;
+        font-size: 0.9rem;
+        font-style: normal;
+        color: var(--text-primary);
+    }
+
+    /* CTA Section - Green */
+    .cta-section {
+        background: var(--primary-color);
+        text-align: center;
+    }
+
+    .cta-section h2 {
+        font-size: 2.4rem;
+        color: var(--bg-black);
+        margin-bottom: 1rem;
+        font-weight: 800;
+    }
+
+    .cta-section p {
+        color: rgba(0,0,0,0.7);
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+
+    .cta-section .btn-dark {
+        background: var(--bg-black);
+        color: var(--bg-white);
+        padding: 18px 40px;
+    }
+
+    .cta-section .btn-dark:hover {
+        background: #222;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    /* Responsive */
+    @media(max-width: 1024px) {
+        .services-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .packages-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .testimonial-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media(max-width: 768px) {
+        .intro-content {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        .photo {
+            height: 350px;
+        }
+        .hero h1 {
+            font-size: 2.4rem;
+        }
+        .hero {
+            padding: 4rem 1.5rem;
+        }
+        .services-grid,
+        .packages-grid,
+        .testimonial-grid {
+            grid-template-columns: 1fr;
+        }
+        .philosophy-highlights {
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        .section-content {
+            padding: 3.5rem 0;
+        }
+        .section-wrapper {
+            padding: 0 1.25rem;
+        }
+        .package.featured {
+            transform: none;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="hero">
+    <div class="hero-content">
+        <div class="logo">
+            <!-- Option 1: Use your logo image -->
+            <img src="{% static 'images/logo.png' %}" alt="Vibrant Living">
+            <!-- Option 2: Use text logo instead (uncomment below, comment above)
+            <span class="logo-text">VIBRANT LIVING</span>
+            -->
+        </div>
+        <h1>Vibrant Living <br><span>Where Fitness Meets Fulfillment</span></h1>
+        <p class="hero-subtitle">Inspiring change through tailored fitness experiences that help individuals grow stronger, healthier, and more connected.</p>
+        <div class="cta-buttons">
+            <a href="https://form.jotform.com/250676883261364" class="btn btn-primary">Apply Now</a>
+            <a href="https://forms.gle/dUK8nnaXuxiSNFxD9" class="btn btn-secondary">Schedule Call</a>
+        </div>
+    </div>
+</div>
+
+<!-- Intro Section -->
+<div class="section-wrapper intro">
+    <div class="section-content">
+        <div class="intro-content">
+            <img src="{% static 'images/coach_image.jpg' %}" alt="Photo of Sean" class="photo">
+            <div class="philosophy-content">
+                <h2>Our<span>Approach</span></h2>
+                <p>At Vibrant Living, we are so much more than just a fitness brand. We specialize in personal training designed to help you move your body, feel your best, and achieve your goals. But we know that wellness involves much more than just working out. It’s about nourishing your body with good food, connecting with others, and enjoying yourself along the way.</p>
+                <p>We’re here to help you make health & fitness part of your everyday life, in a way that’s enjoyable, sustainable, and fulfilling. We are dedicated to creating a welcoming and supportive space where you can thrive - physically, mentally, and socially.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Services Section -->
+<div class="section-wrapper services">
+    <div class="section-content">
+        <div class="section-header">
+            <h2>What's <span>Included</span></h2>
+            <p>Everything you need for a complete transformation</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-dumbbell"></i></div>
+                <h3>Training Programmes</h3>
+                <p>Customized workout plans tailored to your individual goals, experience level, and schedule</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-apple-alt"></i></div>
+                <h3>Nutritional Guidance</h3>
+                <p>Evidence-based nutrition strategies to optimize performance and support sustainable results</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-headset"></i></div>
+                <h3>24/7 Support</h3>
+                <p>Direct access to expert guidance and accountability whenever you need it</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Weekly Feedback</h3>
+                <p>Regular progress reviews and program adjustments to ensure continuous improvement</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-bullseye"></i></div>
+                <h3>Goal Setting</h3>
+                <p>Clear, actionable objectives with structured pathways to achieve your targets</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-brain"></i></div>
+                <h3>Mindset Work</h3>
+                <p>Develop the mental resilience and habits necessary for long-term success</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Packages Section -->
+<div class="section-wrapper packages-section">
+    <div class="section-content">
+        <div class="section-header">
+            <h2>Coaching <span>Packages</span></h2>
+            <p>Choose the commitment that works for you</p>
+        </div>
+        <div class="packages-grid">
+            <div class="package">
+                <h4>Starter</h4>
+                <p>Get started on your journey</p>
+                <a href="https://form.jotform.com/250676883261364" class="btn btn-outline">Start Now</a>
+            </div>
+            <div class="package">
+                <h4>3 Months</h4>
+                <p>Build real momentum</p>
+                <a href="https://form.jotform.com/250676883261364" class="btn btn-outline">Start Now</a>
+            </div>
+            <div class="package featured">
+                <h4>6 Months</h4>
+                <p>Lock in your transformation</p>
+                <a href="https://form.jotform.com/250676883261364" class="btn">Start Now</a>
+            </div>
+            <div class="package">
+                <h4>1 Year</h4>
+                <p>Master your new way of living</p>
+                <a href="https://form.jotform.com/250676883261364" class="btn btn-outline">Start Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Testimonials -->
+<div class="section-wrapper testimonials">
+    <div class="section-content">
+        <div class="section-header">
+            <h2>Client <span>Success Stories</span></h2>
+            <p>Real results from real people</p>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial">
+                <div class="service-icon"><i class="fas fa-user-circle"></i></div>
+                <blockquote>"I've been with Sean the past two months & he has completely turned my life around. From the get-go he was so approachable, trusting & caring. He has a positive energy that beams out of him on every single check in call & I always feel so driven and motivated for the week ahead"</blockquote>
+                <cite>— Aoife</cite>
+            </div>
+            <div class="testimonial">
+                <div class="service-icon"><i class="fas fa-user-circle"></i></div>
+                <blockquote>"I was always fearful that having a coach meant I'd be met with judgment and that it would make me anxious and even further discourage me from doing the best that I can. Over the last 12 weeks with Sean he has helped me create healthy habits, balance a busy schedule as a nurse & make small steps each day to bring me closer towards my goals"</blockquote>
+                <cite>— Gemma</cite>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Final CTA -->
+<div class="section-wrapper cta-section">
+    <div class="section-content">
+        <h2>Ready to Start Your Transformation?</h2>
+        <p>Not ready to apply? Let’s talk.</p>
+        <a href="https://forms.gle/JFmyhKSLPGs6j8RU7" class="btn btn-dark">Free Consultation Call</a>
+    </div>
+</div>
+{% endblock %}

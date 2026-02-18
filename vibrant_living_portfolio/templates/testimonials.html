@@ -1,0 +1,341 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Testimonials - Vibrant Living{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Root variables matching index.html exactly */
+    :root {
+        --primary-color: #8fc347;
+        --primary-dark: #7ab03a;
+        --primary-light: #a8d46a;
+        --text-primary: #111;
+        --text-secondary: #444;
+        --text-light: #666;
+        --bg-light: #f9f9f9;
+        --bg-white: #fff;
+        --bg-black: #111;
+        --shadow-light: rgba(0, 0, 0, 0.06);
+        --shadow-strong: rgba(0, 0, 0, 0.12);
+        --border-radius: 16px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Full-width sections matching index format */
+    .section-wrapper {
+        width: 100%;
+        padding: 0 2rem;
+    }
+
+    .section-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 5rem 0;
+    }
+
+    /* Hero Section - Black background like index */
+    .testimonials-hero {
+        background: black;
+        color: var(--bg-white);
+        padding: 6rem 2rem;
+        text-align: center;
+        position: relative;
+    }
+
+    .testimonials-hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero-title {
+        font-size: 3.4rem;
+        margin-bottom: 1rem;
+        font-weight: 800;
+        line-height: 1.1;
+    }
+
+    .hero-title span {
+        color: var(--primary-color);
+    }
+
+    .hero-subtitle {
+        font-weight: 400;
+        font-size: 1.25rem;
+        margin-bottom: 2.5rem;
+        opacity: 0.85;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        color: #ccc;
+    }
+
+    /* Stats Section - Light gradient */
+    .stats-section {
+        background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-white) 100%);
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .stat-item h3 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+        line-height: 1;
+    }
+
+    .stat-item p {
+        font-size: 1rem;
+        color: var(--text-light);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-weight: 600;
+    }
+
+    /* Testimonials Grid - White */
+    .testimonials-section {
+        background: var(--bg-white);
+    }
+
+    .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        gap: 2.5rem;
+    }
+
+    .testimonial-card {
+        background: var(--bg-light);
+        padding: 3rem 2.5rem;
+        border-radius: var(--border-radius);
+        border: 1px solid #eee;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+    }
+
+    .testimonial-card::before {
+        content: '"';
+        position: absolute;
+        top: 1.5rem;
+        left: 2rem;
+        font-size: 6rem;
+        color: var(--primary-color);
+        opacity: 0.1;
+        font-family: serif;
+        font-weight: 700;
+    }
+
+    .testimonial-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--primary-color);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 60px var(--shadow-strong);
+        border-color: var(--primary-color);
+    }
+
+    .testimonial-card:hover::after {
+        transform: scaleX(1);
+    }
+
+    .testimonial-photo {
+        width: 65px;
+        height: 65px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--bg-black);
+        box-shadow: 0 8px 25px rgba(143,195,71,0.3);
+    }
+
+    .testimonial-content {
+        position: relative;
+        padding-left: 1rem;
+    }
+
+    .testimonial blockquote {
+        font-style: italic;
+        font-size: 1.15rem;
+        line-height: 1.8;
+        margin: 0 0 1.5rem 0;
+        color: var(--text-primary);
+    }
+
+    .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .author-info h4 {
+        color: var(--text-primary);
+        font-weight: 700;
+        margin: 0 0 0.25rem 0;
+        font-size: 1.1rem;
+    }
+
+    .author-info p {
+        color: var(--text-secondary);
+        margin: 0;
+        font-size: 0.95rem;
+    }
+
+    /* CTA Section - Green */
+    .cta-final {
+        background: var(--primary-color);
+        text-align: center;
+    }
+
+    .cta-final h2 {
+        font-size: 2.4rem;
+        color: var(--bg-black);
+        margin-bottom: 1rem;
+        font-weight: 800;
+    }
+
+    .cta-final p {
+        color: rgba(0,0,0,0.7);
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Buttons matching index */
+    .btn {
+        font-weight: 600;
+        padding: 16px 36px;
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+        letter-spacing: 0.03em;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .btn-primary {
+        background-color: var(--bg-black);
+        color: var(--bg-white);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .btn-primary:hover {
+        background-color: #222;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    }
+
+    /* Responsive matching index */
+    @media(max-width: 1024px) {
+        .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .testimonials-grid {
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        }
+    }
+
+    @media(max-width: 768px) {
+        .testimonials-hero {
+            padding: 4rem 1.5rem;
+        }
+        .hero-title {
+            font-size: 2.4rem;
+        }
+        .testimonials-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+        .testimonial-card {
+            padding: 2.5rem 2rem;
+        }
+        .section-content {
+            padding: 3.5rem 0;
+        }
+        .section-wrapper {
+            padding: 0 1.25rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="testimonials-hero">
+    <div class="testimonials-hero-content">
+        <h1 class="hero-title">Client <span>Results</span></h1>
+        <p class="hero-subtitle">Don't just take our word for it. Hear from clients who've transformed their lives.</p>
+    </div>
+</div>
+
+<!-- Testimonials Grid -->
+<div class="section-wrapper testimonials-section">
+    <div class="section-content">
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-photo">AF</div>
+                <div class="testimonial-content">
+                    <blockquote>"I’ve been with Sean the past two months & he has completely turned my life around. From the get-go he was so approachable, trusting & caring. He has a positive energy that beams out of him on every single check in call & I always feel so driven and motivated for the week ahead"</blockquote>
+                    <div class="testimonial-author">
+                        <div>
+                            <h4>Aoife.F</h4>
+                            <p>Admin Work</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-photo">GH</div>
+                <div class="testimonial-content">
+                    <blockquote>"I was always fearful that having a coach meant I'd be met with judgment and that it would make me anxious and even further discourage me from doing the best that I can. Over the last 12 weeks with Sean he has helped me create healthy habits, balance a busy schedule as a nurse & make small steps each day to bring me closer towards my goals"</blockquote>
+                    <div class="testimonial-author">
+                        <div>
+                            <h4>Gemma.H</h4>
+                            <p>Nurse</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Final CTA -->
+<div class="section-wrapper cta-final">
+    <div class="section-content">
+        <h2>Ready to Join Them?</h2>
+        <p>Real change begins the moment you commit. Start your journey here.</p>
+        <a href="https://form.jotform.com/250676883261364" class="btn btn-primary">Start Your Journey</a>
+    </div>
+</div>
+{% endblock %}
