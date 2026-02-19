@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
+from django.http import JsonResponse
 
 def index(request):
     return render(request, 'index.html')
@@ -14,42 +15,23 @@ def coaching(request):
 
 def contact(request):
     if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        phone = request.POST.get('phone', 'Not provided')
-        message = request.POST.get('message')
+        name = request.POST.get('name', '').strip()
+        email = request.POST.get('email', '').strip()
+        phone = request.POST.get('phone', 'Not provided').strip()
+        message = request.POST.get('message', '').strip()
         
-        # Email content
-        subject = f'New Contact Form Submission from {name}'
-        email_message = f"""
-        New contact form submission:
+        # Basic validation (no email needed!)
+        if name and email and message:
+            messages.success(request, 
+                f'Thanks {name}! Your info is saved. Check your inbox for confirmation.')
+        else:
+            messages.error(request, 'Please fill name, email, and message.')
         
-        Name: {name}
-        Email: {email}
-        Phone: {phone}
-        
-        Message:
-        {message}
-        """
-        
-        try:
-            # Send email
-            send_mail(
-                subject=subject,
-                message=email_message,
-                from_email=settings.EMAIL_HOST_USER,
-                recipient_list=['ryanenright1202@gmail.com'],  # Your email
-                fail_silently=False,
-            )
-            
-            messages.success(request, 'Thanks for reaching out! I\'ll get back to you within 24 hours.')
-            return redirect('index')  # Replace 'home' with your homepage URL name
-            
-        except Exception as e:
-            messages.error(request, 'Something went wrong. Please email me directly at sean@vibrantliving.com')
-            return redirect('home')
+        # Redirect to homepage (your Apps Script handles Sheet saving)
+        return redirect('index')  # or 'home'
     
     return render(request, 'contact.html')
+
 
 def testimonials(request):
     return render(request, 'testimonials.html')

@@ -258,6 +258,82 @@
         box-shadow: 0 8px 30px rgba(143,195,71,0.4);
     }
 
+    /* Success Modal */
+    .success-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.7);
+        z-index: 9999;
+        backdrop-filter: blur(5px);
+    }
+
+    .success-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: var(--bg-white);
+        padding: 3rem 2.5rem;
+        border-radius: var(--border-radius);
+        text-align: center;
+        max-width: 450px;
+        width: 90%;
+        box-shadow: 0 25px 80px rgba(0,0,0,0.3);
+        animation: slideIn 0.4s ease;
+    }
+
+    @keyframes slideIn {
+        from { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+        to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    }
+
+    .success-icon {
+        width: 80px;
+        height: 80px;
+        background: var(--primary-color);
+        border-radius: 20px;
+        margin: 0 auto 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        color: white;
+        box-shadow: 0 10px 30px rgba(143,195,71,0.4);
+    }
+
+    .success-title {
+        font-size: 1.8rem;
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+
+    .success-message {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+
+    .success-close {
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 50px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .success-close:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+    }
+
     /* Responsive matching index */
     @media(max-width: 768px) {
         .contact-hero {
@@ -299,19 +375,13 @@
                 <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                 <h3>Email</h3>
                 <p>For detailed inquiries and questions</p>
-                <a href="mailto:sean@vibrantliving.com" class="contact-link">sean@vibrantliving.com</a>
-            </div>
-            <div class="contact-item">
-                <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
-                <h3>WhatsApp</h3>
-                <p>Quick questions and instant support</p>
-                <a href="https://wa.me/353871234567" class="contact-link">Message Me</a>
+                <a href="mailto:sean@vibrantliving.com" class="contact-link">vibrantlivinggg@gmail.com</a>
             </div>
             <div class="contact-item">
                 <div class="contact-icon"><i class="fas fa-calendar-check"></i></div>
                 <h3>Free Consultation</h3>
                 <p>15-minute discovery call to discuss your goals</p>
-                <a href="#" class="btn btn-primary">Book Your Call</a>
+                <a href="https://forms.gle/dUK8nnaXuxiSNFxD9" class="btn btn-primary">Book Your Call</a>
             </div>
         </div>
     </div>
@@ -363,4 +433,66 @@
         </form>
     </div>
 </div>
+<!-- Google Sheets + Django Form Handler -->
+<script>
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyMF0zxI4MqP223HRadDJ-ietwAmhHat6aMtNIkyrO4h8qKSYoCm0DBK5sqjDA_hOC2/exec';
+
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('.contact-form');
+    
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(form);
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        
+        // Show loading
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+        
+        try {
+            // Save to Google Sheets
+            const response = await fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: formData
+            });
+            
+            if (response.ok) {
+                showSuccessModal();  // Clean popup!
+                setTimeout(() => window.location.href = '{% url "index" %}', 2000);
+            } else {
+                throw new Error('Sheet save failed');
+            }
+        } catch(error) {
+            console.error('Error:', error);
+            // Still redirect (Django will show message)
+            window.location.href = '{% url "index" %}';
+        }
+    });
+    
+    function showSuccessModal() {
+        const modal = document.createElement('div');
+        modal.className = 'success-modal';
+        modal.innerHTML = `
+            <div class="success-content">
+                <div class="success-icon">
+                    <i class="fas fa-check"></i>
+                </div>
+                <h2 class="success-title">Message Sent!</h2>
+                <p class="success-message">Thanks for reaching out! Your info is saved and I'll reply within 24 hours.</p>
+                <button class="success-close" onclick="this.closest('.success-modal').remove()">
+                    Got it!
+                </button>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        
+        // Auto-close on click outside
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) this.remove();
+        });
+    }
+});
+</script>
 {% endblock %}

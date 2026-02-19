@@ -101,6 +101,131 @@
         font-size: 1.1rem;
     }
 
+    /* Services Comparison - Fixed height cards with aligned buttons */
+    .services-comparison {
+        display: flex;
+        gap: 2rem;
+        align-items: stretch;
+        margin-top: 40px;
+    }
+
+    .service-tier {
+        flex: 1;
+        background: var(--bg-white);
+        border: 2px solid #e0e0e0;
+        border-radius: var(--border-radius);
+        padding: 40px 30px;
+        position: relative;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .service-tier:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 50px var(--shadow-strong);
+        border-color: var(--primary-color);
+    }
+
+    .service-tier.premium {
+        border-color: var(--primary-color);
+        border-width: 3px;
+    }
+
+    .popular-badge {
+        position: absolute;
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--primary-color);
+        color: white;
+        padding: 8px 20px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        z-index: 2;
+    }
+
+    .tier-header {
+        text-align: center;
+        margin-bottom: 30px;
+        flex-shrink: 0;
+    }
+
+    .tier-header h3 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+        color: var(--text-primary);
+        font-weight: 700;
+    }
+
+    .tier-tagline {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* Features take up available space */
+    .tier-features {
+        flex: 1;
+        list-style: none;
+        padding: 0;
+        margin: 0 0 30px 0;
+    }
+
+    .tier-features li {
+        display: flex;
+        gap: 20px;
+        padding: 15px 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .tier-features li:last-child {
+        border-bottom: none;
+    }
+
+    .tier-features i {
+        font-size: 1.2rem;
+        flex-shrink: 0;
+        margin-top: 3px;
+        width: 20px;
+    }
+
+    .tier-features .included i {
+        color: #4caf50;
+    }
+
+    .tier-features strong {
+        display: block;
+        font-size: 1rem;
+        margin-bottom: 3px;
+        color: var(--text-primary);
+    }
+
+    .tier-features span {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
+    }
+
+    .tier-features .premium-feature {
+        background: linear-gradient(135deg, #f8f9ff 0%, #f0f7ff 100%);
+        margin: 0 -15px;
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 4px solid var(--primary-color);
+    }
+
+    /* Button sticks to bottom */
+    .service-tier .btn {
+        margin-top: auto;
+        width: 100%;
+        text-align: center;
+        flex-shrink: 0;
+    }
+
+    /* Services Grid (other services section) */
     .services-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -139,94 +264,6 @@
 
     .service-card:hover::before {
         transform: scaleX(1);
-    }
-
-    .service-icon {
-        width: 60px;
-        height: 60px;
-        background: var(--primary-color);
-        border-radius: 16px;
-        margin-bottom: 1.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.8rem;
-        box-shadow: 0 4px 15px rgba(143,195,71,0.3);
-    }
-
-    .service-card h3 {
-        color: var(--text-primary);
-        font-size: 1.25rem;
-        margin-bottom: 1rem;
-        font-weight: 700;
-    }
-
-    .service-card p {
-        font-size: 1rem;
-        color: var(--text-secondary);
-        line-height: 1.7;
-        margin-bottom: 0;
-    }
-
-    /* What to Expect Section - White */
-    .expect-section {
-        background: var(--bg-white);
-    }
-
-    .expect-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: center;
-    }
-
-    .expect-image {
-        width: 100%;
-        height: 500px;
-        object-fit: cover;
-        border-radius: var(--border-radius);
-        box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-    }
-
-    .expect-text h2 {
-        font-size: 2.4rem;
-        color: var(--text-primary);
-        margin-bottom: 1.5rem;
-        font-weight: 800;
-    }
-
-    .expect-text h2 span {
-        color: var(--primary-color);
-    }
-
-    .expect-text p {
-        font-size: 1.15rem;
-        line-height: 1.8;
-        color: var(--text-secondary);
-        margin-bottom: 2rem;
-    }
-
-    .expect-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .expect-list li {
-        font-size: 1.1rem;
-        color: var(--text-primary);
-        margin-bottom: 1.2rem;
-        padding-left: 2rem;
-        position: relative;
-    }
-
-    .expect-list li::before {
-        content: '✓';
-        position: absolute;
-        left: 0;
-        color: var(--primary-color);
-        font-weight: 800;
-        font-size: 1.2rem;
     }
 
     /* CTA Section - Green like final CTA */
@@ -274,15 +311,14 @@
         box-shadow: 0 8px 30px rgba(0,0,0,0.4);
     }
 
-    /* Responsive matching index */
+    /* Responsive */
     @media(max-width: 1024px) {
         .services-grid {
             grid-template-columns: repeat(2, 1fr);
         }
-        .expect-content {
-            grid-template-columns: 1fr;
-            gap: 3rem;
-            text-align: center;
+        .services-comparison {
+            flex-direction: column;
+            gap: 2rem;
         }
     }
 
@@ -296,8 +332,14 @@
         .services-grid {
             grid-template-columns: 1fr;
         }
-        .expect-image {
-            height: 350px;
+        .services-comparison {
+            gap: 1.5rem;
+        }
+        .service-tier {
+            padding: 30px 20px;
+        }
+        .tier-header h3 {
+            font-size: 1.6rem;
         }
         .section-content {
             padding: 3.5rem 0;
@@ -306,146 +348,6 @@
             padding: 0 1.25rem;
         }
     }
-
-    .services-comparison {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 30px;
-        margin-top: 40px;
-    }
-
-    @media (min-width: 768px) {
-        .services-comparison {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    .service-tier {
-        background: #fff;
-        border: 2px solid #e0e0e0;
-        border-radius: 15px;
-        padding: 40px 30px;
-        position: relative;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .service-tier:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-
-    .service-tier.premium {
-        border-color: var(--primary-color);
-        border-width: 3px;
-    }
-
-    .popular-badge {
-        position: absolute;
-        top: -15px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: var(--primary-color);
-        color: white;
-        padding: 8px 20px;
-        border-radius: 20px;
-        font-size: 0.85rem;
-        font-weight: bold;
-    }
-
-    .tier-header {
-        text-align: center;
-        margin-bottom: 30px;
-        padding-bottom: 30px;
-        border-bottom: 2px solid #f0f0f0;
-    }
-
-    .tier-header h3 {
-        font-size: 2rem;
-        margin-bottom: 15px;
-        color: #333;
-    }
-
-    .tier-price {
-        margin: 15px 0;
-    }
-
-    .tier-price .price {
-        font-size: 3rem;
-        font-weight: bold;
-        color: var(--primary-color);
-    }
-
-    .tier-price .period {
-        font-size: 1.1rem;
-        color: #666;
-    }
-
-    .tier-tagline {
-        color: #666;
-        font-size: 0.95rem;
-        margin-top: 10px;
-    }
-
-    .tier-features {
-        list-style: none;
-        padding: 0;
-        margin: 0 0 30px 0;
-    }
-
-    .tier-features li {
-        display: flex;
-        gap: 15px;
-        padding: 15px 0;
-        border-bottom: 1px solid #f0f0f0;
-    }
-
-    .tier-features li:last-child {
-        border-bottom: none;
-    }
-
-    .tier-features i {
-        font-size: 1.2rem;
-        flex-shrink: 0;
-        margin-top: 3px;
-    }
-
-    .tier-features .included i {
-        color: #4caf50;
-    }
-
-    .tier-features .not-included i {
-        color: #ccc;
-    }
-
-    .tier-features .premium-feature {
-        background: #f8f9ff;
-        margin: 0 -15px;
-        padding: 15px 15px;
-    }
-
-    .tier-features strong {
-        display: block;
-        font-size: 1rem;
-        margin-bottom: 3px;
-        color: #333;
-    }
-
-    .tier-features span {
-        font-size: 0.9rem;
-        color: #666;
-    }
-
-    .tier-features .not-included strong,
-    .tier-features .not-included span {
-        color: #999;
-    }
-
-    .service-tier .btn,
-    .service-tier .btn-outline {
-        width: 100%;
-        text-align: center;
-    }
-
 </style>
 {% endblock %}
 
@@ -465,92 +367,109 @@
             <p>Choose the coaching level that fits your needs and budget</p>
         </div>
         
-<div class="services-comparison">
-    <!-- Single Comprehensive Package -->
-    <div class="service-tier premium">
-        <div class="popular-badge">Comprehensive Coaching</div>
-        <div class="tier-header">
-            <h3>Online Coaching</h3>
-            <div class="tier-price">
-                <span class="price">€250</span>
-                <span class="period">/month</span>
-            </div>
-            <p class="tier-tagline">Comprehensive coaching services designed for results that last</p>
-        </div>
-        
-        <ul class="tier-features">
-            <li class="included">
-                <i class="fas fa-check"></i>
-                <div>
-                    <strong>Custom Training Programs</strong>
-                    <span>Periodized workout plans built around your schedule, experience & goals</span>
+        <!-- Fixed height comparison cards -->
+        <div class="services-comparison">
+                        <!-- Premium Package -->
+            <div class="service-tier premium">
+                <div class="popular-badge">Most Popular</div>
+                <div class="tier-header">
+                    <h3>Premium</h3>
+                    <p class="tier-tagline">Full-service coaching with personalized support</p>
                 </div>
-            </li>
-            <li class="included">
-                <i class="fas fa-check"></i>
-                <div>
-                    <strong>Nutritional Guidance</strong>
-                    <span>Flexible eating plans that fit your taste but fuel your performance</span>
-                </div>
-            </li>
-            <li class="included">
-                <i class="fas fa-check"></i>
-                <div>
-                    <strong>Progress Tracking</strong>
-                    <span>Weekly check ins, data analysis and necessary adjustments</span>
-                </div>
-            </li>
-            <li class="included">
-                <i class="fas fa-check"></i>
-                <div>
-                    <strong>App Access</strong>
-                    <span>One main hub for you to monitor your training, food, habits & progress</span>
-                </div>
-            </li>
-            <li class="included">
-                <i class="fas fa-check"></i>
-                <div>
-                    <strong>Unlimited Support</strong>
-                    <span>Direct messaging access for questions, feedback + accountability</span>
-                </div>
-            </li>
-            <li class="included">
-                <i class="fas fa-check"></i>
-                <div>
-                    <strong>Goal Setting</strong>
-                    <span>Clear milestones, timeframes & strategies to keep you aligned with your goals</span>
-                </div>
-            </li>
-        </ul>
-        
-        <a href="https://form.jotform.com/250676883261364" class="btn btn-primary">Get Started</a>
-    </div>
-</div>
-
-<!-- 2. WHAT TO EXPECT (White like intro) -->
-<div class="section-wrapper expect-section">
-    <div class="section-content">
-        <div class="expect-content">
-            <div class="expect-text">
-                <h2>What to <span>Expect</span></h2>
-                <p>The coaching experience is structured, supportive & designed for real results.</p>
-                <ul class="expect-list">
-                    <li>
-                        <strong>Empathy</strong> – Our coaching is built on empathy, offering the support that you need to grow, push through difficulty and feel truly understood every step of the way.
+                
+                <ul class="tier-features">
+                    <li class="included">
+                        <i class="fas fa-check"></i>
+                        <div>
+                            <strong>Custom Training Programs</strong>
+                            <span>Periodized workout plans built around your goals</span>
+                        </div>
                     </li>
-                    <li>
-                        <strong>Empowerment</strong> – We cultivate empowerment by reframing your mindset, prioritizing daily movement and provide ongoing encouragement throughout the entire process.
+                    <li class="included">
+                        <i class="fas fa-check"></i>
+                        <div>
+                            <strong>Nutrition Strategies</strong>
+                            <span>Flexible eating plans that fuel your performance</span>
+                        </div>
                     </li>
-                    <li>
-                        <strong>Expertise</strong> – We provide evidence based coaching around training & nutrition designed to give you the best result possible.
+                    <li class="included">
+                        <i class="fas fa-check"></i>
+                        <div>
+                            <strong>Progress Tracking</strong>
+                            <span>Weekly check-ins and program adjustments</span>
+                        </div>
                     </li>
-                    <li>
-                        <strong>Accountability</strong> – Our coaches will never fail to keep you accountable. If we notice a pattern of slip ups on your behalf - it will be made known. You're paying us for a service - it's our duty to provide it.
+                    <li class="included">
+                        <i class="fas fa-check"></i>
+                        <div>
+                            <strong>Unlimited Support</strong>
+                            <span>Direct messaging access anytime you need it</span>
+                        </div>
                     </li>
-                    <li>
-                        <strong>Honesty</strong> – In a world of sugarcoating poor behaviour - we don't shy away from keeping things real. Excuses won't give you the transformation that you're looking for & we'll be sure to keep it real if we see them.
+                    <li class="included premium-feature">
+                        <i class="fas fa-check"></i>
+                        <div>
+                            <strong>Weekly Video Calls</strong>
+                            <span>1-on-1 sessions for accountability and guidance</span>
+                        </div>
+                    </li>
+                    <li class="included premium-feature">
+                        <i class="fas fa-check"></i>
+                        <div>
+                            <strong>Video Form Analysis</strong>
+                            <span>Detailed technique feedback for safe training</span>
+                        </div>
                     </li>
                 </ul>
+                
+                <a href="https://form.jotform.com/250676883261364" class="btn btn-primary">Choose Premium</a>
+            </div>
+            <!-- What To Expect -->
+            <div class="service-tier">
+                <div class="tier-header">
+                    <h3>What To Expect</h3>
+                    <p class="tier-tagline">The coaching experience is structured, supportive & designed for real results.</p>
+                </div>
+
+                <ul class="tier-features">
+                    <li class="included">
+                        <i class="fas fa-check"></i>
+                        <div>
+                            <strong>Empathy</strong>
+                            <span>Our coaching is built on empathy, offering support to help you grow, push through difficulty, and feel understood every step of the way.</span>
+                        </div>
+                    </li>
+                    <li class="included">
+                        <i class="fas fa-check"></i>
+                        <div>
+                            <strong>Empowerment</strong>
+                            <span>We cultivate empowerment by reframing your mindset, prioritizing daily movement, and providing ongoing encouragement.</span>
+                        </div>
+                    </li>
+                    <li class="included">
+                        <i class="fas fa-check"></i>
+                        <div>
+                            <strong>Expertise</strong>
+                            <span>Evidence-based training and nutrition coaching designed to deliver the best possible results.</span>
+                        </div>
+                    </li>
+                    <li class="included">
+                        <i class="fas fa-check"></i>
+                        <div>
+                            <strong>Accountability</strong>
+                            <span>Our coaches hold you to your commitments. If we see patterns of missed effort, we'll address them directly to keep you progressing.</span>
+                        </div>
+                    </li>
+                    <li class="included">
+                        <i class="fas fa-check"></i>
+                        <div>
+                            <strong>Honesty</strong>
+                            <span>We don't sugarcoat poor habits or excuses—transformation only happens when you keep it real and consistent.</span>
+                        </div>
+                    </li>
+                </ul>
+
+                <a href="https://form.jotform.com/250676883261364" class="btn btn-primary">Learn More</a>
             </div>
         </div>
     </div>
