@@ -5,7 +5,6 @@
 
 {% block extra_css %}
 <style>
-    /* Root variables matching index.html exactly */
     :root {
         --primary-color: #8fc347;
         --primary-dark: #7ab03a;
@@ -21,11 +20,8 @@
         --border-radius: 16px;
     }
 
-    * {
-        box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    /* Full-width sections matching index format */
     .section-wrapper {
         width: 100%;
         padding: 0 2rem;
@@ -37,18 +33,15 @@
         padding: 5rem 0;
     }
 
-    /* Hero Section - Black background like index */
+    /* ─── Hero ─── */
     .contact-hero {
         background: black;
         color: var(--bg-white);
         padding: 6rem 2rem;
         text-align: center;
-        position: relative;
     }
 
     .contact-hero-content {
-        position: relative;
-        z-index: 1;
         max-width: 800px;
         margin: 0 auto;
     }
@@ -60,14 +53,12 @@
         line-height: 1.1;
     }
 
-    .hero-title span {
-        color: var(--primary-color);
-    }
+    .hero-title span { color: var(--primary-color); }
 
     .hero-subtitle {
         font-weight: 400;
         font-size: 1.25rem;
-        margin-bottom: 2.5rem;
+        margin-bottom: 0;
         opacity: 0.85;
         max-width: 600px;
         margin-left: auto;
@@ -75,23 +66,49 @@
         color: #ccc;
     }
 
-    /* Contact Details Section - White */
-    .details-section {
-        background: var(--bg-white);
+    /* ─── Main Contact Section ─── */
+    .contact-main {
+        background: var(--bg-light);
     }
 
-    .contact-grid {
+    .contact-layout {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2.5rem;
+        grid-template-columns: 1fr 1.6fr;
+        gap: 4rem;
+        align-items: start;
+    }
+
+    /* ─── Left: Info Panel ─── */
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .contact-info-header h2 {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+    }
+
+    .contact-info-header h2 span { color: var(--primary-color); }
+
+    .contact-info-header p {
+        color: var(--text-light);
+        font-size: 1rem;
+        line-height: 1.6;
+        margin: 0;
     }
 
     .contact-item {
-        text-align: center;
-        padding: 2.5rem 2rem;
-        background: var(--bg-light);
+        background: var(--bg-white);
         border-radius: var(--border-radius);
+        padding: 1.75rem;
         border: 1px solid #eee;
+        display: flex;
+        gap: 1.25rem;
+        align-items: center;
         transition: all 0.3s ease;
         position: relative;
         overflow: hidden;
@@ -100,119 +117,116 @@
     .contact-item::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
+        top: 0; left: 0; right: 0;
+        height: 3px;
         background: var(--primary-color);
         transform: scaleX(0);
         transition: transform 0.3s ease;
     }
 
     .contact-item:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 50px var(--shadow-strong);
+        transform: translateY(-4px);
+        box-shadow: 0 12px 35px var(--shadow-strong);
         border-color: var(--primary-color);
     }
 
-    .contact-item:hover::before {
-        transform: scaleX(1);
-    }
+    .contact-item:hover::before { transform: scaleX(1); }
 
     .contact-icon {
-        width: 80px;
-        height: 80px;
+        width: 52px;
+        height: 52px;
         background: var(--primary-color);
-        border-radius: 20px;
-        margin: 0 auto 1.5rem;
+        border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 2.2rem;
-        box-shadow: 0 8px 25px rgba(143,195,71,0.3);
-    }
-
-    .contact-item h3 {
-        color: var(--text-primary);
         font-size: 1.3rem;
-        margin-bottom: 1rem;
+        flex-shrink: 0;
+        box-shadow: 0 4px 15px rgba(143, 195, 71, 0.3);
+    }
+
+    .contact-icon i { color: white; }
+
+    .contact-item-text h3 {
+        font-size: 1rem;
         font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 0.25rem;
     }
 
-    .contact-item p {
-        color: var(--text-secondary);
-        font-size: 1.1rem;
-        margin-bottom: 0.5rem;
-        line-height: 1.6;
+    .contact-item-text p {
+        font-size: 0.9rem;
+        color: var(--text-light);
+        margin: 0;
     }
 
-    .contact-link {
+    .contact-item-text a {
+        font-size: 0.9rem;
         color: var(--primary-color);
         font-weight: 600;
         text-decoration: none;
-        font-size: 1.1rem;
     }
 
-    .contact-link:hover {
-        text-decoration: underline;
+    .contact-item-text a:hover { text-decoration: underline; }
+
+    .book-btn {
+        display: inline-block;
+        margin-top: 0.5rem;
+        background: var(--bg-black);
+        color: white;
+        padding: 10px 22px;
+        border-radius: 50px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
     }
 
-    /* CTA Section - Light grey */
-    .cta-section {
-        background: var(--bg-light);
-        text-align: center;
+    .book-btn:hover {
+        background: #333;
+        transform: translateY(-2px);
     }
 
-    .cta-content {
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    .cta-content h2 {
-        font-size: 2.4rem;
-        color: var(--text-primary);
-        margin-bottom: 1rem;
-        font-weight: 800;
-    }
-
-    .cta-content h2 span {
-        color: var(--primary-color);
-    }
-
-    .cta-content p {
-        color: var(--text-light);
-        font-size: 1.1rem;
-        margin-bottom: 2.5rem;
-    }
-
-    /* Form Section - White */
-    .form-section {
+    /* ─── Right: Form Panel ─── */
+    .form-panel {
         background: var(--bg-white);
+        border-radius: var(--border-radius);
+        padding: 3rem;
+        box-shadow: 0 8px 40px var(--shadow-strong);
+        border: 1px solid #eee;
     }
 
-    .contact-form {
-        max-width: 700px;
-        margin: 0 auto;
+    .form-panel h3 {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--text-primary);
+        margin-bottom: 0.4rem;
+    }
+
+    .form-panel > p {
+        color: var(--text-light);
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
     }
 
     .form-group {
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
     }
 
     .form-group label {
         display: block;
         color: var(--text-primary);
         font-weight: 600;
-        margin-bottom: 0.75rem;
-        font-size: 1rem;
+        margin-bottom: 0.6rem;
+        font-size: 0.95rem;
     }
 
     .form-group input,
     .form-group textarea {
         width: 100%;
-        padding: 1.25rem 1.5rem;
+        padding: 1rem 1.25rem;
         border: 2px solid #eee;
-        border-radius: var(--border-radius);
+        border-radius: 12px;
         font-size: 1rem;
         font-family: inherit;
         transition: all 0.3s ease;
@@ -223,16 +237,27 @@
     .form-group textarea:focus {
         outline: none;
         border-color: var(--primary-color);
-        box-shadow: 0 0 0 4px rgba(143,195,71,0.1);
+        box-shadow: 0 0 0 4px rgba(143, 195, 71, 0.1);
         background: var(--bg-white);
     }
 
     .form-group textarea {
-        height: 150px;
+        height: 140px;
         resize: vertical;
     }
 
-    /* Buttons matching index */
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .form-submit {
+        text-align: center;
+        margin-top: 0.5rem;
+    }
+
+    /* ─── Buttons ─── */
     .btn {
         font-weight: 600;
         padding: 16px 36px;
@@ -247,25 +272,63 @@
     }
 
     .btn-primary {
-        background-color: var(--primary-color);
-        color: var(--bg-black);
-        box-shadow: 0 4px 20px rgba(143,195,71,0.3);
+        background-color: var(--bg-black);
+        color: var(--bg-white);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
 
     .btn-primary:hover {
-        background-color: var(--primary-light);
+        background-color: #222;
         transform: translateY(-3px);
-        box-shadow: 0 8px 30px rgba(143,195,71,0.4);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.4);
     }
 
-    /* Success Modal */
+    /* ─── Django Messages ─── */
+    .alert {
+        padding: 1rem 1.25rem;
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+        font-weight: 500;
+    }
+
+    .alert-success {
+        background: #f0fbea;
+        color: #3a7a1a;
+        border: 1px solid var(--primary-light);
+    }
+
+    .alert-error {
+        background: #fff0f0;
+        color: #b00020;
+        border: 1px solid #ffb3b3;
+    }
+
+    /* ─── CTA ─── */
+    .cta-final {
+        background: var(--primary-color);
+        text-align: center;
+    }
+
+    .cta-final h2 {
+        font-size: 2.4rem;
+        color: var(--bg-black);
+        margin-bottom: 1rem;
+        font-weight: 800;
+    }
+
+    .cta-final p {
+        color: rgba(0,0,0,0.7);
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+
+    /* ─── Success Modal ─── */
     .success-modal {
         display: none;
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
         background: rgba(0,0,0,0.7);
         z-index: 9999;
         backdrop-filter: blur(5px);
@@ -273,8 +336,7 @@
 
     .success-content {
         position: absolute;
-        top: 50%;
-        left: 50%;
+        top: 50%; left: 50%;
         transform: translate(-50%, -50%);
         background: var(--bg-white);
         padding: 3rem 2.5rem;
@@ -288,7 +350,7 @@
 
     @keyframes slideIn {
         from { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
-        to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        to   { transform: translate(-50%, -50%) scale(1);   opacity: 1; }
     }
 
     .success-icon {
@@ -334,32 +396,42 @@
         transform: translateY(-2px);
     }
 
-    /* Responsive matching index */
-    @media(max-width: 768px) {
-        .contact-hero {
-            padding: 4rem 1.5rem;
-        }
-        .hero-title {
-            font-size: 2.4rem;
-        }
-        .contact-grid {
+    /* ─── Responsive ─── */
+    @media (max-width: 1024px) {
+        .contact-layout {
             grid-template-columns: 1fr;
+            gap: 2.5rem;
         }
-        .section-content {
-            padding: 3.5rem 0;
+
+        .contact-info {
+            flex-direction: row;
+            flex-wrap: wrap;
         }
-        .section-wrapper {
-            padding: 0 1.25rem;
+
+        .contact-info-header {
+            width: 100%;
         }
-        .contact-form {
-            padding: 0 1rem;
+
+        .contact-item {
+            flex: 1 1 260px;
         }
+    }
+
+    @media (max-width: 768px) {
+        .contact-hero { padding: 4rem 1.5rem; }
+        .hero-title { font-size: 2.4rem; }
+        .section-content { padding: 3.5rem 0; }
+        .section-wrapper { padding: 0 1.25rem; }
+        .form-panel { padding: 2rem 1.5rem; }
+        .form-row { grid-template-columns: 1fr; }
+        .contact-info { flex-direction: column; }
     }
 </style>
 {% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
+
+<!-- Hero -->
 <div class="contact-hero">
     <div class="contact-hero-content">
         <h1 class="hero-title">Get In <span>Touch</span></h1>
@@ -367,113 +439,124 @@
     </div>
 </div>
 
-<!-- Contact Details Section (White) -->
-<div class="section-wrapper details-section">
+<!-- Main Contact Section -->
+<div class="section-wrapper contact-main">
     <div class="section-content">
-        <div class="contact-grid">
-            <div class="contact-item">
-                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                <h3>Email</h3>
-                <p>For detailed inquiries and questions</p>
-                <a href="mailto:sean@vibrantliving.com" class="contact-link">vibrantlivinggg@gmail.com</a>
-            </div>
-            <div class="contact-item">
-                <div class="contact-icon"><i class="fas fa-calendar-check"></i></div>
-                <h3>Free Consultation</h3>
-                <p>15-minute discovery call to discuss your goals</p>
-                <a href="https://forms.gle/dUK8nnaXuxiSNFxD9" class="btn btn-primary">Book Your Call</a>
-            </div>
-        </div>
-    </div>
-</div>
+        <div class="contact-layout">
 
-<!-- CTA Section (Light grey) -->
-<div class="section-wrapper cta-section">
-    <div class="section-content">
-        <div class="cta-content">
-            <h2>Ready to <span>Transform?</span></h2>
-            <p>Send a quick message below and let's discuss how I can help you reach your goals.</p>
-        </div>
-    </div>
-</div>
+            <!-- Left: Contact Info -->
+            <div class="contact-info">
+                <div class="contact-info-header">
+                    <h2>Let's <span>Connect</span></h2>
+                    <p>Have a question or want to get started? Reach out directly or fill in the form and I'll get back to you within 24 hours.</p>
+                </div>
 
-<!-- Contact Form Section (White) -->
-<div class="section-wrapper form-section">
-    <div class="section-content">
-        <form class="contact-form" method="POST" action="{% url 'contact' %}">
-            {% csrf_token %}
-            
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }}">
-                        {{ message }}
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
                     </div>
-                {% endfor %}
-            {% endif %}
-            
-            <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" required>
+                    <div class="contact-item-text">
+                        <h3>Email</h3>
+                        <a href="mailto:vibrantlivinggg@gmail.com">vibrantlivinggg@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="contact-item-text">
+                        <h3>Free Consultation</h3>
+                        <p>15-minute discovery call to discuss your goals</p>
+                        <a href="https://forms.gle/dUK8nnaXuxiSNFxD9" class="book-btn">Book Your Call</a>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required>
+
+            <!-- Right: Form -->
+            <div class="form-panel">
+                <h3>Send a Message</h3>
+                <p>Tell me about your goals and I'll be in touch shortly.</p>
+
+                <form class="contact-form" method="POST" action="{% url 'contact' %}">
+                    {% csrf_token %}
+
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                        {% endfor %}
+                    {% endif %}
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="jane@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone <span style="font-weight:400; color: var(--text-light);">(Optional)</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="+353 87 123 4567">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Tell me about your goals</label>
+                        <textarea id="message" name="message" placeholder="What are you looking to achieve? Any challenges you're facing? What's your timeline?" required></textarea>
+                    </div>
+
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="phone">Phone (Optional)</label>
-                <input type="tel" id="phone" name="phone">
-            </div>
-            <div class="form-group">
-                <label for="message">Tell me about your goals</label>
-                <textarea id="message" name="message" placeholder="What are you looking to achieve? Any challenges you're facing? What's your timeline?" required></textarea>
-            </div>
-            <div style="text-align: center;">
-                <button type="submit" class="btn btn-primary">Send Message</button>
-            </div>
-        </form>
+
+        </div>
     </div>
 </div>
-<!-- Google Sheets + Django Form Handler -->
+
+<!-- Google Sheets submission script — logic unchanged -->
 <script>
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyMF0zxI4MqP223HRadDJ-ietwAmhHat6aMtNIkyrO4h8qKSYoCm0DBK5sqjDA_hOC2/exec';
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const form = document.querySelector('.contact-form');
-    
-    form.addEventListener('submit', async function(e) {
+
+    form.addEventListener('submit', async function (e) {
         e.preventDefault();
-        
+
         const formData = new FormData(form);
         const submitBtn = form.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
-        
-        // Show loading
+
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
-        
+
         try {
-            // Save to Google Sheets
             const response = await fetch(SCRIPT_URL, {
                 method: 'POST',
                 body: formData
             });
-            
+
             if (response.ok) {
-                showSuccessModal();  // Clean popup!
+                showSuccessModal();
                 setTimeout(() => window.location.href = '{% url "index" %}', 2000);
             } else {
                 throw new Error('Sheet save failed');
             }
-        } catch(error) {
+        } catch (error) {
             console.error('Error:', error);
-            // Still redirect (Django will show message)
             window.location.href = '{% url "index" %}';
         }
     });
-    
+
     function showSuccessModal() {
         const modal = document.createElement('div');
         modal.className = 'success-modal';
+        modal.style.display = 'block';
         modal.innerHTML = `
             <div class="success-content">
                 <div class="success-icon">
@@ -487,12 +570,12 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
         document.body.appendChild(modal);
-        
-        // Auto-close on click outside
-        modal.addEventListener('click', function(e) {
+
+        modal.addEventListener('click', function (e) {
             if (e.target === this) this.remove();
         });
     }
 });
 </script>
+
 {% endblock %}

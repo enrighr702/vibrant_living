@@ -5,7 +5,6 @@
 
 {% block extra_css %}
 <style>
-    /* Root variables matching index.html exactly */
     :root {
         --primary-color: #8fc347;
         --primary-dark: #7ab03a;
@@ -21,11 +20,8 @@
         --border-radius: 16px;
     }
 
-    * {
-        box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    /* Full-width sections matching index format */
     .section-wrapper {
         width: 100%;
         padding: 0 2rem;
@@ -37,18 +33,15 @@
         padding: 5rem 0;
     }
 
-    /* Hero Section - Black background like index */
+    /* ─── Hero ─── */
     .about-hero {
         background: black;
         color: var(--bg-white);
         padding: 6rem 2rem;
         text-align: center;
-        position: relative;
     }
 
     .about-hero-content {
-        position: relative;
-        z-index: 1;
         max-width: 800px;
         margin: 0 auto;
     }
@@ -60,14 +53,12 @@
         line-height: 1.1;
     }
 
-    .hero-title span {
-        color: var(--primary-color);
-    }
+    .hero-title span { color: var(--primary-color); }
 
     .hero-subtitle {
         font-weight: 400;
         font-size: 1.25rem;
-        margin-bottom: 2.5rem;
+        margin-bottom: 0;
         opacity: 0.85;
         max-width: 600px;
         margin-left: auto;
@@ -75,10 +66,8 @@
         color: #ccc;
     }
 
-    /* Story Section - White like intro */
-    .story-section {
-        background: var(--bg-white);
-    }
+    /* ─── Story Section ─── */
+    .story-section { background: var(--bg-white); }
 
     .story-content {
         display: grid;
@@ -90,7 +79,6 @@
     .story-photo {
         width: 100%;
         height: 650px;
-        min-height: 650px;
         object-fit: cover;
         border-radius: var(--border-radius);
         box-shadow: 0 25px 50px rgba(0,0,0,0.15);
@@ -103,134 +91,207 @@
         font-weight: 800;
     }
 
-    .story-text h2 span {
-        color: var(--primary-color);
-    }
-
-    .story-text h3 {
-        color: var(--primary-color);
-        font-size: 1.8rem;
-        margin-bottom: 1.5rem;
-        font-weight: 700;
-    }
+    .story-text h2 span { color: var(--primary-color); }
 
     .story-text p {
-        font-size: 1.1rem;
-        line-height: 1.8;
+        font-size: 1.05rem;
+        line-height: 1.85;
         color: var(--text-secondary);
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.25rem;
     }
 
-    /* Philosophy Section - Light grey like services */
-    .philosophy-section {
-        background: var(--bg-light);
-    }
+    .story-text p:last-child { margin-bottom: 0; }
 
-    .philosophy-content {
+    /* ─── Philosophy Section ─── */
+    .philosophy-section { background: var(--bg-light); }
+
+    .section-header {
         text-align: center;
+        margin-bottom: 3.5rem;
     }
 
-    .philosophy-content h2 {
+    .section-header h2 {
         font-size: 2.4rem;
         color: var(--text-primary);
         font-weight: 800;
         margin-bottom: 0.5rem;
     }
 
-    .philosophy-content h2 span {
-        color: var(--primary-color);
-    }
+    .section-header h2 span { color: var(--primary-color); }
 
-    .philosophy-content p {
+    .section-header p {
         color: var(--text-light);
-        font-size: 1.1rem;
-        max-width: 800px;
-        margin: 0 auto 2rem;
+        font-size: 1.05rem;
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.7;
     }
 
-    /* Manifesto Section - Black like packages */
+    /* Pillars grid — 4 across then 3 centred */
+    .pillars-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.25rem;
+    }
+
+    /* Last 3 items span to centre in a second row */
+    .pillars-grid .pillar-card:nth-child(5),
+    .pillars-grid .pillar-card:nth-child(6),
+    .pillars-grid .pillar-card:nth-child(7) {
+        grid-column: auto;
+    }
+
+    /* Offset the last row to centre 3 under 4 */
+    .pillars-grid .pillar-card:nth-child(5) { grid-column: 1 / 2; margin-left: calc(50% + 0.625rem); }
+
+    /* Simpler approach — use a wrapper with auto centering */
+    .pillars-bottom-row {
+        display: flex;
+        justify-content: center;
+        gap: 1.25rem;
+        margin-top: 1.25rem;
+    }
+
+    .pillars-bottom-row .pillar-card {
+        flex: 0 1 calc(25% - 1rem);
+    }
+
+    .pillar-card {
+        background: var(--bg-white);
+        border-radius: var(--border-radius);
+        padding: 2rem 1.5rem;
+        text-align: center;
+        border: 1px solid #eee;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .pillar-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 4px;
+        background: var(--primary-color);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .pillar-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 40px var(--shadow-strong);
+        border-color: var(--primary-color);
+    }
+
+    .pillar-card:hover::before { transform: scaleX(1); }
+
+    .pillar-icon {
+        width: 52px;
+        height: 52px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+    }
+
+    .pillar-icon i { color: white; font-size: 1.2rem; }
+
+    .pillar-card h4 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+    }
+
+    .pillar-card p {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* ─── Manifesto Section ─── */
     .manifesto-section {
         background: black;
         color: var(--bg-white);
     }
 
-    .manifesto-content {
-        background: rgba(255,255,255,0.05);
-        border-radius: var(--border-radius);
-        padding: 3.5rem;
-        text-align: center;
-        border: 1px solid rgba(255,255,255,0.1);
-        max-width: 800px;
+    .manifesto-inner {
+        max-width: 860px;
         margin: 0 auto;
+        text-align: center;
     }
 
-    .manifesto-content h2 {
-        color: var(--bg-white);
+    .manifesto-inner h2 {
         font-size: 2.4rem;
-        margin-bottom: 2rem;
         font-weight: 800;
+        color: var(--bg-white);
+        margin-bottom: 0.5rem;
     }
 
-    .manifesto-content h2 span {
-        color: var(--primary-color);
-    }
+    .manifesto-inner h2 span { color: var(--primary-color); }
 
-    .manifesto-text {
-        font-size: 1.4rem;
-        line-height: 1.6;
-        opacity: 0.9;
-        margin-bottom: 1rem;
-    }
-
-    /* Testimonials Section - White like testimonials */
-    .testimonials-section {
-        background: var(--bg-white);
-    }
-
-    .testimonial-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-    }
-
-    .testimonial {
-        background: var(--bg-light);
-        padding: 2rem;
-        border-radius: var(--border-radius);
-        text-align: left;
-        border: 1px solid #eee;
-        transition: all 0.3s ease;
-    }
-
-    .testimonial:hover {
-        box-shadow: 0 15px 40px var(--shadow-light);
-        border-color: var(--primary-color);
-    }
-
-    .testimonial-photo {
-        width: 55px;
-        height: 55px;
-        background: var(--primary-color);
-        border-radius: 50%;
-        margin-bottom: 1.2rem;
-    }
-
-    .testimonial blockquote {
-        font-style: italic;
+    .manifesto-inner > p {
+        color: rgba(255,255,255,0.6);
         font-size: 1rem;
+        margin-bottom: 3rem;
+    }
+
+    .manifesto-points {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+        text-align: left;
+        margin-bottom: 3rem;
+    }
+
+    .manifesto-point {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 12px;
+        padding: 1.5rem;
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+        transition: border-color 0.3s ease;
+    }
+
+    .manifesto-point:hover { border-color: var(--primary-color); }
+
+    .manifesto-point i {
+        color: var(--primary-color);
+        font-size: 1.1rem;
+        margin-top: 3px;
+        flex-shrink: 0;
+    }
+
+    .manifesto-point strong {
+        display: block;
+        color: var(--bg-white);
+        font-size: 0.95rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .manifesto-point span {
+        color: rgba(255,255,255,0.6);
+        font-size: 0.875rem;
+        line-height: 1.6;
+    }
+
+    .manifesto-quote {
+        background: rgba(143,195,71,0.1);
+        border: 1px solid rgba(143,195,71,0.3);
+        border-radius: var(--border-radius);
+        padding: 2rem 2.5rem;
+        font-size: 1.2rem;
+        font-style: italic;
+        color: rgba(255,255,255,0.85);
         line-height: 1.7;
-        margin: 0 0 1rem 0;
-        color: var(--text-secondary);
     }
 
-    .testimonial cite {
-        font-weight: 700;
-        font-size: 0.9rem;
-        font-style: normal;
-        color: var(--text-primary);
-    }
-
-    /* CTA Section - Green like final CTA */
+    /* ─── CTA ─── */
     .cta-final {
         background: var(--primary-color);
         text-align: center;
@@ -249,7 +310,7 @@
         margin-bottom: 2rem;
     }
 
-    /* Buttons matching index */
+    /* ─── Buttons ─── */
     .btn {
         font-weight: 600;
         padding: 16px 36px;
@@ -275,151 +336,164 @@
         box-shadow: 0 8px 30px rgba(0,0,0,0.4);
     }
 
-    /* Responsive matching index */
-    @media(max-width: 1024px) {
-        .testimonial-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
+    /* ─── Responsive ─── */
+    @media (max-width: 1024px) {
+        .pillars-grid { grid-template-columns: repeat(3, 1fr); }
+        .pillars-bottom-row .pillar-card { flex: 0 1 calc(33.33% - 1rem); }
+        .manifesto-points { grid-template-columns: 1fr; }
     }
 
-    @media(max-width: 768px) {
-        .story-content {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            text-align: center;
-        }
-        .story-photo {
-            height: 350px;
-        }
-        .about-hero {
-            padding: 4rem 1.5rem;
-        }
-        .hero-title {
-            font-size: 2.4rem;
-        }
-        .testimonial-grid {
-            grid-template-columns: 1fr;
-        }
-        .section-content {
-            padding: 3.5rem 0;
-        }
-        .section-wrapper {
-            padding: 0 1.25rem;
-        }
+    @media (max-width: 768px) {
+        .about-hero { padding: 4rem 1.5rem; }
+        .hero-title { font-size: 2.4rem; }
+        .section-content { padding: 3.5rem 0; }
+        .section-wrapper { padding: 0 1.25rem; }
+        .story-content { grid-template-columns: 1fr; gap: 2rem; }
+        .story-photo { height: 380px; }
+        .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+        .pillars-bottom-row { flex-wrap: wrap; }
+        .pillars-bottom-row .pillar-card { flex: 1 1 calc(50% - 0.625rem); }
+        .manifesto-quote { padding: 1.5rem; font-size: 1.05rem; }
+    }
+
+    @media (max-width: 480px) {
+        .pillars-grid { grid-template-columns: 1fr; }
+        .pillars-bottom-row .pillar-card { flex: 1 1 100%; }
     }
 </style>
 {% endblock %}
 
 {% block content %}
-<!-- 1. Hero - ME (Black background like hero) -->
+
+<!-- Hero -->
 <div class="about-hero">
     <div class="about-hero-content">
-        <h1 class="hero-title">Sean Flanagan <span>Expert Transformational Coach</span></h1>
+        <h1 class="hero-title">Meet <span>Sean Flanagan</span></h1>
         <p class="hero-subtitle">Dedicated to sustainable transformation through evidence-based training and compassionate support.</p>
     </div>
 </div>
 
-<!-- 2. MY STORY (White like intro) -->
+<!-- Story -->
 <div class="section-wrapper story-section">
     <div class="section-content">
         <div class="story-content">
-            <img src="{% static 'images/coach_image.jpg' %}" alt="Sean - early fitness journey" class="story-photo">
+            <img src="{% static 'images/coach_image.jpg' %}" alt="Sean Flanagan - Vibrant Living Coach" class="story-photo">
             <div class="story-text">
-                <h2>My <span>Fitness Journey</span></h2>
-                <p>My story is much like everybody else’s in the fitness industry who is now coaching teams or individuals. From a very young age I fell into different sports (GAA, football, running, golf) & then I got to a point where I had to focus on one. I chose GAA. Being strong on the pitch meant getting strong in the gym & through that I developed a huge passion for weight training. Over the years, I've given up sport competitively & fully committed to weight training.</p>
-                <p> I’ve been training for 8 years now & having gone through multiple cutting, gaining & maintenance phases - paired with an ongoing pursuit to acquire knowledge - I think it's fair to say I know what I'm talking about. I’ve had an array of different career paths ever since I finished school in 2020. I studied to be a language teacher, then studied creative media & design, then travelled the world as a full time content creator before landing a job in the fitness industry. I’ve had many different career paths - but I've noticed the one ongoing theme in them all.</p>
-                <p> Fitness is so much more than aesthetics - it’s about how you feel during the process of it all. The opportunity to be of service to others. Sport & fitness has always played a massive role in improving the quality of my life & now I’ve built a business that allows other people to have that same experience.</p>
+                <h2>My <span>Story</span></h2>
+                <p>My story is much like everybody else's in the fitness industry who is now coaching teams or individuals. From a very young age I fell into different sports — GAA, football, running, golf — before eventually choosing to fully commit to GAA. Being strong on the pitch meant getting strong in the gym, and through that I developed a huge passion for weight training.</p>
+                <p>I've been training for 8 years now, having gone through multiple cutting, gaining and maintenance phases — paired with an ongoing pursuit to acquire knowledge. I've had an array of different career paths since finishing school in 2020: studying to be a language teacher, then creative media & design, then travelling the world as a full-time content creator before landing in the fitness industry.</p>
+                <p>Many different paths — but one ongoing theme. Fitness is so much more than aesthetics. It's about how you feel during the process. The opportunity to be of service to others. Sport and fitness has always played a massive role in improving the quality of my life, and now I've built a business that allows other people to have that same experience.</p>
             </div>
         </div>
     </div>
 </div>
 
-<!-- 3. PHILOSOPHY (Light grey like services) -->
+<!-- Philosophy & Pillars -->
 <div class="section-wrapper philosophy-section">
     <div class="section-content">
-        <div class="philosophy-content">
+        <div class="section-header">
             <h2>Our <span>Philosophy</span></h2>
-            <p>At Vibrant Living, we are so much more than just a fitness brand. We specialize in personal training designed to help you move your body, feel your best, and achieve your goals. But we know that wellness involves much more than just working out. It’s about nourishing your body with good food, connecting with others, and enjoying yourself along the way.</p>
-            <p> We’re here to help you make health & fitness part of your everyday life, in a way that’s enjoyable, sustainable, and fulfilling. We are dedicated to creating a welcoming and supportive space where you can thrive - physically, mentally, and socially.</p>
-            <p>My approach is built on seven core pillars that guide every client relationship and training program:</p>
-            
-            <div class="pillars-list">
-                <div class="pillar-item">
-                    <i class="fas fa-leaf"></i>
+            <p>At Vibrant Living, we're so much more than a fitness brand. Wellness involves working out, nourishing your body, connecting with others, and enjoying yourself along the way — all built on seven core pillars.</p>
+        </div>
+
+        <!-- Row 1: 4 pillars -->
+        <div class="pillars-grid">
+            <div class="pillar-card">
+                <div class="pillar-icon"><i class="fas fa-leaf"></i></div>
+                <h4>Sustainability</h4>
+                <p>Build habits that fit your life, not the other way around</p>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-icon"><i class="fas fa-heart"></i></div>
+                <h4>Compassion</h4>
+                <p>A judgment-free space where you're supported, not criticised</p>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-icon"><i class="fas fa-dumbbell"></i></div>
+                <h4>Hard Work</h4>
+                <p>Real results require effort — but you won't do it alone</p>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                <h4>Love</h4>
+                <p>Genuine care for your success, every step of the way</p>
+            </div>
+        </div>
+
+        <!-- Row 2: 3 pillars centred -->
+        <div class="pillars-bottom-row">
+            <div class="pillar-card">
+                <div class="pillar-icon"><i class="fas fa-bolt"></i></div>
+                <h4>Energy</h4>
+                <p>Bringing positive momentum to every check-in and workout</p>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-icon"><i class="fas fa-users"></i></div>
+                <h4>People</h4>
+                <p>Relationships first — results follow naturally</p>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-icon"><i class="fas fa-shield-alt"></i></div>
+                <h4>Resilience</h4>
+                <p>Building mental strength alongside physical transformation</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Manifesto -->
+<div class="section-wrapper manifesto-section">
+    <div class="section-content">
+        <div class="manifesto-inner">
+            <h2>Our <span>Manifesto</span></h2>
+            <p>What we stand for — and why it matters</p>
+
+            <div class="manifesto-points">
+                <div class="manifesto-point">
+                    <i class="fas fa-check"></i>
                     <div>
-                        <h4>Sustainability</h4>
-                        <p>Build habits that fit your life, not the other way around</p>
+                        <strong>Wellness for Everyone</strong>
+                        <span>Making health accessible, fun, and transformative for absolutely everyone — regardless of where you start.</span>
                     </div>
                 </div>
-                
-                <div class="pillar-item">
-                    <i class="fas fa-heart"></i>
+                <div class="manifesto-point">
+                    <i class="fas fa-check"></i>
                     <div>
-                        <h4>Compassion</h4>
-                        <p>A judgment-free space where you're supported, not criticized</p>
+                        <strong>Lasting Habits Over Quick Fixes</strong>
+                        <span>We prioritise the construction of long-lasting habits over short-term results that don't stick.</span>
                     </div>
                 </div>
-                
-                <div class="pillar-item">
-                    <i class="fas fa-dumbbell"></i>
+                <div class="manifesto-point">
+                    <i class="fas fa-check"></i>
                     <div>
-                        <h4>Hard Work</h4>
-                        <p>Real results require effort—but you won't do it alone</p>
+                        <strong>Stronger in Every Sense</strong>
+                        <span>Inspiring growth that is physical, mental, and social — because true health covers all three.</span>
                     </div>
                 </div>
-                
-                <div class="pillar-item">
-                    <i class="fas fa-hand-holding-heart"></i>
+                <div class="manifesto-point">
+                    <i class="fas fa-check"></i>
                     <div>
-                        <h4>Love</h4>
-                        <p>Genuine care for your success, every step of the way</p>
+                        <strong>Balanced & Sustainable</strong>
+                        <span>Empowering people to approach health in a way that is balanced, enjoyable, and built to last.</span>
                     </div>
                 </div>
-                
-                <div class="pillar-item">
-                    <i class="fas fa-bolt"></i>
-                    <div>
-                        <h4>Energy</h4>
-                        <p>Bringing positive momentum to every check-in and workout</p>
-                    </div>
-                </div>
-                
-                <div class="pillar-item">
-                    <i class="fas fa-users"></i>
-                    <div>
-                        <h4>People</h4>
-                        <p>Relationships first—results follow naturally</p>
-                    </div>
-                </div>
-                
-                <div class="pillar-item">
-                    <i class="fas fa-shield-alt"></i>
-                    <div>
-                        <h4>Resilience</h4>
-                        <p>Building mental strength alongside physical transformation</p>
-                    </div>
-                </div>
+            </div>
+
+            <div class="manifesto-quote">
+                "We strive to empower people to live a life of fulfilment — educating each person about the positive impact health & fitness will have when approached in a way that is balanced and sustainable."
             </div>
         </div>
     </div>
 </div>
 
-<!-- 4. BRAND MANIFESTO (Black like packages) -->
-<div class="section-wrapper manifesto-section">
-    <div class="section-content">
-        <div class="manifesto-content">
-            <h2>Our <span>Manifesto</span></h2>
-            <p>Our mission is to make wellness accessible, fun, and transformative for absolutely everyone. We aim to inspire lasting change through tailored fitness experiences that help individuals grow stronger, healthier, and more connected—physically, mentally, and socially. We prioritize the construction of long-lasting habits, fostering a sense of community, and encouraging a balanced approach to health & fitness.We strive to empower people to live a life of fulfillment by educating each person about health & fitness and the positive impact it will have on your life if you approach it in a way that is balanced & sustainable.</p>
-        </div>
-    </div>
-</div>
-
-<!-- 6. FINAL CTA (Green like final CTA) -->
+<!-- CTA -->
 <div class="section-wrapper cta-final">
     <div class="section-content">
         <h2>Ready to Transform?</h2>
-        <p>Start your journey with personalized coaching that delivers results.</p>
-        <a href="" class="btn btn-primary">Start Your Transformation</a>
+        <p>Start your journey with personalised coaching that delivers real results.</p>
+        <a href="{% url 'coaching' %}" class="btn btn-primary">Start Your Transformation</a>
     </div>
 </div>
+
 {% endblock %}

@@ -5,7 +5,6 @@
 
 {% block extra_css %}
 <style>
-    /* Root variables for color palette */
     :root {
         --primary-color: #8fc347;
         --primary-dark: #7ab03a;
@@ -21,9 +20,7 @@
         --border-radius: 16px;
     }
 
-    * {
-        box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -33,7 +30,6 @@
         line-height: 1.6;
     }
 
-    /* Full-width sections */
     .section-wrapper {
         width: 100%;
         padding: 0 2rem;
@@ -45,60 +41,43 @@
         padding: 5rem 0;
     }
 
-    /* Hero Section - Black background */
+    /* ─── Hero ─── */
     .hero {
         background: black;
         color: var(--bg-white);
-        padding: 6rem 2rem;
+        padding: 7rem 2rem;
         text-align: center;
-        position: relative;
     }
 
     .hero-content {
-        position: relative;
-        z-index: 1;
-        max-width: 1000px;
+        max-width: 900px;
         margin: 0 auto;
     }
 
-    .logo {
-        display: inline-block;
+    .hero-logo {
         margin-bottom: 2.5rem;
     }
 
-    .logo img {
-        height: 60px;
+    .hero-logo img {
+        height: 64px;
         width: auto;
     }
 
-    .logo-text {
-        display: inline-block;
-        background: var(--primary-color);
-        color: var(--bg-black);
-        font-weight: 800;
-        font-size: 1.1rem;
-        letter-spacing: 0.2em;
-        padding: 0.6rem 1.5rem;
-        border-radius: 50px;
-    }
-
     .hero h1 {
-        font-size: 3.4rem;
-        margin-bottom: 1rem;
+        font-size: 3.6rem;
+        margin-bottom: 1.25rem;
         font-weight: 800;
         line-height: 1.1;
     }
 
-    .hero h1 span {
-        color: var(--primary-color);
-    }
+    .hero h1 span { color: var(--primary-color); }
 
     .hero-subtitle {
         font-weight: 400;
         font-size: 1.25rem;
         margin-bottom: 2.5rem;
         opacity: 0.85;
-        max-width: 600px;
+        max-width: 620px;
         margin-left: auto;
         margin-right: auto;
         color: #ccc;
@@ -111,6 +90,7 @@
         flex-wrap: wrap;
     }
 
+    /* ─── Buttons ─── */
     .btn {
         font-weight: 600;
         padding: 16px 36px;
@@ -148,10 +128,20 @@
         transform: translateY(-3px);
     }
 
-    /* Intro/About Section - White */
-    .intro {
-        background: var(--bg-white);
+    .btn-dark {
+        background: var(--bg-black);
+        color: var(--bg-white);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
+
+    .btn-dark:hover {
+        background: #222;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    }
+
+    /* ─── Intro / About ─── */
+    .intro { background: var(--bg-white); }
 
     .intro-content {
         display: grid;
@@ -160,65 +150,62 @@
         align-items: center;
     }
 
-    .photo {
+    .coach-photo {
         width: 100%;
         height: 650px;
-        min-height: 650px;
         object-fit: cover;
         border-radius: var(--border-radius);
         box-shadow: 0 25px 50px rgba(0,0,0,0.15);
     }
 
-    .philosophy-content h2 {
+    .intro-text h2 {
         font-size: 2.4rem;
         color: var(--text-primary);
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.25rem;
         font-weight: 800;
     }
 
-    .philosophy-content h2 span {
-        color: var(--primary-color);
-    }
+    .intro-text h2 span { color: var(--primary-color); }
 
-    .philosophy-content p {
-        font-size: 1.1rem;
-        line-height: 1.8;
+    .intro-text p {
+        font-size: 1.05rem;
+        line-height: 1.85;
         color: var(--text-secondary);
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.25rem;
     }
 
-    .philosophy-highlights {
+    .intro-text p:last-of-type { margin-bottom: 0; }
+
+    .intro-stats {
         display: flex;
         gap: 2.5rem;
         margin-top: 2.5rem;
         padding-top: 2rem;
         border-top: 1px solid #eee;
+        flex-wrap: wrap;
     }
 
-    .highlight-item {
-        text-align: left;
-    }
+    .stat-item { text-align: left; }
 
-    .highlight-number {
-        font-size: 2.8rem;
+    .stat-number {
+        font-size: 2.6rem;
         font-weight: 800;
         color: var(--primary-color);
         display: block;
         line-height: 1;
     }
 
-    .highlight-label {
-        font-size: 0.85rem;
+    .stat-label {
+        font-size: 0.82rem;
         color: var(--text-light);
         text-transform: uppercase;
         letter-spacing: 0.08em;
         margin-top: 0.3rem;
+        display: block;
     }
 
-    /* Services Section - Light grey */
-    .services {
-        background: var(--bg-light);
-    }
+    /* ─── Services ─── */
+    .services { background: var(--bg-light); }
 
     .section-header {
         text-align: center;
@@ -232,13 +219,12 @@
         margin-bottom: 0.5rem;
     }
 
-    .section-header h2 span {
-        color: var(--primary-color);
-    }
+    .section-header h2 span { color: var(--primary-color); }
 
     .section-header p {
         color: var(--text-light);
-        font-size: 1.1rem;
+        font-size: 1.05rem;
+        margin: 0;
     }
 
     .services-grid {
@@ -253,15 +239,28 @@
         padding: 2rem;
         box-shadow: 0 4px 20px var(--shadow-light);
         transition: all 0.3s ease;
-        text-align: left;
         border: 1px solid #eee;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 4px;
+        background: var(--primary-color);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
     }
 
     .service-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 40px var(--shadow-strong);
+        transform: translateY(-6px);
+        box-shadow: 0 16px 40px var(--shadow-strong);
         border-color: var(--primary-color);
     }
+
+    .service-card:hover::before { transform: scaleX(1); }
 
     .service-icon {
         width: 50px;
@@ -272,115 +271,27 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
+
+    .service-icon i { color: white; }
 
     .service-card h3 {
         color: var(--text-primary);
-        font-size: 1.15rem;
+        font-size: 1.1rem;
         margin-bottom: 0.6rem;
         font-weight: 700;
     }
 
     .service-card p {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         color: var(--text-light);
-        line-height: 1.6;
+        line-height: 1.65;
         margin: 0;
     }
 
-    /* Packages Section - Black */
-    .packages-section {
-        background: black;
-        color: var(--bg-white);
-    }
-
-    .packages-section .section-header h2 {
-        color: var(--bg-white);
-    }
-
-    .packages-section .section-header p {
-        color: #999;
-    }
-
-    .packages-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1.5rem;
-    }
-
-    .package {
-        background: rgba(255,255,255,0.05);
-        border-radius: var(--border-radius);
-        padding: 2.5rem 1.5rem;
-        text-align: center;
-        transition: all 0.3s ease;
-        border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .package:hover {
-        background: rgba(255,255,255,0.08);
-        transform: translateY(-5px);
-        border-color: var(--primary-color);
-    }
-
-    .package.featured {
-        background: var(--primary-color);
-        color: var(--bg-black);
-        border-color: var(--primary-color);
-        transform: scale(1.02);
-    }
-
-    .package.featured:hover {
-        transform: scale(1.02) translateY(-5px);
-        background: var(--primary-light);
-    }
-
-    .package h4 {
-        font-size: 1.3rem;
-        margin-bottom: 0.5rem;
-        font-weight: 700;
-    }
-
-    .package p {
-        font-size: 0.9rem;
-        opacity: 0.7;
-        margin-bottom: 1.5rem;
-    }
-
-    .package.featured p {
-        opacity: 0.8;
-    }
-
-    .package .btn {
-        padding: 12px 28px;
-        font-size: 0.9rem;
-    }
-
-    .package .btn-outline {
-        background: transparent;
-        border: 2px solid var(--bg-white);
-        color: var(--bg-white);
-    }
-
-    .package .btn-outline:hover {
-        background: var(--bg-white);
-        color: var(--bg-black);
-    }
-
-    .package.featured .btn {
-        background: var(--bg-black);
-        color: var(--bg-white);
-    }
-
-    .package.featured .btn:hover {
-        background: #222;
-    }
-
-    /* Testimonials Section - White */
-    .testimonials {
-        background: var(--bg-white);
-    }
+    /* ─── Testimonials ─── */
+    .testimonials { background: var(--bg-white); }
 
     .testimonial-grid {
         display: grid;
@@ -388,44 +299,104 @@
         gap: 2rem;
     }
 
-    .testimonial {
+    .testimonial-card {
         background: var(--bg-light);
-        padding: 2rem;
+        padding: 2.5rem;
         border-radius: var(--border-radius);
-        text-align: left;
         border: 1px solid #eee;
         transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
     }
 
-    .testimonial:hover {
-        box-shadow: 0 15px 40px var(--shadow-light);
+    .testimonial-card::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 4px;
+        background: var(--primary-color);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 50px var(--shadow-strong);
         border-color: var(--primary-color);
     }
 
-    .testimonial-photo {
-        width: 55px;
-        height: 55px;
-        background: var(--primary-color);
-        border-radius: 50%;
-        margin-bottom: 1.2rem;
+    .testimonial-card:hover::after { transform: scaleX(1); }
+
+    .testimonial-stars {
+        display: flex;
+        gap: 4px;
+        margin-bottom: 1.25rem;
     }
 
-    .testimonial blockquote {
+    .testimonial-stars i { color: #f5a623; font-size: 0.95rem; }
+
+    .testimonial-card blockquote {
         font-style: italic;
         font-size: 1rem;
-        line-height: 1.7;
-        margin: 0 0 1rem 0;
-        color: var(--text-secondary);
-    }
-
-    .testimonial cite {
-        font-weight: 700;
-        font-size: 0.9rem;
-        font-style: normal;
+        line-height: 1.8;
         color: var(--text-primary);
+        margin: 0 0 1.75rem 0;
+        flex: 1;
     }
 
-    /* CTA Section - Green */
+    .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid #e8e8e8;
+    }
+
+    .author-avatar {
+        width: 46px;
+        height: 46px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--bg-black);
+        flex-shrink: 0;
+    }
+
+    .author-info h4 {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0 0 0.2rem 0;
+    }
+
+    .author-info p {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        margin: 0;
+    }
+
+    .testimonials-cta {
+        text-align: center;
+        margin-top: 2.5rem;
+    }
+
+    .testimonials-cta a {
+        color: var(--primary-color);
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: opacity 0.2s;
+    }
+
+    .testimonials-cta a:hover { opacity: 0.75; }
+
+    /* ─── CTA ─── */
     .cta-section {
         background: var(--primary-color);
         text-align: center;
@@ -444,102 +415,64 @@
         margin-bottom: 2rem;
     }
 
-    .cta-section .btn-dark {
-        background: var(--bg-black);
-        color: var(--bg-white);
-        padding: 18px 40px;
+    /* ─── Responsive ─── */
+    @media (max-width: 1024px) {
+        .services-grid { grid-template-columns: repeat(2, 1fr); }
+        .trust-inner { grid-template-columns: repeat(2, 1fr); }
     }
 
-    .cta-section .btn-dark:hover {
-        background: #222;
-        transform: translateY(-3px);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    @media (max-width: 768px) {
+        .hero { padding: 5rem 1.5rem; }
+        .hero h1 { font-size: 2.6rem; }
+        .intro-content { grid-template-columns: 1fr; gap: 2rem; }
+        .coach-photo { height: 380px; }
+        .services-grid { grid-template-columns: 1fr; }
+        .trust-inner { grid-template-columns: repeat(2, 1fr); }
+        .testimonial-grid { grid-template-columns: 1fr; }
+        .section-content { padding: 3.5rem 0; }
+        .section-wrapper { padding: 0 1.25rem; }
+        .intro-stats { gap: 1.75rem; }
     }
 
-    /* Responsive */
-    @media(max-width: 1024px) {
-        .services-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-        .packages-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-        .testimonial-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    @media(max-width: 768px) {
-        .intro-content {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-        .photo {
-            height: 350px;
-        }
-        .hero h1 {
-            font-size: 2.4rem;
-        }
-        .hero {
-            padding: 4rem 1.5rem;
-        }
-        .services-grid,
-        .packages-grid,
-        .testimonial-grid {
-            grid-template-columns: 1fr;
-        }
-        .philosophy-highlights {
-            flex-wrap: wrap;
-            gap: 1.5rem;
-        }
-        .section-content {
-            padding: 3.5rem 0;
-        }
-        .section-wrapper {
-            padding: 0 1.25rem;
-        }
-        .package.featured {
-            transform: none;
-        }
+    @media (max-width: 480px) {
+        .hero h1 { font-size: 2rem; }
+        .trust-inner { grid-template-columns: 1fr; }
     }
 </style>
 {% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
+
+<!-- Hero -->
 <div class="hero">
     <div class="hero-content">
-        <div class="logo">
-            <!-- Option 1: Use your logo image -->
+        <div class="hero-logo">
             <img src="{% static 'images/logo.png' %}" alt="Vibrant Living">
-            <!-- Option 2: Use text logo instead (uncomment below, comment above)
-            <span class="logo-text">VIBRANT LIVING</span>
-            -->
         </div>
-        <h1>Vibrant Living <br><span>Where Fitness Meets Fulfillment</span></h1>
-        <p class="hero-subtitle">Inspiring change through tailored fitness experiences that help individuals grow stronger, healthier, and more connected.</p>
+        <h1>Vibrant Living<br><span>Where Fitness Meets Fulfilment</span></h1>
+        <p class="hero-subtitle">Inspiring change through tailored fitness experiences that help you grow stronger, healthier, and more connected.</p>
         <div class="cta-buttons">
             <a href="https://form.jotform.com/250676883261364" class="btn btn-primary">Apply Now</a>
-            <a href="https://forms.gle/dUK8nnaXuxiSNFxD9" class="btn btn-secondary">Schedule Call</a>
+            <a href="https://forms.gle/dUK8nnaXuxiSNFxD9" class="btn btn-secondary">Schedule a Call</a>
         </div>
     </div>
 </div>
 
-<!-- Intro Section -->
+<!-- Intro -->
 <div class="section-wrapper intro">
     <div class="section-content">
         <div class="intro-content">
-            <img src="{% static 'images/coach_image.jpg' %}" alt="Photo of Sean" class="photo">
-            <div class="philosophy-content">
+            <img src="{% static 'images/coach_image.jpg' %}" alt="Sean Flanagan - Vibrant Living Coach" class="coach-photo">
+            <div class="intro-text">
                 <h2>Our <span>Approach</span></h2>
-                <p>At Vibrant Living, we are so much more than just a fitness brand. We specialize in personal training designed to help you move your body, feel your best, and achieve your goals. But we know that wellness involves much more than just working out. It’s about nourishing your body with good food, connecting with others, and enjoying yourself along the way.</p>
-                <p>We’re here to help you make health & fitness part of your everyday life, in a way that’s enjoyable, sustainable, and fulfilling. We are dedicated to creating a welcoming and supportive space where you can thrive - physically, mentally, and socially.</p>
+                <p>At Vibrant Living, we are so much more than just a fitness brand. We specialise in personal training designed to help you move your body, feel your best, and achieve your goals — because wellness is about nourishing your body, connecting with others, and enjoying yourself along the way.</p>
+                <p>We're here to help you make health & fitness part of your everyday life in a way that's enjoyable, sustainable, and fulfilling — creating a welcoming and supportive space where you can thrive physically, mentally, and socially.</p>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Services Section -->
+<!-- Services -->
 <div class="section-wrapper services">
     <div class="section-content">
         <div class="section-header">
@@ -550,12 +483,12 @@
             <div class="service-card">
                 <div class="service-icon"><i class="fas fa-dumbbell"></i></div>
                 <h3>Training Programmes</h3>
-                <p>Customized workout plans tailored to your individual goals, experience level, and schedule</p>
+                <p>Customised workout plans tailored to your individual goals, experience level, and schedule</p>
             </div>
             <div class="service-card">
                 <div class="service-icon"><i class="fas fa-apple-alt"></i></div>
                 <h3>Nutritional Guidance</h3>
-                <p>Evidence-based nutrition strategies to optimize performance and support sustainable results</p>
+                <p>Evidence-based nutrition strategies to optimise performance and support sustainable results</p>
             </div>
             <div class="service-card">
                 <div class="service-icon"><i class="fas fa-headset"></i></div>
@@ -565,49 +498,17 @@
             <div class="service-card">
                 <div class="service-icon"><i class="fas fa-chart-line"></i></div>
                 <h3>Weekly Feedback</h3>
-                <p>Regular progress reviews and program adjustments to ensure continuous improvement</p>
+                <p>Regular progress reviews and programme adjustments to ensure continuous improvement</p>
             </div>
             <div class="service-card">
-                <div class="service-icon"><i class="fas fa-bullseye"></i></div>
-                <h3>Goal Setting</h3>
-                <p>Clear, actionable objectives with structured pathways to achieve your targets</p>
+                <div class="service-icon"><i class="fas fa-video"></i></div>
+                <h3>Video Form Analysis</h3>
+                <p>Detailed technique feedback to keep your training safe, effective, and injury-free</p>
             </div>
             <div class="service-card">
                 <div class="service-icon"><i class="fas fa-brain"></i></div>
                 <h3>Mindset Work</h3>
                 <p>Develop the mental resilience and habits necessary for long-term success</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Packages Section -->
-<div class="section-wrapper packages-section">
-    <div class="section-content">
-        <div class="section-header">
-            <h2>Coaching <span>Packages</span></h2>
-            <p>Choose the commitment that works for you</p>
-        </div>
-        <div class="packages-grid">
-            <div class="package">
-                <h4>Starter</h4>
-                <p>Get started on your journey</p>
-                <a href="https://form.jotform.com/250676883261364" class="btn btn-outline">Start Now</a>
-            </div>
-            <div class="package">
-                <h4>3 Months</h4>
-                <p>Build real momentum</p>
-                <a href="https://form.jotform.com/250676883261364" class="btn btn-outline">Start Now</a>
-            </div>
-            <div class="package featured">
-                <h4>6 Months</h4>
-                <p>Lock in your transformation</p>
-                <a href="https://form.jotform.com/250676883261364" class="btn">Start Now</a>
-            </div>
-            <div class="package">
-                <h4>1 Year</h4>
-                <p>Master your new way of living</p>
-                <a href="https://form.jotform.com/250676883261364" class="btn btn-outline">Start Now</a>
             </div>
         </div>
     </div>
@@ -620,28 +521,54 @@
             <h2>Client <span>Success Stories</span></h2>
             <p>Real results from real people</p>
         </div>
+
         <div class="testimonial-grid">
-            <div class="testimonial">
-                <div class="service-icon"><i class="fas fa-user-circle"></i></div>
-                <blockquote>"I've been with Sean the past two months & he has completely turned my life around. From the get-go he was so approachable, trusting & caring. He has a positive energy that beams out of him on every single check in call & I always feel so driven and motivated for the week ahead"</blockquote>
-                <cite>— Aoife</cite>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <blockquote>"I've been with Sean the past two months & he has completely turned my life around. From the get-go he was so approachable, trusting & caring. He has a positive energy that beams out of him on every single check in call & I always feel so driven and motivated for the week ahead."</blockquote>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AF</div>
+                    <div class="author-info">
+                        <h4>Aoife F.</h4>
+                        <p>Admin Work</p>
+                    </div>
+                </div>
             </div>
-            <div class="testimonial">
-                <div class="service-icon"><i class="fas fa-user-circle"></i></div>
-                <blockquote>"I was always fearful that having a coach meant I'd be met with judgment and that it would make me anxious and even further discourage me from doing the best that I can. Over the last 12 weeks with Sean he has helped me create healthy habits, balance a busy schedule as a nurse & make small steps each day to bring me closer towards my goals"</blockquote>
-                <cite>— Gemma</cite>
+
+            <div class="testimonial-card">
+                <div class="testimonial-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <blockquote>"I was always fearful that having a coach meant I'd be met with judgment and that it would make me anxious. Over the last 12 weeks with Sean he has helped me create healthy habits, balance a busy schedule as a nurse & make small steps each day to bring me closer towards my goals."</blockquote>
+                <div class="testimonial-author">
+                    <div class="author-avatar">GH</div>
+                    <div class="author-info">
+                        <h4>Gemma H.</h4>
+                        <p>Nurse</p>
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <div class="testimonials-cta">
+            <a href="{% url 'testimonials' %}">Read more success stories →</a>
         </div>
     </div>
 </div>
-
 
 <!-- Final CTA -->
 <div class="section-wrapper cta-section">
     <div class="section-content">
         <h2>Ready to Start Your Transformation?</h2>
-        <p>Not ready to apply? Let’s talk.</p>
-        <a href="https://forms.gle/JFmyhKSLPGs6j8RU7" class="btn btn-dark">Free Consultation Call</a>
+        <p>Not ready to apply yet? Let's have a conversation first.</p>
+        <a href="https://forms.gle/JFmyhKSLPGs6j8RU7" class="btn btn-dark">Book a Free Consultation</a>
     </div>
 </div>
+
 {% endblock %}
