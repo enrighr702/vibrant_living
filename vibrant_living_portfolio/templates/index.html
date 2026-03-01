@@ -30,32 +30,37 @@
         line-height: 1.6;
     }
 
-    .section-wrapper {
-        width: 100%;
-        padding: 0 2rem;
-    }
-
-    .section-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 5rem 0;
-    }
-
     /* ─── Hero ─── */
     .hero {
-        background: black;
-        color: var(--bg-white);
-        padding: 7rem 2rem;
+        background: #0a0a0a;
+        color: white;
+        padding: 7rem 2rem 6rem;
         text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: -40%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(circle, rgba(143,195,71,0.12) 0%, transparent 70%);
+        pointer-events: none;
     }
 
     .hero-content {
         max-width: 900px;
         margin: 0 auto;
+        position: relative;
+        z-index: 1;
     }
 
     .hero-logo {
-        margin-bottom: 2.5rem;
+        margin-bottom: 2rem;
     }
 
     .hero-logo img {
@@ -63,24 +68,39 @@
         width: auto;
     }
 
+    .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(143,195,71,0.12);
+        border: 1px solid rgba(143,195,71,0.3);
+        color: var(--primary-color);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 6px 16px;
+        border-radius: 50px;
+        margin-bottom: 1.5rem;
+    }
+
     .hero h1 {
-        font-size: 3.6rem;
+        font-size: 3.8rem;
+        font-weight: 900;
+        line-height: 1.05;
         margin-bottom: 1.25rem;
-        font-weight: 800;
-        line-height: 1.1;
+        letter-spacing: -1px;
+        color: white;
     }
 
     .hero h1 span { color: var(--primary-color); }
 
     .hero-subtitle {
-        font-weight: 400;
-        font-size: 1.25rem;
-        margin-bottom: 2.5rem;
-        opacity: 0.85;
-        max-width: 620px;
-        margin-left: auto;
-        margin-right: auto;
-        color: #ccc;
+        font-size: 1.15rem;
+        color: #999;
+        line-height: 1.7;
+        margin: 0 auto 2.5rem;
+        max-width: 560px;
     }
 
     .cta-buttons {
@@ -92,56 +112,104 @@
 
     /* ─── Buttons ─── */
     .btn {
-        font-weight: 600;
-        padding: 16px 36px;
+        font-weight: 700;
+        padding: 15px 34px;
         border-radius: 50px;
         border: none;
         cursor: pointer;
-        letter-spacing: 0.03em;
-        transition: all 0.3s ease;
-        font-size: 1rem;
+        letter-spacing: 0.2px;
+        transition: all 0.25s ease;
+        font-size: 0.95rem;
         text-decoration: none;
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
     }
 
     .btn-primary {
         background-color: var(--primary-color);
-        color: var(--bg-black);
-        box-shadow: 0 4px 20px rgba(143, 195, 71, 0.3);
+        color: #0a0a0a;
+        box-shadow: 0 4px 20px rgba(143,195,71,0.35);
     }
 
     .btn-primary:hover {
-        background-color: var(--primary-light);
-        transform: translateY(-3px);
-        box-shadow: 0 8px 30px rgba(143, 195, 71, 0.4);
+        background-color: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(143,195,71,0.4);
     }
 
     .btn-secondary {
-        background-color: transparent;
-        color: var(--bg-white);
-        border: 2px solid var(--bg-white);
+        background: rgba(255,255,255,0.07);
+        color: white;
+        border: 1px solid rgba(255,255,255,0.2);
+        backdrop-filter: blur(8px);
     }
 
     .btn-secondary:hover {
-        background-color: var(--bg-white);
-        color: var(--bg-black);
-        transform: translateY(-3px);
+        background: rgba(255,255,255,0.14);
+        transform: translateY(-2px);
     }
 
     .btn-dark {
-        background: var(--bg-black);
-        color: var(--bg-white);
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        background: #0a0a0a;
+        color: white;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.25);
     }
 
     .btn-dark:hover {
         background: #222;
-        transform: translateY(-3px);
-        box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 28px rgba(0,0,0,0.3);
     }
 
-    /* ─── Intro / About ─── */
-    .intro { background: var(--bg-white); }
+    /* ─── Section shared ─── */
+    .section-container {
+        max-width: 1140px;
+        margin: 0 auto;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 3.5rem;
+    }
+
+    .section-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(143,195,71,0.1);
+        border: 1px solid rgba(143,195,71,0.25);
+        color: var(--primary-color);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 5px 14px;
+        border-radius: 50px;
+        margin-bottom: 1rem;
+    }
+
+    .section-header h2 {
+        font-size: 2.4rem;
+        color: var(--text-primary);
+        font-weight: 900;
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.5px;
+    }
+
+    .section-header h2 span { color: var(--primary-color); }
+
+    .section-header p {
+        color: var(--text-light);
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    /* ─── Intro ─── */
+    .intro-section {
+        background: white;
+        padding: 5rem 2rem;
+    }
 
     .intro-content {
         display: grid;
@@ -152,24 +220,24 @@
 
     .coach-photo {
         width: 100%;
-        height: 650px;
-        min-height:650px;
+        min-height: 650px;
         object-fit: cover;
-        border-radius: var(--border-radius);
-        box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        border-radius: 20px;
+        box-shadow: 0 25px 60px rgba(0,0,0,0.13);
     }
 
     .intro-text h2 {
-        font-size: 2.4rem;
+        font-size: 2.2rem;
+        font-weight: 900;
         color: var(--text-primary);
         margin-bottom: 1.25rem;
-        font-weight: 800;
+        letter-spacing: -0.4px;
     }
 
     .intro-text h2 span { color: var(--primary-color); }
 
     .intro-text p {
-        font-size: 1.05rem;
+        font-size: 1rem;
         line-height: 1.85;
         color: var(--text-secondary);
         margin-bottom: 1.25rem;
@@ -177,162 +245,106 @@
 
     .intro-text p:last-of-type { margin-bottom: 0; }
 
-    .intro-stats {
-        display: flex;
-        gap: 2.5rem;
-        margin-top: 2.5rem;
-        padding-top: 2rem;
-        border-top: 1px solid #eee;
-        flex-wrap: wrap;
-    }
-
-    .stat-item { text-align: left; }
-
-    .stat-number {
-        font-size: 2.6rem;
-        font-weight: 800;
-        color: var(--primary-color);
-        display: block;
-        line-height: 1;
-    }
-
-    .stat-label {
-        font-size: 0.82rem;
-        color: var(--text-light);
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        margin-top: 0.3rem;
-        display: block;
-    }
-
     /* ─── Services ─── */
-    .services { background: var(--bg-light); }
-
-    .section-header {
-        text-align: center;
-        margin-bottom: 3.5rem;
-    }
-
-    .section-header h2 {
-        font-size: 2.4rem;
-        color: var(--text-primary);
-        font-weight: 800;
-        margin-bottom: 0.5rem;
-    }
-
-    .section-header h2 span { color: var(--primary-color); }
-
-    .section-header p {
-        color: var(--text-light);
-        font-size: 1.05rem;
-        margin: 0;
+    .services-section {
+        background: #f5f5f5;
+        padding: 5rem 2rem;
     }
 
     .services-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
+        gap: 1.25rem;
     }
 
     .service-card {
-        background: var(--bg-white);
-        border-radius: var(--border-radius);
+        background: white;
+        border-radius: 18px;
         padding: 2rem;
-        box-shadow: 0 4px 20px var(--shadow-light);
-        transition: all 0.3s ease;
-        border: 1px solid #eee;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .service-card::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0;
-        height: 4px;
-        background: var(--primary-color);
-        transform: scaleX(0);
-        transition: transform 0.3s ease;
+        border: 1px solid #e8e8e8;
+        transition: box-shadow 0.25s ease, transform 0.25s ease;
     }
 
     .service-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 16px 40px var(--shadow-strong);
-        border-color: var(--primary-color);
+        transform: translateY(-5px);
+        box-shadow: 0 16px 40px rgba(0,0,0,0.09);
     }
 
-    .service-card:hover::before { transform: scaleX(1); }
-
     .service-icon {
-        width: 50px;
-        height: 50px;
+        width: 48px;
+        height: 48px;
         background: var(--primary-color);
         border-radius: 12px;
-        margin-bottom: 1.2rem;
+        margin-bottom: 1.1rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.3rem;
+        box-shadow: 0 4px 14px rgba(143,195,71,0.35);
     }
 
-    .service-icon i { color: white; }
+    .service-icon i { color: white; font-size: 1.1rem; }
 
     .service-card h3 {
         color: var(--text-primary);
-        font-size: 1.1rem;
-        margin-bottom: 0.6rem;
-        font-weight: 700;
+        font-size: 1rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+        letter-spacing: 0.1px;
     }
 
     .service-card p {
-        font-size: 0.9rem;
+        font-size: 0.875rem;
         color: var(--text-light);
         line-height: 1.65;
         margin: 0;
     }
 
     /* ─── Testimonials ─── */
-    .testimonials { background: var(--bg-white); }
+    .testimonials-section {
+        background: white;
+        padding: 5rem 2rem;
+    }
 
     .testimonial-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
+        gap: 1.75rem;
     }
 
     .testimonial-card {
-        background: var(--bg-light);
-        padding: 2.5rem;
-        border-radius: var(--border-radius);
-        border: 1px solid #eee;
-        transition: all 0.3s ease;
+        background: #f5f5f5;
+        padding: 2.25rem 2.5rem;
+        border-radius: 18px;
+        border: 1px solid #e8e8e8;
+        transition: box-shadow 0.25s ease, transform 0.25s ease;
         position: relative;
         overflow: hidden;
         display: flex;
         flex-direction: column;
     }
 
-    .testimonial-card::after {
-        content: '';
+    .testimonial-card::before {
+        content: '\201C';
         position: absolute;
-        top: 0; left: 0; right: 0;
-        height: 4px;
-        background: var(--primary-color);
-        transform: scaleX(0);
-        transition: transform 0.3s ease;
+        top: 0.5rem;
+        right: 1.5rem;
+        font-size: 8rem;
+        color: var(--primary-color);
+        opacity: 0.07;
+        font-family: Georgia, serif;
+        font-weight: 700;
+        line-height: 1;
+        pointer-events: none;
     }
 
     .testimonial-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 20px 50px var(--shadow-strong);
-        border-color: var(--primary-color);
+        transform: translateY(-5px);
+        box-shadow: 0 16px 50px rgba(0,0,0,0.1);
     }
-
-    .testimonial-card:hover::after { transform: scaleX(1); }
 
     .testimonial-stars {
         display: flex;
-        gap: 4px;
+        gap: 3px;
         margin-bottom: 1.25rem;
     }
 
@@ -342,9 +354,11 @@
         font-style: italic;
         font-size: 1rem;
         line-height: 1.8;
-        color: var(--text-primary);
-        margin: 0 0 1.75rem 0;
+        color: var(--text-secondary);
+        margin: 0 0 1.75rem;
         flex: 1;
+        position: relative;
+        z-index: 1;
     }
 
     .testimonial-author {
@@ -352,34 +366,37 @@
         align-items: center;
         gap: 1rem;
         padding-top: 1.25rem;
-        border-top: 1px solid #e8e8e8;
+        border-top: 1px solid #ebebeb;
     }
 
     .author-avatar {
         width: 46px;
         height: 46px;
         background: var(--primary-color);
-        border-radius: 50%;
+        border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.95rem;
-        font-weight: 700;
-        color: var(--bg-black);
+        font-size: 0.85rem;
+        font-weight: 800;
+        color: #0a0a0a;
         flex-shrink: 0;
+        box-shadow: 0 4px 14px rgba(143,195,71,0.35);
+        letter-spacing: 0.5px;
     }
 
     .author-info h4 {
         font-size: 0.95rem;
         font-weight: 700;
         color: var(--text-primary);
-        margin: 0 0 0.2rem 0;
+        margin: 0 0 0.2rem;
     }
 
     .author-info p {
-        font-size: 0.85rem;
+        font-size: 0.825rem;
         color: var(--text-light);
         margin: 0;
+        font-weight: 500;
     }
 
     .testimonials-cta {
@@ -388,56 +405,84 @@
     }
 
     .testimonials-cta a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
         color: var(--primary-color);
-        font-weight: 600;
+        font-weight: 700;
         text-decoration: none;
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         transition: opacity 0.2s;
     }
 
     .testimonials-cta a:hover { opacity: 0.75; }
 
-    /* ─── CTA ─── */
-    .cta-section {
-        background: var(--primary-color);
+    /* ─── CTA Strip ─── */
+    .cta-strip {
+        padding: 4rem 2rem;
         text-align: center;
     }
 
-    .cta-section h2 {
-        font-size: 2.4rem;
-        color: var(--bg-black);
-        margin-bottom: 1rem;
-        font-weight: 800;
+    .cta-strip-inner {
+        max-width: 600px;
+        margin: 0 auto;
     }
 
-    .cta-section p {
-        color: rgba(0,0,0,0.7);
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
+    .cta-strip h2 {
+        font-size: 2rem;
+        font-weight: 900;
+        color: black;
+        margin-bottom: 0.75rem;
+        letter-spacing: -0.5px;
+    }
+
+    .cta-strip h2 span { color: var(--primary-color); }
+
+    .cta-strip p {
+        color: #777;
+        font-size: 1rem;
+        margin-bottom: 1.75rem;
+        line-height: 1.65;
+    }
+
+    .cta-strip-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        background: var(--primary-color);
+        color: #0a0a0a;
+        padding: 15px 34px;
+        border-radius: 50px;
+        font-weight: 800;
+        font-size: 0.95rem;
+        text-decoration: none;
+        transition: all 0.25s;
+        letter-spacing: 0.2px;
+    }
+
+    .cta-strip-btn:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(143,195,71,0.35);
     }
 
     /* ─── Responsive ─── */
     @media (max-width: 1024px) {
         .services-grid { grid-template-columns: repeat(2, 1fr); }
-        .trust-inner { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 768px) {
-        .hero { padding: 5rem 1.5rem; }
+        .hero { padding: 5rem 1.5rem 4rem; }
         .hero h1 { font-size: 2.6rem; }
+        .intro-section, .services-section, .testimonials-section { padding: 3rem 1.25rem; }
         .intro-content { grid-template-columns: 1fr; gap: 2rem; }
-        .coach-photo { height: 650px; }
+        .coach-photo { height: 420px; }
         .services-grid { grid-template-columns: 1fr; }
-        .trust-inner { grid-template-columns: repeat(2, 1fr); }
         .testimonial-grid { grid-template-columns: 1fr; }
-        .section-content { padding: 3.5rem 0; }
-        .section-wrapper { padding: 0 1.25rem; }
-        .intro-stats { gap: 1.75rem; }
     }
 
     @media (max-width: 480px) {
         .hero h1 { font-size: 2rem; }
-        .trust-inner { grid-template-columns: 1fr; }
     }
 </style>
 {% endblock %}
@@ -445,23 +490,30 @@
 {% block content %}
 
 <!-- Hero -->
-<div class="hero">
+<section class="hero">
     <div class="hero-content">
         <div class="hero-logo">
-            <img src="{% static 'images/logo.png' %}" alt="Vibrant Living">
+            <img src="{% static 'images/vibrant_living_logo.png' %}" alt="Vibrant Living">
+        </div>
+        <div class="hero-eyebrow">
+            <i class="fas fa-leaf"></i> Online Coaching
         </div>
         <h1>Vibrant Living<br><span>Where Fitness Meets Fulfilment</span></h1>
         <p class="hero-subtitle">Inspiring change through tailored fitness experiences that help you grow stronger, healthier, and more connected.</p>
         <div class="cta-buttons">
-            <a href="https://form.jotform.com/250676883261364" class="btn btn-primary">Apply Now</a>
-            <a href="https://forms.gle/dUK8nnaXuxiSNFxD9" class="btn btn-secondary">Schedule a Call</a>
+            <a href="https://form.jotform.com/250676883261364" class="btn btn-primary">
+                <i class="fas fa-arrow-right"></i> Apply Now
+            </a>
+            <a href="https://forms.gle/dUK8nnaXuxiSNFxD9" class="btn btn-secondary">
+                <i class="fas fa-calendar-check"></i> Schedule a Call
+            </a>
         </div>
     </div>
-</div>
+</section>
 
 <!-- Intro -->
-<div class="section-wrapper intro">
-    <div class="section-content">
+<section class="intro-section">
+    <div class="section-container">
         <div class="intro-content">
             <img src="{% static 'images/coach_image.jpg' %}" alt="Sean Flanagan - Vibrant Living Coach" class="coach-photo">
             <div class="intro-text">
@@ -471,12 +523,15 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 
 <!-- Services -->
-<div class="section-wrapper services">
-    <div class="section-content">
+<section class="services-section">
+    <div class="section-container">
         <div class="section-header">
+            <div class="section-eyebrow">
+                <i class="fas fa-star"></i> The Package
+            </div>
             <h2>What's <span>Included</span></h2>
             <p>Everything you need for a complete transformation</p>
         </div>
@@ -484,7 +539,7 @@
             <div class="service-card">
                 <div class="service-icon"><i class="fas fa-dumbbell"></i></div>
                 <h3>Training Programmes</h3>
-                <p>Customised workout plans tailored to your individual goals, experience level, and schedule</p>
+                <p>Customised workout plans tailored to your weekly routine, individual goals & training experience</p>
             </div>
             <div class="service-card">
                 <div class="service-icon"><i class="fas fa-apple-alt"></i></div>
@@ -492,33 +547,36 @@
                 <p>Evidence-based nutrition strategies to optimise performance and support sustainable results</p>
             </div>
             <div class="service-card">
+                <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Weekly Feedback</h3>
+                <p>Weekly reviews and necessary adjustments to ensure continuous progress</p>
+            </div>
+            <div class="service-card">
                 <div class="service-icon"><i class="fas fa-headset"></i></div>
-                <h3>24/7 Support</h3>
+                <h3>Daily Support</h3>
                 <p>Direct access to expert guidance and accountability whenever you need it</p>
             </div>
             <div class="service-card">
-                <div class="service-icon"><i class="fas fa-chart-line"></i></div>
-                <h3>Weekly Feedback</h3>
-                <p>Regular progress reviews and programme adjustments to ensure continuous improvement</p>
-            </div>
-            <div class="service-card">
                 <div class="service-icon"><i class="fas fa-video"></i></div>
-                <h3>Video Form Analysis</h3>
-                <p>Detailed technique feedback to keep your training safe, effective, and injury-free</p>
+                <h3>Video Analysis</h3>
+                <p>Detailed feedback on technique to keep your training safe, effective, and injury-free</p>
             </div>
             <div class="service-card">
                 <div class="service-icon"><i class="fas fa-brain"></i></div>
                 <h3>Mindset Work</h3>
-                <p>Develop the mental resilience and habits necessary for long-term success</p>
+                <p>The psychology behind consistency, discipline & long term results</p>
             </div>
         </div>
     </div>
-</div>
+</section>
 
 <!-- Testimonials -->
-<div class="section-wrapper testimonials">
-    <div class="section-content">
+<section class="testimonials-section">
+    <div class="section-container">
         <div class="section-header">
+            <div class="section-eyebrow">
+                <i class="fas fa-quote-left"></i> Testimonials
+            </div>
             <h2>Client <span>Success Stories</span></h2>
             <p>Real results from real people</p>
         </div>
@@ -558,18 +616,20 @@
         </div>
 
         <div class="testimonials-cta">
-            <a href="{% url 'testimonials' %}">Read more success stories →</a>
+            <a href="{% url 'testimonials' %}">Read more success stories <i class="fas fa-arrow-right"></i></a>
         </div>
     </div>
-</div>
+</section>
 
-<!-- Final CTA -->
-<div class="section-wrapper cta-section">
-    <div class="section-content">
-        <h2>Ready to Start Your Transformation?</h2>
+<!-- CTA -->
+<section class="cta-strip">
+    <div class="cta-strip-inner">
+        <h2>Ready to Start Your <span>Transformation?</span></h2>
         <p>Not ready to apply yet? Let's have a conversation first.</p>
-        <a href="https://forms.gle/JFmyhKSLPGs6j8RU7" class="btn btn-dark">Book a Free Consultation</a>
+        <a href="https://forms.gle/JFmyhKSLPGs6j8RU7" class="cta-strip-btn">
+            <i class="fas fa-calendar-check"></i> Book a Free Consultation
+        </a>
     </div>
-</div>
+</section>
 
 {% endblock %}

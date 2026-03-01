@@ -22,84 +22,128 @@
 
     * { box-sizing: border-box; }
 
-    .section-wrapper {
-        width: 100%;
-        padding: 0 2rem;
-    }
-
-    .section-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 5rem 0;
-    }
-
     /* ─── Hero ─── */
     .coaching-hero {
-        background: black;
-        color: var(--bg-white);
-        padding: 6rem 2rem;
+        background: #0a0a0a;
+        color: white;
+        padding: 7rem 2rem 5rem;
         text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .coaching-hero::before {
+        content: '';
+        position: absolute;
+        top: -40%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 700px;
+        height: 700px;
+        background: radial-gradient(circle, rgba(143,195,71,0.12) 0%, transparent 70%);
+        pointer-events: none;
     }
 
     .coaching-hero-content {
-        max-width: 800px;
+        max-width: 700px;
         margin: 0 auto;
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(143,195,71,0.12);
+        border: 1px solid rgba(143,195,71,0.3);
+        color: var(--primary-color);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 6px 16px;
+        border-radius: 50px;
+        margin-bottom: 1.5rem;
     }
 
     .hero-title {
-        font-size: 3.4rem;
-        margin-bottom: 1rem;
-        font-weight: 800;
-        line-height: 1.1;
+        font-size: 3.8rem;
+        font-weight: 900;
+        line-height: 1.05;
+        margin-bottom: 1.2rem;
+        letter-spacing: -1px;
+        color: white;
     }
 
     .hero-title span { color: var(--primary-color); }
 
     .hero-subtitle {
-        font-size: 1.25rem;
-        margin-bottom: 2.5rem;
-        opacity: 0.85;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-        color: #ccc;
-        font-weight: 400;
+        font-size: 1.15rem;
+        color: #999;
+        line-height: 1.7;
+        margin: 0 auto;
+        max-width: 520px;
     }
 
-    /* ─── Section Headers ─── */
+    /* ─── Section shared ─── */
+    .section-container {
+        max-width: 1140px;
+        margin: 0 auto;
+    }
+
     .section-header {
         text-align: center;
         margin-bottom: 3.5rem;
     }
 
+    .section-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(143,195,71,0.1);
+        border: 1px solid rgba(143,195,71,0.25);
+        color: var(--primary-color);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 5px 14px;
+        border-radius: 50px;
+        margin-bottom: 1rem;
+    }
+
     .section-header h2 {
         font-size: 2.4rem;
         color: var(--text-primary);
-        font-weight: 800;
+        font-weight: 900;
         margin-bottom: 0.5rem;
+        letter-spacing: -0.5px;
     }
 
     .section-header h2 span { color: var(--primary-color); }
 
     .section-header p {
         color: var(--text-light);
-        font-size: 1.1rem;
+        font-size: 1rem;
+        margin: 0;
     }
 
-    /* ─── Premium Package Section ─── */
+    /* ─── Package Section ─── */
     .package-section {
-        background: var(--bg-light);
+        background: #f5f5f5;
+        padding: 5rem 2rem;
     }
 
     .package-card {
-        background: var(--bg-white);
-        border: 3px solid var(--primary-color);
-        border-radius: var(--border-radius);
-        max-width: 780px;
+        background: white;
+        border: 2px solid var(--primary-color);
+        border-radius: 20px;
+        max-width: 800px;
         margin: 0 auto;
-        padding: 50px 50px 40px;
+        padding: 3.5rem 3.5rem 3rem;
         position: relative;
-        box-shadow: 0 8px 40px var(--shadow-strong);
+        box-shadow: 0 8px 50px rgba(143,195,71,0.12);
     }
 
     .popular-badge {
@@ -108,27 +152,29 @@
         left: 50%;
         transform: translateX(-50%);
         background: var(--primary-color);
-        color: white;
-        padding: 8px 24px;
-        border-radius: 20px;
-        font-size: 0.85rem;
-        font-weight: 700;
-        letter-spacing: 0.04em;
+        color: #0a0a0a;
+        padding: 7px 22px;
+        border-radius: 50px;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 1px;
         text-transform: uppercase;
+        white-space: nowrap;
     }
 
     .package-card h3 {
-        font-size: 2rem;
-        font-weight: 800;
+        font-size: 1.9rem;
+        font-weight: 900;
         color: var(--text-primary);
         text-align: center;
         margin-bottom: 0.4rem;
+        letter-spacing: -0.4px;
     }
 
     .package-tagline {
         text-align: center;
-        color: var(--text-secondary);
-        font-size: 1rem;
+        color: var(--text-light);
+        font-size: 0.95rem;
         margin-bottom: 2.5rem;
     }
 
@@ -143,178 +189,190 @@
         display: flex;
         gap: 14px;
         align-items: flex-start;
-        padding: 18px;
-        background: var(--bg-light);
+        padding: 16px 18px;
+        background: #fafafa;
         border-radius: 12px;
-        border: 1px solid #eee;
-        transition: border-color 0.2s ease;
+        border: 1px solid #ebebeb;
+        transition: border-color 0.2s, box-shadow 0.2s;
     }
 
     .feature-item:hover {
         border-color: var(--primary-color);
+        box-shadow: 0 4px 16px rgba(143,195,71,0.1);
     }
 
     .feature-item.highlight {
         background: linear-gradient(135deg, #f4fbea 0%, #edf7d6 100%);
-        border-color: var(--primary-light);
+        border-color: rgba(143,195,71,0.35);
     }
 
     .feature-item i {
         color: var(--primary-color);
-        font-size: 1.1rem;
+        font-size: 1rem;
         margin-top: 3px;
         flex-shrink: 0;
     }
 
     .feature-item strong {
         display: block;
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+        font-weight: 700;
         color: var(--text-primary);
         margin-bottom: 3px;
     }
 
     .feature-item span {
-        font-size: 0.875rem;
+        font-size: 0.84rem;
         color: var(--text-secondary);
-        line-height: 1.5;
+        line-height: 1.55;
     }
 
     .package-cta {
         text-align: center;
     }
 
-    /* ─── What To Expect Section ─── */
+    .package-cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        background: #0a0a0a;
+        color: white;
+        padding: 15px 36px;
+        border-radius: 50px;
+        font-weight: 800;
+        font-size: 0.95rem;
+        text-decoration: none;
+        transition: all 0.25s;
+        letter-spacing: 0.2px;
+    }
+
+    .package-cta-btn:hover {
+        background: #222;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 28px rgba(0,0,0,0.22);
+    }
+
+    /* ─── Expect Section ─── */
     .expect-section {
-        background: var(--bg-white);
+        background: white;
+        padding: 5rem 2rem;
     }
 
     .pillars-grid {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        gap: 1.5rem;
+        gap: 1.25rem;
     }
 
     .pillar-card {
-        background: var(--bg-light);
-        border-radius: var(--border-radius);
-        padding: 2rem 1.5rem;
+        background: #f5f5f5;
+        border-radius: 18px;
+        padding: 2rem 1.4rem;
         text-align: center;
-        border: 1px solid #eee;
-        transition: all 0.3s ease;
+        border: 1px solid #e8e8e8;
+        transition: box-shadow 0.25s ease, transform 0.25s ease;
         position: relative;
         overflow: hidden;
     }
 
-    .pillar-card::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0;
-        height: 4px;
-        background: var(--primary-color);
-        transform: scaleX(0);
-        transition: transform 0.3s ease;
-    }
-
     .pillar-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 16px 40px var(--shadow-strong);
-        border-color: var(--primary-color);
-    }
-
-    .pillar-card:hover::before {
-        transform: scaleX(1);
+        transform: translateY(-5px);
+        box-shadow: 0 16px 40px rgba(0,0,0,0.09);
     }
 
     .pillar-icon {
-        width: 56px;
-        height: 56px;
+        width: 52px;
+        height: 52px;
         background: var(--primary-color);
-        border-radius: 50%;
+        border-radius: 14px;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 0 auto 1.2rem;
+        margin: 0 auto 1.1rem;
+        box-shadow: 0 4px 14px rgba(143,195,71,0.35);
     }
 
     .pillar-icon i {
         color: white;
-        font-size: 1.3rem;
+        font-size: 1.15rem;
     }
 
     .pillar-card h4 {
-        font-size: 1.05rem;
-        font-weight: 700;
+        font-size: 0.95rem;
+        font-weight: 800;
         color: var(--text-primary);
         margin-bottom: 0.6rem;
+        letter-spacing: 0.1px;
     }
 
     .pillar-card p {
-        font-size: 0.875rem;
+        font-size: 0.84rem;
         color: var(--text-secondary);
-        line-height: 1.6;
+        line-height: 1.65;
         margin: 0;
     }
 
-    /* ─── CTA ─── */
-    .cta-final {
-        background: var(--primary-color);
+    /* ─── CTA Strip ─── */
+    .cta-strip {
+        padding: 4rem 2rem;
         text-align: center;
     }
 
-    .cta-final h2 {
-        font-size: 2.4rem;
-        color: var(--bg-black);
-        margin-bottom: 1rem;
-        font-weight: 800;
+    .cta-strip-inner {
+        max-width: 600px;
+        margin: 0 auto;
     }
 
-    .cta-final p {
-        color: rgba(0,0,0,0.7);
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
+    .cta-strip h2 {
+        font-size: 2rem;
+        font-weight: 900;
+        color: black;
+        margin-bottom: 0.75rem;
+        letter-spacing: -0.5px;
     }
 
-    /* ─── Buttons ─── */
-    .btn {
-        font-weight: 600;
-        padding: 16px 36px;
-        border-radius: 50px;
-        border: none;
-        cursor: pointer;
-        letter-spacing: 0.03em;
-        transition: all 0.3s ease;
+    .cta-strip h2 span { color: var(--primary-color); }
+
+    .cta-strip p {
+        color: #777;
         font-size: 1rem;
+        margin-bottom: 1.75rem;
+        line-height: 1.65;
+    }
+
+    .cta-strip-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        background: var(--primary-color);
+        color: #0a0a0a;
+        padding: 15px 34px;
+        border-radius: 50px;
+        font-weight: 800;
+        font-size: 0.95rem;
         text-decoration: none;
-        display: inline-block;
+        transition: all 0.25s;
+        letter-spacing: 0.2px;
     }
 
-    .btn-primary {
-        background-color: var(--bg-black);
-        color: var(--bg-white);
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    }
-
-    .btn-primary:hover {
-        background-color: #222;
-        transform: translateY(-3px);
-        box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    .cta-strip-btn:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(143,195,71,0.35);
     }
 
     /* ─── Responsive ─── */
     @media (max-width: 1024px) {
-        .pillars-grid {
-            grid-template-columns: repeat(3, 1fr);
-        }
+        .pillars-grid { grid-template-columns: repeat(3, 1fr); }
     }
 
     @media (max-width: 768px) {
-        .coaching-hero { padding: 4rem 1.5rem; }
-        .hero-title { font-size: 2.4rem; }
-        .package-card { padding: 40px 24px 30px; }
+        .coaching-hero { padding: 5rem 1.5rem 3.5rem; }
+        .hero-title { font-size: 2.6rem; }
+        .package-section, .expect-section { padding: 3rem 1.25rem; }
+        .package-card { padding: 3rem 1.5rem 2rem; }
         .features-grid { grid-template-columns: 1fr; }
         .pillars-grid { grid-template-columns: 1fr 1fr; }
-        .section-content { padding: 3.5rem 0; }
-        .section-wrapper { padding: 0 1.25rem; }
     }
 
     @media (max-width: 480px) {
@@ -326,17 +384,23 @@
 {% block content %}
 
 <!-- Hero -->
-<div class="coaching-hero">
+<section class="coaching-hero">
     <div class="coaching-hero-content">
+        <div class="hero-eyebrow">
+            <i class="fas fa-dumbbell"></i> Online Coaching
+        </div>
         <h1 class="hero-title">Personalised <span>Coaching</span></h1>
         <p class="hero-subtitle">Everything you need for a complete transformation — tailored to your goals, your lifestyle, your pace.</p>
     </div>
-</div>
+</section>
 
 <!-- Premium Package -->
-<div class="section-wrapper package-section">
-    <div class="section-content">
+<section class="package-section">
+    <div class="section-container">
         <div class="section-header">
+            <div class="section-eyebrow">
+                <i class="fas fa-star"></i> What's Included
+            </div>
             <h2>The <span>Package</span></h2>
             <p>One comprehensive coaching plan — everything included, nothing held back</p>
         </div>
@@ -392,67 +456,64 @@
             </div>
 
             <div class="package-cta">
-                <a href="https://form.jotform.com/250676883261364" class="btn btn-primary">Apply for Coaching</a>
+                <a href="https://form.jotform.com/250676883261364" class="package-cta-btn">
+                    Apply for Coaching <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
     </div>
-</div>
+</section>
 
 <!-- What To Expect -->
-<div class="section-wrapper expect-section">
-    <div class="section-content">
+<section class="expect-section">
+    <div class="section-container">
         <div class="section-header">
+            <div class="section-eyebrow">
+                <i class="fas fa-compass"></i> Core Principles
+            </div>
             <h2>What To <span>Expect</span></h2>
             <p>Our coaching is built on five core principles that guide every client relationship</p>
         </div>
 
         <div class="pillars-grid">
             <div class="pillar-card">
-                <div class="pillar-icon">
-                    <i class="fas fa-heart"></i>
-                </div>
+                <div class="pillar-icon"><i class="fas fa-heart"></i></div>
                 <h4>Empathy</h4>
                 <p>We meet you where you are — offering genuine support to help you grow and feel understood every step of the way.</p>
             </div>
             <div class="pillar-card">
-                <div class="pillar-icon">
-                    <i class="fas fa-fist-raised"></i>
-                </div>
+                <div class="pillar-icon"><i class="fas fa-fist-raised"></i></div>
                 <h4>Empowerment</h4>
                 <p>We reframe your mindset, prioritise daily movement, and provide consistent encouragement to build lasting confidence.</p>
             </div>
             <div class="pillar-card">
-                <div class="pillar-icon">
-                    <i class="fas fa-brain"></i>
-                </div>
+                <div class="pillar-icon"><i class="fas fa-brain"></i></div>
                 <h4>Expertise</h4>
                 <p>Evidence-based training and nutrition coaching — no guesswork, just proven methods designed to deliver real results.</p>
             </div>
             <div class="pillar-card">
-                <div class="pillar-icon">
-                    <i class="fas fa-bullseye"></i>
-                </div>
+                <div class="pillar-icon"><i class="fas fa-bullseye"></i></div>
                 <h4>Accountability</h4>
                 <p>We hold you to your commitments. If we see patterns of missed effort, we address them directly to keep you on track.</p>
             </div>
             <div class="pillar-card">
-                <div class="pillar-icon">
-                    <i class="fas fa-check-double"></i>
-                </div>
+                <div class="pillar-icon"><i class="fas fa-check-double"></i></div>
                 <h4>Honesty</h4>
                 <p>We don't sugarcoat poor habits or excuses. Transformation only happens when you stay real and stay consistent.</p>
             </div>
         </div>
     </div>
-</div>
+</section>
 
-<!-- Final CTA -->
-<div class="section-wrapper cta-final">
-    <div class="section-content">
-        <h2>Ready to Get Started?</h2>
+<!-- CTA -->
+<section class="cta-strip">
+    <div class="cta-strip-inner">
+        <h2>Ready to <span>Get Started?</span></h2>
         <p>Book your free discovery call and let's build your transformation plan together.</p>
-        <a href="https://form.jotform.com/250676883261364" class="btn btn-primary">Book Free Consultation</a>
+        <a href="https://form.jotform.com/250676883261364" class="cta-strip-btn">
+            <i class="fas fa-calendar-check"></i> Book Free Consultation
+        </a>
     </div>
-</div>
+</section>
 
 {% endblock %}

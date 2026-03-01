@@ -8,4 +8,6 @@ urlpatterns = [
     distill_path('coaching/', views.coaching, name='coaching'),
     distill_path('contact/', views.contact, name='contact'),
     distill_path('testimonials/', views.testimonials, name='testimonials'),
+    distill_path('privacy/', views.privacy, name='privacy'),
+    distill_path('termsofservice/', views.tos, name='tos')
 ]

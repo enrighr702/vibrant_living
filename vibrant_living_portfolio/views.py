@@ -32,6 +32,12 @@ def contact(request):
     
     return render(request, 'contact.html')
 
-
 def testimonials(request):
     return render(request, 'testimonials.html')
+
+def privacy(request):
+    return render(request, 'privacy.html')
+
+def tos(request):
+    return render(request, 'tos.html')
+

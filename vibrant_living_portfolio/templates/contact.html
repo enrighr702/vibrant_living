@@ -22,280 +22,402 @@
 
     * { box-sizing: border-box; }
 
-    .section-wrapper {
-        width: 100%;
-        padding: 0 2rem;
-    }
-
-    .section-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 5rem 0;
-    }
-
     /* ─── Hero ─── */
     .contact-hero {
-        background: black;
-        color: var(--bg-white);
-        padding: 6rem 2rem;
+        background: #0a0a0a;
+        color: white;
+        padding: 7rem 2rem 5rem;
         text-align: center;
-    }
-
-    .contact-hero-content {
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    .hero-title {
-        font-size: 3.4rem;
-        margin-bottom: 1rem;
-        font-weight: 800;
-        line-height: 1.1;
-    }
-
-    .hero-title span { color: var(--primary-color); }
-
-    .hero-subtitle {
-        font-weight: 400;
-        font-size: 1.25rem;
-        margin-bottom: 0;
-        opacity: 0.85;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-        color: #ccc;
-    }
-
-    /* ─── Main Contact Section ─── */
-    .contact-main {
-        background: var(--bg-light);
-    }
-
-    .contact-layout {
-        display: grid;
-        grid-template-columns: 1fr 1.6fr;
-        gap: 4rem;
-        align-items: start;
-    }
-
-    /* ─── Left: Info Panel ─── */
-    .contact-info {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-
-    .contact-info-header h2 {
-        font-size: 2rem;
-        font-weight: 800;
-        color: var(--text-primary);
-        margin-bottom: 0.5rem;
-    }
-
-    .contact-info-header h2 span { color: var(--primary-color); }
-
-    .contact-info-header p {
-        color: var(--text-light);
-        font-size: 1rem;
-        line-height: 1.6;
-        margin: 0;
-    }
-
-    .contact-item {
-        background: var(--bg-white);
-        border-radius: var(--border-radius);
-        padding: 1.75rem;
-        border: 1px solid #eee;
-        display: flex;
-        gap: 1.25rem;
-        align-items: center;
-        transition: all 0.3s ease;
         position: relative;
         overflow: hidden;
     }
 
-    .contact-item::before {
+    .contact-hero::before {
         content: '';
         position: absolute;
-        top: 0; left: 0; right: 0;
-        height: 3px;
-        background: var(--primary-color);
-        transform: scaleX(0);
-        transition: transform 0.3s ease;
+        top: -40%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 700px;
+        height: 700px;
+        background: radial-gradient(circle, rgba(143,195,71,0.12) 0%, transparent 70%);
+        pointer-events: none;
     }
 
-    .contact-item:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 35px var(--shadow-strong);
-        border-color: var(--primary-color);
+    .contact-hero-content {
+        max-width: 700px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
     }
 
-    .contact-item:hover::before { transform: scaleX(1); }
+    .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(143,195,71,0.12);
+        border: 1px solid rgba(143,195,71,0.3);
+        color: var(--primary-color);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 6px 16px;
+        border-radius: 50px;
+        margin-bottom: 1.5rem;
+    }
 
-    .contact-icon {
-        width: 52px;
-        height: 52px;
+    .hero-title {
+        font-size: 3.8rem;
+        font-weight: 900;
+        line-height: 1.05;
+        margin-bottom: 1.2rem;
+        letter-spacing: -1px;
+    }
+
+    .hero-title span {
+        color: var(--primary-color);
+    }
+
+    .hero-subtitle {
+        font-size: 1.15rem;
+        color: #999;
+        line-height: 1.7;
+        margin: 0 auto;
+        max-width: 500px;
+    }
+
+    /* ─── Main Layout ─── */
+    .contact-section {
+        background: #f5f5f5;
+        padding: 5rem 2rem;
+    }
+
+    .contact-container {
+        max-width: 1140px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 400px 1fr;
+        gap: 2.5rem;
+        align-items: start;
+    }
+
+    /* ─── Left Panel ─── */
+    .info-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .info-header {
+        margin-bottom: 0.5rem;
+    }
+
+    .info-header h2 {
+        font-size: 1.9rem;
+        font-weight: 800;
+        color: var(--text-primary);
+        letter-spacing: -0.5px;
+        margin-bottom: 0.6rem;
+        line-height: 1.15;
+    }
+
+    .info-header h2 span { color: var(--primary-color); }
+
+    .info-header p {
+        color: var(--text-light);
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    .info-card {
+        background: white;
+        border-radius: 14px;
+        padding: 1.5rem 1.75rem;
+        border: 1px solid #e8e8e8;
+        display: flex;
+        gap: 1.1rem;
+        align-items: flex-start;
+        transition: box-shadow 0.25s ease, transform 0.25s ease;
+    }
+
+    .info-card:hover {
+        box-shadow: 0 10px 40px rgba(0,0,0,0.09);
+        transform: translateY(-3px);
+    }
+
+    .info-icon {
+        width: 46px;
+        height: 46px;
+        min-width: 46px;
         background: var(--primary-color);
         border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.3rem;
-        flex-shrink: 0;
-        box-shadow: 0 4px 15px rgba(143, 195, 71, 0.3);
+        font-size: 1.1rem;
+        box-shadow: 0 4px 14px rgba(143,195,71,0.35);
     }
 
-    .contact-icon i { color: white; }
+    .info-icon i { color: white; }
 
-    .contact-item-text h3 {
-        font-size: 1rem;
+    .info-text h3 {
+        font-size: 0.9rem;
         font-weight: 700;
         color: var(--text-primary);
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.3rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
 
-    .contact-item-text p {
-        font-size: 0.9rem;
-        color: var(--text-light);
-        margin: 0;
-    }
-
-    .contact-item-text a {
+    .info-text a {
         font-size: 0.9rem;
         color: var(--primary-color);
         font-weight: 600;
         text-decoration: none;
+        transition: opacity 0.2s;
     }
 
-    .contact-item-text a:hover { text-decoration: underline; }
+    .info-text a:hover { opacity: 0.75; }
 
-    .book-btn {
-        display: inline-block;
-        margin-top: 0.5rem;
-        background: var(--bg-black);
-        color: white;
-        padding: 10px 22px;
-        border-radius: 50px;
+    .info-text p {
         font-size: 0.875rem;
-        font-weight: 600;
+        color: var(--text-light);
+        margin: 0 0 0.75rem;
+        line-height: 1.55;
+    }
+
+    .cta-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: #0a0a0a;
+        color: white;
+        padding: 9px 18px;
+        border-radius: 50px;
+        font-size: 0.825rem;
+        font-weight: 700;
         text-decoration: none;
-        transition: all 0.3s ease;
+        transition: background 0.2s, transform 0.2s;
+        letter-spacing: 0.2px;
     }
 
-    .book-btn:hover {
-        background: #333;
-        transform: translateY(-2px);
+    .cta-pill:hover {
+        background: #2a2a2a;
+        transform: translateY(-1px);
     }
 
-    /* ─── Right: Form Panel ─── */
+    .cta-pill i { font-size: 0.75rem; }
+
+    /* ─── Response time badge ─── */
+    .response-badge {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 1rem 1.25rem;
+        background: rgba(143,195,71,0.08);
+        border: 1px solid rgba(143,195,71,0.2);
+        border-radius: 12px;
+    }
+
+    .response-dot {
+        width: 9px;
+        height: 9px;
+        min-width: 9px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        box-shadow: 0 0 0 3px rgba(143,195,71,0.25);
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { box-shadow: 0 0 0 3px rgba(143,195,71,0.25); }
+        50%       { box-shadow: 0 0 0 6px rgba(143,195,71,0.1); }
+    }
+
+    .response-badge span {
+        font-size: 0.825rem;
+        font-weight: 600;
+        color: var(--text-secondary);
+    }
+
+    /* ─── Form Panel ─── */
     .form-panel {
-        background: var(--bg-white);
-        border-radius: var(--border-radius);
-        padding: 3rem;
-        box-shadow: 0 8px 40px var(--shadow-strong);
-        border: 1px solid #eee;
+        background: white;
+        border-radius: 20px;
+        padding: 3rem 3rem 2.5rem;
+        box-shadow: 0 4px 60px rgba(0,0,0,0.08);
+        border: 1px solid #ebebeb;
     }
 
-    .form-panel h3 {
+    .form-panel-header {
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .form-panel-header h3 {
         font-size: 1.5rem;
         font-weight: 800;
         color: var(--text-primary);
-        margin-bottom: 0.4rem;
+        margin-bottom: 0.35rem;
+        letter-spacing: -0.3px;
     }
 
-    .form-panel > p {
+    .form-panel-header p {
         color: var(--text-light);
-        font-size: 0.95rem;
-        margin-bottom: 2rem;
+        font-size: 0.9rem;
+        margin: 0;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem;
+        margin-bottom: 1.25rem;
     }
 
     .form-group {
-        margin-bottom: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
     }
+
+    .form-group.full { grid-column: 1 / -1; }
 
     .form-group label {
-        display: block;
+        font-size: 0.85rem;
+        font-weight: 700;
         color: var(--text-primary);
-        font-weight: 600;
-        margin-bottom: 0.6rem;
-        font-size: 0.95rem;
+        letter-spacing: 0.2px;
     }
 
-    .form-group input,
-    .form-group textarea {
+    .form-group label .optional {
+        font-weight: 400;
+        color: var(--text-light);
+        margin-left: 4px;
+    }
+
+    .input-wrap {
+        position: relative;
+    }
+
+    .input-wrap i {
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #bbb;
+        font-size: 0.85rem;
+        pointer-events: none;
+        transition: color 0.2s;
+    }
+
+    .input-wrap.textarea-wrap i {
+        top: 16px;
+        transform: none;
+    }
+
+    .input-wrap input,
+    .input-wrap textarea {
         width: 100%;
-        padding: 1rem 1.25rem;
-        border: 2px solid #eee;
-        border-radius: 12px;
-        font-size: 1rem;
+        padding: 13px 14px 13px 38px;
+        border: 1.5px solid #e5e5e5;
+        border-radius: 11px;
+        font-size: 0.95rem;
         font-family: inherit;
-        transition: all 0.3s ease;
-        background: var(--bg-light);
+        color: var(--text-primary);
+        background: #fafafa;
+        transition: all 0.2s ease;
     }
 
-    .form-group input:focus,
-    .form-group textarea:focus {
+    .input-wrap input:focus,
+    .input-wrap textarea:focus {
         outline: none;
         border-color: var(--primary-color);
-        box-shadow: 0 0 0 4px rgba(143, 195, 71, 0.1);
-        background: var(--bg-white);
+        background: white;
+        box-shadow: 0 0 0 4px rgba(143,195,71,0.1);
     }
 
-    .form-group textarea {
+    .input-wrap input:focus ~ i,
+    .input-wrap textarea:focus ~ i,
+    .input-wrap:focus-within i {
+        color: var(--primary-color);
+    }
+
+    .input-wrap textarea {
         height: 140px;
         resize: vertical;
+        padding-top: 13px;
     }
 
-    .form-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+    .form-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 1.75rem;
         gap: 1rem;
     }
 
-    .form-submit {
-        text-align: center;
-        margin-top: 0.5rem;
+    .privacy-note {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 0.78rem;
+        color: #aaa;
+        font-weight: 500;
     }
 
-    /* ─── Buttons ─── */
-    .btn {
-        font-weight: 600;
-        padding: 16px 36px;
+    .privacy-note i { font-size: 0.75rem; }
+
+    .submit-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        background: #0a0a0a;
+        color: white;
+        padding: 14px 32px;
         border-radius: 50px;
         border: none;
+        font-size: 0.95rem;
+        font-weight: 700;
         cursor: pointer;
-        letter-spacing: 0.03em;
-        transition: all 0.3s ease;
-        font-size: 1rem;
-        text-decoration: none;
-        display: inline-block;
+        transition: all 0.25s ease;
+        letter-spacing: 0.2px;
+        white-space: nowrap;
     }
 
-    .btn-primary {
-        background-color: var(--bg-black);
-        color: var(--bg-white);
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    .submit-btn:hover {
+        background: #222;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.2);
     }
 
-    .btn-primary:hover {
-        background-color: #222;
-        transform: translateY(-3px);
-        box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    .submit-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
     }
+
+    .submit-btn i { font-size: 0.85rem; }
 
     /* ─── Django Messages ─── */
     .alert {
-        padding: 1rem 1.25rem;
+        padding: 0.9rem 1.1rem;
         border-radius: 10px;
         margin-bottom: 1.5rem;
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
     }
 
     .alert-success {
         background: #f0fbea;
         color: #3a7a1a;
-        border: 1px solid var(--primary-light);
+        border: 1px solid #c3e6a0;
     }
 
     .alert-error {
@@ -304,127 +426,156 @@
         border: 1px solid #ffb3b3;
     }
 
-    /* ─── CTA ─── */
-    .cta-final {
-        background: var(--primary-color);
-        text-align: center;
-    }
-
-    .cta-final h2 {
-        font-size: 2.4rem;
-        color: var(--bg-black);
-        margin-bottom: 1rem;
-        font-weight: 800;
-    }
-
-    .cta-final p {
-        color: rgba(0,0,0,0.7);
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-    }
-
     /* ─── Success Modal ─── */
     .success-modal {
         display: none;
         position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: rgba(0,0,0,0.7);
+        inset: 0;
+        background: rgba(0,0,0,0.65);
         z-index: 9999;
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(6px);
+        align-items: center;
+        justify-content: center;
     }
+
+    .success-modal.active { display: flex; }
 
     .success-content {
-        position: absolute;
-        top: 50%; left: 50%;
-        transform: translate(-50%, -50%);
-        background: var(--bg-white);
+        background: white;
         padding: 3rem 2.5rem;
-        border-radius: var(--border-radius);
+        border-radius: 20px;
         text-align: center;
-        max-width: 450px;
+        max-width: 420px;
         width: 90%;
-        box-shadow: 0 25px 80px rgba(0,0,0,0.3);
-        animation: slideIn 0.4s ease;
+        box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+        animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    @keyframes slideIn {
-        from { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
-        to   { transform: translate(-50%, -50%) scale(1);   opacity: 1; }
+    @keyframes popIn {
+        from { transform: scale(0.85); opacity: 0; }
+        to   { transform: scale(1);    opacity: 1; }
     }
 
     .success-icon {
-        width: 80px;
-        height: 80px;
+        width: 72px;
+        height: 72px;
         background: var(--primary-color);
-        border-radius: 20px;
+        border-radius: 18px;
         margin: 0 auto 1.5rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 2.5rem;
+        font-size: 2rem;
         color: white;
-        box-shadow: 0 10px 30px rgba(143,195,71,0.4);
+        box-shadow: 0 12px 30px rgba(143,195,71,0.4);
     }
 
     .success-title {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+        font-weight: 800;
         color: var(--text-primary);
-        margin-bottom: 1rem;
-        font-weight: 700;
+        margin-bottom: 0.75rem;
+        letter-spacing: -0.3px;
     }
 
     .success-message {
-        color: var(--text-secondary);
-        line-height: 1.6;
+        color: var(--text-light);
+        font-size: 0.95rem;
+        line-height: 1.65;
         margin-bottom: 2rem;
     }
 
     .success-close {
-        background: var(--primary-color);
+        background: #0a0a0a;
         color: white;
         border: none;
-        padding: 12px 30px;
+        padding: 13px 30px;
         border-radius: 50px;
-        font-weight: 600;
+        font-weight: 700;
+        font-size: 0.9rem;
         cursor: pointer;
-        transition: all 0.3s;
+        transition: all 0.2s;
     }
 
     .success-close:hover {
+        background: #333;
+        transform: translateY(-2px);
+    }
+
+    /* ─── Bottom CTA ─── */
+    .cta-strip {
+        padding: 4rem 2rem;
+        text-align: center;
+    }
+
+    .cta-strip-inner {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .cta-strip h2 {
+        font-size: 2rem;
+        font-weight: 800;
+        color: black;
+        margin-bottom: 0.75rem;
+        letter-spacing: -0.5px;
+    }
+
+    .cta-strip h2 span { color: var(--primary-color); }
+
+    .cta-strip p {
+        color: #777;
+        font-size: 1rem;
+        margin-bottom: 1.75rem;
+        line-height: 1.65;
+    }
+
+    .cta-strip-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        background: var(--primary-color);
+        color: #0a0a0a;
+        padding: 15px 34px;
+        border-radius: 50px;
+        font-weight: 800;
+        font-size: 0.95rem;
+        text-decoration: none;
+        transition: all 0.25s;
+        letter-spacing: 0.2px;
+    }
+
+    .cta-strip-btn:hover {
         background: var(--primary-dark);
         transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(143,195,71,0.35);
     }
 
     /* ─── Responsive ─── */
     @media (max-width: 1024px) {
-        .contact-layout {
+        .contact-container {
             grid-template-columns: 1fr;
-            gap: 2.5rem;
         }
 
-        .contact-info {
-            flex-direction: row;
-            flex-wrap: wrap;
+        .info-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
         }
 
-        .contact-info-header {
-            width: 100%;
-        }
-
-        .contact-item {
-            flex: 1 1 260px;
-        }
+        .info-header { grid-column: 1 / -1; }
+        .response-badge { grid-column: 1 / -1; }
     }
 
     @media (max-width: 768px) {
-        .contact-hero { padding: 4rem 1.5rem; }
-        .hero-title { font-size: 2.4rem; }
-        .section-content { padding: 3.5rem 0; }
-        .section-wrapper { padding: 0 1.25rem; }
+        .contact-hero { padding: 5rem 1.5rem 3.5rem; }
+        .hero-title { font-size: 2.6rem; }
+        .contact-section { padding: 3rem 1.25rem; }
         .form-panel { padding: 2rem 1.5rem; }
-        .form-row { grid-template-columns: 1fr; }
-        .contact-info { flex-direction: column; }
+        .form-grid { grid-template-columns: 1fr; }
+        .form-footer { flex-direction: column; align-items: stretch; text-align: center; }
+        .submit-btn { justify-content: center; }
+        .info-panel { grid-template-columns: 1fr; }
     }
 </style>
 {% endblock %}
@@ -432,93 +583,146 @@
 {% block content %}
 
 <!-- Hero -->
-<div class="contact-hero">
+<section class="contact-hero">
     <div class="contact-hero-content">
-        <h1 class="hero-title">Get In <span>Touch</span></h1>
-        <p class="hero-subtitle">Ready to start your transformation? Let's talk about your goals.</p>
+        <div class="hero-eyebrow">
+            <i class="fas fa-leaf"></i> Let's Talk
+        </div>
+        <h1 class="hero-title">Start Your<br><span>Transformation</span></h1>
+        <p class="hero-subtitle">Have a question or ready to begin? Reach out and I'll get back to you within 24 hours.</p>
     </div>
-</div>
+</section>
 
 <!-- Main Contact Section -->
-<div class="section-wrapper contact-main">
-    <div class="section-content">
-        <div class="contact-layout">
+<section class="contact-section">
+    <div class="contact-container">
 
-            <!-- Left: Contact Info -->
-            <div class="contact-info">
-                <div class="contact-info-header">
-                    <h2>Let's <span>Connect</span></h2>
-                    <p>Have a question or want to get started? Reach out directly or fill in the form and I'll get back to you within 24 hours.</p>
+        <!-- Left: Info Panel -->
+        <div class="info-panel">
+            <div class="info-header">
+                <h2>Let's <span>Connect</span></h2>
+                <p>Choose the best way to reach me, or fill out the form and I'll be in touch shortly.</p>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-envelope"></i>
                 </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="contact-item-text">
-                        <h3>Email</h3>
-                        <a href="mailto:vibrantlivinggg@gmail.com">vibrantlivinggg@gmail.com</a>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-calendar-check"></i>
-                    </div>
-                    <div class="contact-item-text">
-                        <h3>Free Consultation</h3>
-                        <p>15-minute discovery call to discuss your goals</p>
-                        <a href="https://forms.gle/dUK8nnaXuxiSNFxD9" class="book-btn">Book Your Call</a>
-                    </div>
+                <div class="info-text">
+                    <h3>Email</h3>
+                    <a href="mailto:vibrantlivinggg@gmail.com">vibrantlivinggg@gmail.com</a>
                 </div>
             </div>
 
-            <!-- Right: Form -->
-            <div class="form-panel">
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <div class="info-text">
+                    <h3>Free Consultation</h3>
+                    <p>15-minute discovery call — no commitment, just a conversation about your goals.</p>
+                    <a href="https://forms.gle/dUK8nnaXuxiSNFxD9" class="cta-pill" target="_blank">
+                        Book Your Free Call <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="response-badge">
+                <div class="response-dot"></div>
+                <span>Typically responds within 24 hours</span>
+            </div>
+        </div>
+
+        <!-- Right: Form Panel -->
+        <div class="form-panel">
+            <div class="form-panel-header">
                 <h3>Send a Message</h3>
                 <p>Tell me about your goals and I'll be in touch shortly.</p>
-
-                <form class="contact-form" method="POST" action="{% url 'contact' %}">
-                    {% csrf_token %}
-
-                    {% if messages %}
-                        {% for message in messages %}
-                            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-                        {% endfor %}
-                    {% endif %}
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" placeholder="Jane Smith" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" placeholder="jane@email.com" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone">Phone <span style="font-weight:400; color: var(--text-light);">(Optional)</span></label>
-                        <input type="tel" id="phone" name="phone" placeholder="+353 87 123 4567">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Tell me about your goals</label>
-                        <textarea id="message" name="message" placeholder="What are you looking to achieve? Any challenges you're facing? What's your timeline?" required></textarea>
-                    </div>
-
-                    <div class="form-submit">
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </div>
-                </form>
             </div>
 
+            <form class="contact-form" method="POST" action="{% url 'contact' %}">
+                {% csrf_token %}
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            <i class="fas fa-{% if message.tags == 'success' %}check-circle{% else %}exclamation-circle{% endif %}"></i>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <div class="input-wrap">
+                            <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <div class="input-wrap">
+                            <input type="email" id="email" name="email" placeholder="jane@email.com" required>
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                    </div>
+                    <div class="form-group full">
+                        <label for="phone">Phone <span class="optional">(Optional)</span></label>
+                        <div class="input-wrap">
+                            <input type="tel" id="phone" name="phone" placeholder="+353 87 123 4567">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                    </div>
+                    <div class="form-group full">
+                        <label for="message">Your Goals</label>
+                        <div class="input-wrap textarea-wrap">
+                            <textarea id="message" name="message" placeholder="What are you looking to achieve? Any challenges you're facing? What's your timeline?" required></textarea>
+                            <i class="fas fa-comment-alt"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-footer">
+                    <div class="privacy-note">
+                        <i class="fas fa-lock"></i>
+                        Your info is private and never shared.
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        Send Message <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </form>
         </div>
+
+    </div>
+</section>
+
+<!-- Bottom CTA -->
+<section class="cta-strip">
+    <div class="cta-strip-inner">
+        <h2>Prefer to <span>Talk Directly?</span></h2>
+        <p>Book a free 15-minute call and let's figure out the best plan for your goals together.</p>
+        <a href="https://forms.gle/dUK8nnaXuxiSNFxD9" class="cta-strip-btn" target="_blank">
+            <i class="fas fa-calendar-check"></i> Book a Free Call
+        </a>
+    </div>
+</section>
+
+<!-- Success Modal -->
+<div class="success-modal" id="successModal">
+    <div class="success-content">
+        <div class="success-icon">
+            <i class="fas fa-check"></i>
+        </div>
+        <h2 class="success-title">Message Sent!</h2>
+        <p class="success-message">Thanks for reaching out! I'll get back to you within 24 hours.</p>
+        <button class="success-close" onclick="document.getElementById('successModal').classList.remove('active')">
+            Got it!
+        </button>
     </div>
 </div>
 
-<!-- Google Sheets submission script — logic unchanged -->
 <script>
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyMF0zxI4MqP223HRadDJ-ietwAmhHat6aMtNIkyrO4h8qKSYoCm0DBK5sqjDA_hOC2/exec';
 
@@ -529,10 +733,9 @@ document.addEventListener('DOMContentLoaded', function () {
         e.preventDefault();
 
         const formData = new FormData(form);
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
+        const submitBtn = form.querySelector('.submit-btn');
 
-        submitBtn.textContent = 'Sending...';
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
         submitBtn.disabled = true;
 
         try {
@@ -542,39 +745,25 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             if (response.ok) {
-                showSuccessModal();
-                setTimeout(() => window.location.href = '{% url "index" %}', 2000);
+                document.getElementById('successModal').classList.add('active');
+                form.reset();
+                setTimeout(() => window.location.href = '{% url "index" %}', 3000);
             } else {
-                throw new Error('Sheet save failed');
+                throw new Error('Failed');
             }
         } catch (error) {
             console.error('Error:', error);
             window.location.href = '{% url "index" %}';
+        } finally {
+            submitBtn.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
+            submitBtn.disabled = false;
         }
     });
 
-    function showSuccessModal() {
-        const modal = document.createElement('div');
-        modal.className = 'success-modal';
-        modal.style.display = 'block';
-        modal.innerHTML = `
-            <div class="success-content">
-                <div class="success-icon">
-                    <i class="fas fa-check"></i>
-                </div>
-                <h2 class="success-title">Message Sent!</h2>
-                <p class="success-message">Thanks for reaching out! Your info is saved and I'll reply within 24 hours.</p>
-                <button class="success-close" onclick="this.closest('.success-modal').remove()">
-                    Got it!
-                </button>
-            </div>
-        `;
-        document.body.appendChild(modal);
-
-        modal.addEventListener('click', function (e) {
-            if (e.target === this) this.remove();
-        });
-    }
+    // Close modal on backdrop click
+    document.getElementById('successModal').addEventListener('click', function(e) {
+        if (e.target === this) this.classList.remove('active');
+    });
 });
 </script>
 

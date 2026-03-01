@@ -1,0 +1,466 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Privacy Policy - Vibrant Living{% endblock %}
+
+{% block extra_css %}
+<style>
+    :root {
+        --primary-color: #8fc347;
+        --primary-dark: #7ab03a;
+        --text-primary: #111;
+        --text-secondary: #444;
+        --text-light: #666;
+    }
+
+    * { box-sizing: border-box; }
+
+    /* ─── Hero ─── */
+    .privacy-hero {
+        background: #0a0a0a;
+        color: white;
+        padding: 6rem 2rem 4.5rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .privacy-hero::before {
+        content: '';
+        position: absolute;
+        top: -40%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 700px;
+        height: 700px;
+        background: radial-gradient(circle, rgba(143,195,71,0.1) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    .privacy-hero-content {
+        max-width: 700px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(143,195,71,0.12);
+        border: 1px solid rgba(143,195,71,0.3);
+        color: var(--primary-color);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 6px 16px;
+        border-radius: 50px;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        font-weight: 900;
+        line-height: 1.05;
+        margin-bottom: 1rem;
+        letter-spacing: -1px;
+        color: white;
+    }
+
+    .hero-title span { color: var(--primary-color); }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        color: #777;
+        line-height: 1.7;
+        margin: 0 auto;
+        max-width: 480px;
+    }
+
+    /* ─── Content ─── */
+    .privacy-section {
+        background: #f5f5f5;
+        padding: 5rem 2rem;
+    }
+
+    .privacy-container {
+        max-width: 820px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    /* ─── Cards ─── */
+    .policy-card {
+        background: white;
+        border-radius: 18px;
+        padding: 2.25rem 2.5rem;
+        border: 1px solid #e8e8e8;
+    }
+
+    .policy-card-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+        padding-bottom: 1.25rem;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .policy-icon {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        background: var(--primary-color);
+        border-radius: 11px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(143,195,71,0.3);
+    }
+
+    .policy-icon i { color: white; font-size: 1rem; }
+
+    .policy-card-header h2 {
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: var(--text-primary);
+        margin: 0;
+        letter-spacing: -0.2px;
+    }
+
+    .policy-card p {
+        font-size: 0.925rem;
+        color: var(--text-secondary);
+        line-height: 1.8;
+        margin-bottom: 0.75rem;
+    }
+
+    .policy-card p:last-child { margin-bottom: 0; }
+
+    .policy-card a {
+        color: var(--primary-color);
+        font-weight: 600;
+        text-decoration: none;
+        transition: opacity 0.2s;
+    }
+
+    .policy-card a:hover { opacity: 0.75; }
+
+    /* ─── Table ─── */
+    .policy-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    .policy-table th {
+        background: #f5f5f5;
+        color: var(--text-primary);
+        font-weight: 800;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        padding: 10px 14px;
+        text-align: left;
+        border-bottom: 2px solid #ebebeb;
+    }
+
+    .policy-table td {
+        padding: 11px 14px;
+        color: var(--text-secondary);
+        border-bottom: 1px solid #f0f0f0;
+        line-height: 1.6;
+        vertical-align: top;
+    }
+
+    .policy-table tr:last-child td { border-bottom: none; }
+
+    .policy-table tr:hover td { background: #fafafa; }
+
+    /* ─── Rights list ─── */
+    .rights-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .rights-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 0.925rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+    }
+
+    .rights-list li i {
+        color: var(--primary-color);
+        font-size: 0.8rem;
+        margin-top: 5px;
+        flex-shrink: 0;
+    }
+
+    .rights-list strong {
+        color: var(--text-primary);
+        font-weight: 700;
+    }
+
+    /* ─── DPC block ─── */
+    .dpc-block {
+        background: #f5f5f5;
+        border-radius: 12px;
+        padding: 1.25rem 1.5rem;
+        margin-top: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    .dpc-block p {
+        margin: 0 !important;
+        font-size: 0.875rem !important;
+        color: var(--text-secondary) !important;
+    }
+
+    /* ─── Updated badge ─── */
+    .updated-note {
+        text-align: center;
+        font-size: 0.8rem;
+        color: #aaa;
+        padding-top: 0.5rem;
+    }
+
+    /* ─── CTA Strip ─── */
+    .cta-strip {
+        background: #0a0a0a;
+        padding: 4rem 2rem;
+        text-align: center;
+    }
+
+    .cta-strip-inner {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .cta-strip h2 {
+        font-size: 1.8rem;
+        font-weight: 900;
+        color: white;
+        margin-bottom: 0.75rem;
+        letter-spacing: -0.4px;
+    }
+
+    .cta-strip h2 span { color: var(--primary-color); }
+
+    .cta-strip p {
+        color: #666;
+        font-size: 0.95rem;
+        margin-bottom: 1.75rem;
+        line-height: 1.65;
+    }
+
+    .cta-strip-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        background: var(--primary-color);
+        color: #0a0a0a;
+        padding: 13px 30px;
+        border-radius: 50px;
+        font-weight: 800;
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: all 0.25s;
+    }
+
+    .cta-strip-btn:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(143,195,71,0.35);
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 768px) {
+        .privacy-hero { padding: 4.5rem 1.5rem 3.5rem; }
+        .hero-title { font-size: 2.2rem; }
+        .privacy-section { padding: 3rem 1.25rem; }
+        .policy-card { padding: 1.75rem 1.5rem; }
+        .policy-table { font-size: 0.825rem; }
+        .policy-table th, .policy-table td { padding: 9px 10px; }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="privacy-hero">
+    <div class="privacy-hero-content">
+        <div class="hero-eyebrow">
+            <i class="fas fa-shield-alt"></i> Legal
+        </div>
+        <h1 class="hero-title">Privacy <span>Policy</span></h1>
+        <p class="hero-subtitle">How Vibrant Living collects, uses, and protects your personal data.</p>
+    </div>
+</section>
+
+<!-- Policy Content -->
+<section class="privacy-section">
+    <div class="privacy-container">
+
+        <!-- Last Updated -->
+        <p class="updated-note">Last updated: March 2026 &nbsp;·&nbsp; Applies to vibrantliving.ie</p>
+
+        <!-- 1. Who We Are -->
+        <div class="policy-card">
+            <div class="policy-card-header">
+                <div class="policy-icon"><i class="fas fa-user"></i></div>
+                <h2>1. Who We Are</h2>
+            </div>
+            <p>Vibrant Living is an online fitness coaching service operated by <strong>Sean Flanagan</strong>, based in Dublin, Ireland.</p>
+            <p>For any privacy-related queries, contact us at <a href="mailto:vibrantlivinggg@gmail.com">vibrantlivinggg@gmail.com</a>. We are the <strong>data controller</strong> responsible for your personal data under the General Data Protection Regulation (GDPR).</p>
+        </div>
+
+        <!-- 2. What We Collect -->
+        <div class="policy-card">
+            <div class="policy-card-header">
+                <div class="policy-icon"><i class="fas fa-database"></i></div>
+                <h2>2. What Data We Collect</h2>
+            </div>
+            <p>When you submit an enquiry, contact, or coaching application form on this website, we may collect the following:</p>
+            <ul class="rights-list" style="margin-top: 0.5rem;">
+                <li><i class="fas fa-circle"></i><span><strong>Full name</strong></span></li>
+                <li><i class="fas fa-circle"></i><span><strong>Email address</strong></span></li>
+                <li><i class="fas fa-circle"></i><span><strong>Phone number</strong> (optional)</span></li>
+                <li><i class="fas fa-circle"></i><span><strong>Goals and personal context</strong> — any information you voluntarily provide in your message</span></li>
+            </ul>
+            <p style="margin-top: 1rem;">We do not collect sensitive personal data (e.g. health records, financial information) through our website forms.</p>
+        </div>
+
+        <!-- 3. Why We Collect It -->
+        <div class="policy-card">
+            <div class="policy-card-header">
+                <div class="policy-icon"><i class="fas fa-bullseye"></i></div>
+                <h2>3. Why We Collect It</h2>
+            </div>
+            <p>We only collect data for the purposes outlined below:</p>
+            <table class="policy-table">
+                <thead>
+                    <tr>
+                        <th>Purpose</th>
+                        <th>Legal Basis (GDPR)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Responding to your enquiry</td>
+                        <td>Legitimate interest (Art. 6(1)(f))</td>
+                    </tr>
+                    <tr>
+                        <td>Contacting you about coaching services</td>
+                        <td>Consent — by submitting the form you are requesting to be contacted</td>
+                    </tr>
+                    <tr>
+                        <td>Assessing suitability for coaching</td>
+                        <td>Pre-contractual steps (Art. 6(1)(b))</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="margin-top: 1rem;">We will <strong>only contact you in relation to your enquiry</strong>. Your data will never be used for unsolicited marketing, newsletters, or any unrelated purpose.</p>
+        </div>
+
+        <!-- 4. Where Data Is Stored -->
+        <div class="policy-card">
+            <div class="policy-card-header">
+                <div class="policy-icon"><i class="fas fa-server"></i></div>
+                <h2>4. Where Your Data Is Stored</h2>
+            </div>
+            <p>Form submissions are stored in <strong>Google Sheets</strong>, operated by Google LLC. Google may process this data on servers outside the EU/EEA. Google complies with GDPR through the <strong>EU–US Data Privacy Framework</strong> and Standard Contractual Clauses.</p>
+            <p>Coaching applications submitted via <strong>JotForm</strong> are stored on JotForm's servers. JotForm is GDPR-compliant and processes data under Standard Contractual Clauses.</p>
+            <p>We do not use any additional CRM, mailing list platform, or external database.</p>
+        </div>
+
+        <!-- 5. How Long We Keep Data -->
+        <div class="policy-card">
+            <div class="policy-card-header">
+                <div class="policy-icon"><i class="fas fa-clock"></i></div>
+                <h2>5. How Long We Keep Your Data</h2>
+            </div>
+            <ul class="rights-list">
+                <li><i class="fas fa-circle"></i><span>If no coaching relationship is formed — data is deleted within <strong>6 months</strong> of your enquiry</span></li>
+                <li><i class="fas fa-circle"></i><span>If you become a client — contact information is retained for the <strong>duration of coaching plus 12 months</strong>, then deleted</span></li>
+            </ul>
+        </div>
+
+        <!-- 6. Who We Share Data With -->
+        <div class="policy-card">
+            <div class="policy-card-header">
+                <div class="policy-icon"><i class="fas fa-share-alt"></i></div>
+                <h2>6. Who We Share Data With</h2>
+            </div>
+            <p>Your data is <strong>never sold or shared</strong> with third parties for marketing or commercial purposes. The only third parties who handle your data are:</p>
+            <ul class="rights-list" style="margin-top: 0.5rem;">
+                <li><i class="fas fa-circle"></i><span><strong>Google LLC</strong> — form submission storage via Google Sheets and Google Forms</span></li>
+                <li><i class="fas fa-circle"></i><span><strong>JotForm Inc.</strong> — coaching application forms</span></li>
+            </ul>
+        </div>
+
+        <!-- 7. Your Rights -->
+        <div class="policy-card">
+            <div class="policy-card-header">
+                <div class="policy-icon"><i class="fas fa-balance-scale"></i></div>
+                <h2>7. Your Rights Under GDPR</h2>
+            </div>
+            <p>As a resident of the EU/EEA, you have the following rights regarding your personal data:</p>
+            <ul class="rights-list" style="margin-top: 0.75rem;">
+                <li><i class="fas fa-check"></i><span><strong>Right to access</strong> — request a copy of the data we hold about you</span></li>
+                <li><i class="fas fa-check"></i><span><strong>Right to rectification</strong> — ask us to correct inaccurate data</span></li>
+                <li><i class="fas fa-check"></i><span><strong>Right to erasure</strong> — request deletion of your data at any time</span></li>
+                <li><i class="fas fa-check"></i><span><strong>Right to restrict processing</strong> — ask us to limit how we use your data</span></li>
+                <li><i class="fas fa-check"></i><span><strong>Right to object</strong> — object to processing based on legitimate interest</span></li>
+                <li><i class="fas fa-check"></i><span><strong>Right to withdraw consent</strong> — at any time, without affecting prior processing</span></li>
+            </ul>
+            <p style="margin-top: 1rem;">To exercise any of these rights, email <a href="mailto:vibrantlivinggg@gmail.com">vibrantlivinggg@gmail.com</a>. We will respond within <strong>30 days</strong>.</p>
+        </div>
+
+        <!-- 8. Cookies -->
+        <div class="policy-card">
+            <div class="policy-card-header">
+                <div class="policy-icon"><i class="fas fa-cookie-bite"></i></div>
+                <h2>8. Cookies</h2>
+            </div>
+            <p>This website uses only <strong>functional cookies</strong> necessary for the site to operate securely (e.g. Django CSRF security cookies). We do not use tracking, advertising, or analytics cookies.</p>
+            <p>Third-party forms embedded from JotForm and Google may set their own cookies when you interact with them. Please refer to their respective privacy policies for details.</p>
+        </div>
+
+        <!-- 9. Complaints -->
+        <div class="policy-card">
+            <div class="policy-card-header">
+                <div class="policy-icon"><i class="fas fa-flag"></i></div>
+                <h2>9. How to Complain</h2>
+            </div>
+            <p>If you believe your personal data has been handled unlawfully, you have the right to lodge a complaint with Ireland's supervisory authority:</p>
+            <div class="dpc-block">
+                <p><strong>Data Protection Commission (DPC)</strong></p>
+                <p>🌐 <a href="https://www.dataprotection.ie" target="_blank">dataprotection.ie</a></p>
+                <p>📞 +353 57 868 4800</p>
+                <p>📍 21 Fitzwilliam Square South, Dublin 2, D02 RD28</p>
+            </div>
+            <p style="margin-top: 1rem;">We would, however, appreciate the opportunity to address your concern directly before you contact the DPC — please reach out to us first at <a href="mailto:vibrantlivinggg@gmail.com">vibrantlivinggg@gmail.com</a>.</p>
+        </div>
+
+        <!-- Updated note -->
+        <p class="updated-note">This policy may be updated periodically. Any changes will be reflected by the "last updated" date above.</p>
+
+    </div>
+</section>
+
+{% endblock %}

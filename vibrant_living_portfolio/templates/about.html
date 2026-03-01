@@ -22,52 +22,120 @@
 
     * { box-sizing: border-box; }
 
-    .section-wrapper {
-        width: 100%;
-        padding: 0 2rem;
-    }
-
-    .section-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 5rem 0;
-    }
-
     /* ─── Hero ─── */
     .about-hero {
-        background: black;
-        color: var(--bg-white);
-        padding: 6rem 2rem;
+        background: #0a0a0a;
+        color: white;
+        padding: 7rem 2rem 5rem;
         text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .about-hero::before {
+        content: '';
+        position: absolute;
+        top: -40%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 700px;
+        height: 700px;
+        background: radial-gradient(circle, rgba(143,195,71,0.12) 0%, transparent 70%);
+        pointer-events: none;
     }
 
     .about-hero-content {
-        max-width: 800px;
+        max-width: 700px;
         margin: 0 auto;
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(143,195,71,0.12);
+        border: 1px solid rgba(143,195,71,0.3);
+        color: var(--primary-color);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 6px 16px;
+        border-radius: 50px;
+        margin-bottom: 1.5rem;
     }
 
     .hero-title {
-        font-size: 3.4rem;
-        margin-bottom: 1rem;
-        font-weight: 800;
-        line-height: 1.1;
+        font-size: 3.8rem;
+        font-weight: 900;
+        line-height: 1.05;
+        margin-bottom: 1.2rem;
+        letter-spacing: -1px;
+        color: white;
     }
 
     .hero-title span { color: var(--primary-color); }
 
     .hero-subtitle {
-        font-weight: 400;
-        font-size: 1.25rem;
-        margin-bottom: 0;
-        opacity: 0.85;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-        color: #ccc;
+        font-size: 1.15rem;
+        color: #999;
+        line-height: 1.7;
+        margin: 0 auto;
+        max-width: 520px;
+    }
+
+    /* ─── Shared ─── */
+    .section-container {
+        max-width: 1140px;
+        margin: 0 auto;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 3.5rem;
+    }
+
+    .section-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(143,195,71,0.1);
+        border: 1px solid rgba(143,195,71,0.25);
+        color: var(--primary-color);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 5px 14px;
+        border-radius: 50px;
+        margin-bottom: 1rem;
+    }
+
+    .section-header h2 {
+        font-size: 2.4rem;
+        color: var(--text-primary);
+        font-weight: 900;
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.5px;
+    }
+
+    .section-header h2 span { color: var(--primary-color); }
+
+    .section-header p {
+        color: var(--text-light);
+        font-size: 0.975rem;
+        max-width: 720px;
+        margin: 0 auto;
+        line-height: 1.75;
     }
 
     /* ─── Story Section ─── */
-    .story-section { background: var(--bg-white); }
+    .story-section {
+        background: white;
+        padding: 5rem 2rem;
+    }
 
     .story-content {
         display: grid;
@@ -78,23 +146,24 @@
 
     .story-photo {
         width: 100%;
-        height: 650px;
+        min-height: 650px;
         object-fit: cover;
-        border-radius: var(--border-radius);
-        box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        border-radius: 20px;
+        box-shadow: 0 25px 60px rgba(0,0,0,0.13);
     }
 
     .story-text h2 {
-        font-size: 2.4rem;
+        font-size: 2.2rem;
+        font-weight: 900;
         color: var(--text-primary);
         margin-bottom: 1.5rem;
-        font-weight: 800;
+        letter-spacing: -0.4px;
     }
 
     .story-text h2 span { color: var(--primary-color); }
 
     .story-text p {
-        font-size: 1.05rem;
+        font-size: 1rem;
         line-height: 1.85;
         color: var(--text-secondary);
         margin-bottom: 1.25rem;
@@ -103,48 +172,17 @@
     .story-text p:last-child { margin-bottom: 0; }
 
     /* ─── Philosophy Section ─── */
-    .philosophy-section { background: var(--bg-light); }
-
-    .section-header {
-        text-align: center;
-        margin-bottom: 3.5rem;
+    .philosophy-section {
+        background: #f5f5f5;
+        padding: 5rem 2rem;
     }
 
-    .section-header h2 {
-        font-size: 2.4rem;
-        color: var(--text-primary);
-        font-weight: 800;
-        margin-bottom: 0.5rem;
-    }
-
-    .section-header h2 span { color: var(--primary-color); }
-
-    .section-header p {
-        color: var(--text-light);
-        font-size: 1.05rem;
-        max-width: 700px;
-        margin: 0 auto;
-        line-height: 1.7;
-    }
-
-    /* Pillars grid — 4 across then 3 centred */
     .pillars-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 1.25rem;
     }
 
-    /* Last 3 items span to centre in a second row */
-    .pillars-grid .pillar-card:nth-child(5),
-    .pillars-grid .pillar-card:nth-child(6),
-    .pillars-grid .pillar-card:nth-child(7) {
-        grid-column: auto;
-    }
-
-    /* Offset the last row to centre 3 under 4 */
-    .pillars-grid .pillar-card:nth-child(5) { grid-column: 1 / 2; margin-left: calc(50% + 0.625rem); }
-
-    /* Simpler approach — use a wrapper with auto centering */
     .pillars-bottom-row {
         display: flex;
         justify-content: center;
@@ -157,65 +195,53 @@
     }
 
     .pillar-card {
-        background: var(--bg-white);
-        border-radius: var(--border-radius);
+        background: white;
+        border-radius: 18px;
         padding: 2rem 1.5rem;
         text-align: center;
-        border: 1px solid #eee;
-        transition: all 0.3s ease;
+        border: 1px solid #e8e8e8;
+        transition: box-shadow 0.25s ease, transform 0.25s ease;
         position: relative;
         overflow: hidden;
     }
 
-    .pillar-card::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0;
-        height: 4px;
-        background: var(--primary-color);
-        transform: scaleX(0);
-        transition: transform 0.3s ease;
-    }
-
     .pillar-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 16px 40px var(--shadow-strong);
-        border-color: var(--primary-color);
+        transform: translateY(-5px);
+        box-shadow: 0 16px 40px rgba(0,0,0,0.09);
     }
-
-    .pillar-card:hover::before { transform: scaleX(1); }
 
     .pillar-icon {
         width: 52px;
         height: 52px;
         background: var(--primary-color);
-        border-radius: 50%;
+        border-radius: 14px;
         display: flex;
         align-items: center;
         justify-content: center;
         margin: 0 auto 1rem;
+        box-shadow: 0 4px 14px rgba(143,195,71,0.35);
     }
 
-    .pillar-icon i { color: white; font-size: 1.2rem; }
+    .pillar-icon i { color: white; font-size: 1.1rem; }
 
     .pillar-card h4 {
-        font-size: 1rem;
-        font-weight: 700;
+        font-size: 0.95rem;
+        font-weight: 800;
         color: var(--text-primary);
         margin-bottom: 0.5rem;
     }
 
     .pillar-card p {
-        font-size: 0.875rem;
+        font-size: 0.84rem;
         color: var(--text-secondary);
-        line-height: 1.6;
+        line-height: 1.65;
         margin: 0;
     }
 
     /* ─── Manifesto Section ─── */
     .manifesto-section {
-        background: black;
-        color: var(--bg-white);
+        background: #0a0a0a;
+        padding: 5rem 2rem;
     }
 
     .manifesto-inner {
@@ -224,18 +250,35 @@
         text-align: center;
     }
 
+    .manifesto-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(143,195,71,0.12);
+        border: 1px solid rgba(143,195,71,0.3);
+        color: var(--primary-color);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 5px 14px;
+        border-radius: 50px;
+        margin-bottom: 1rem;
+    }
+
     .manifesto-inner h2 {
         font-size: 2.4rem;
-        font-weight: 800;
-        color: var(--bg-white);
+        font-weight: 900;
+        color: white;
         margin-bottom: 0.5rem;
+        letter-spacing: -0.5px;
     }
 
     .manifesto-inner h2 span { color: var(--primary-color); }
 
     .manifesto-inner > p {
-        color: rgba(255,255,255,0.6);
-        font-size: 1rem;
+        color: #666;
+        font-size: 0.975rem;
         margin-bottom: 3rem;
     }
 
@@ -244,96 +287,103 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 1.25rem;
         text-align: left;
-        margin-bottom: 3rem;
+        margin-bottom: 2.5rem;
     }
 
     .manifesto-point {
-        background: rgba(255,255,255,0.05);
-        border: 1px solid rgba(255,255,255,0.1);
-        border-radius: 12px;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 14px;
         padding: 1.5rem;
         display: flex;
         gap: 1rem;
         align-items: flex-start;
-        transition: border-color 0.3s ease;
+        transition: border-color 0.25s ease;
     }
 
-    .manifesto-point:hover { border-color: var(--primary-color); }
+    .manifesto-point:hover { border-color: rgba(143,195,71,0.4); }
 
     .manifesto-point i {
         color: var(--primary-color);
-        font-size: 1.1rem;
-        margin-top: 3px;
+        font-size: 0.95rem;
+        margin-top: 4px;
         flex-shrink: 0;
     }
 
     .manifesto-point strong {
         display: block;
-        color: var(--bg-white);
-        font-size: 0.95rem;
-        margin-bottom: 0.3rem;
+        color: white;
+        font-size: 0.9rem;
+        font-weight: 700;
+        margin-bottom: 0.35rem;
     }
 
     .manifesto-point span {
-        color: rgba(255,255,255,0.6);
-        font-size: 0.875rem;
-        line-height: 1.6;
+        color: #777;
+        font-size: 0.84rem;
+        line-height: 1.65;
     }
 
     .manifesto-quote {
-        background: rgba(143,195,71,0.1);
-        border: 1px solid rgba(143,195,71,0.3);
-        border-radius: var(--border-radius);
+        background: rgba(143,195,71,0.08);
+        border: 1px solid rgba(143,195,71,0.25);
+        border-radius: 16px;
         padding: 2rem 2.5rem;
-        font-size: 1.2rem;
-        font-style: italic;
-        color: rgba(255,255,255,0.85);
-        line-height: 1.7;
-    }
-
-    /* ─── CTA ─── */
-    .cta-final {
-        background: var(--primary-color);
-        text-align: center;
-    }
-
-    .cta-final h2 {
-        font-size: 2.4rem;
-        color: var(--bg-black);
-        margin-bottom: 1rem;
-        font-weight: 800;
-    }
-
-    .cta-final p {
-        color: rgba(0,0,0,0.7);
         font-size: 1.1rem;
-        margin-bottom: 2rem;
+        font-style: italic;
+        color: rgba(255,255,255,0.75);
+        line-height: 1.75;
     }
 
-    /* ─── Buttons ─── */
-    .btn {
-        font-weight: 600;
-        padding: 16px 36px;
-        border-radius: 50px;
-        border: none;
-        cursor: pointer;
-        letter-spacing: 0.03em;
-        transition: all 0.3s ease;
+    /* ─── CTA Strip ─── */
+    .cta-strip {
+        background: white;
+        padding: 4rem 2rem;
+        text-align: center;
+        border-top: 1px solid #ebebeb;
+    }
+
+    .cta-strip-inner {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .cta-strip h2 {
+        font-size: 2rem;
+        font-weight: 900;
+        color: var(--text-primary);
+        margin-bottom: 0.75rem;
+        letter-spacing: -0.5px;
+    }
+
+    .cta-strip h2 span { color: var(--primary-color); }
+
+    .cta-strip p {
+        color: var(--text-light);
         font-size: 1rem;
+        margin-bottom: 1.75rem;
+        line-height: 1.65;
+    }
+
+    .cta-strip-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        background: #0a0a0a;
+        color: white;
+        padding: 15px 34px;
+        border-radius: 50px;
+        font-weight: 800;
+        font-size: 0.95rem;
         text-decoration: none;
-        display: inline-block;
+        transition: all 0.25s;
+        letter-spacing: 0.2px;
     }
 
-    .btn-primary {
-        background-color: var(--bg-black);
-        color: var(--bg-white);
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    }
-
-    .btn-primary:hover {
-        background-color: #222;
-        transform: translateY(-3px);
-        box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    .cta-strip-btn:hover {
+        background: #222;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 28px rgba(0,0,0,0.2);
     }
 
     /* ─── Responsive ─── */
@@ -344,16 +394,15 @@
     }
 
     @media (max-width: 768px) {
-        .about-hero { padding: 4rem 1.5rem; }
-        .hero-title { font-size: 2.4rem; }
-        .section-content { padding: 3.5rem 0; }
-        .section-wrapper { padding: 0 1.25rem; }
+        .about-hero { padding: 5rem 1.5rem 3.5rem; }
+        .hero-title { font-size: 2.6rem; }
+        .story-section, .philosophy-section, .manifesto-section { padding: 3rem 1.25rem; }
         .story-content { grid-template-columns: 1fr; gap: 2rem; }
         .story-photo { height: 380px; }
         .pillars-grid { grid-template-columns: repeat(2, 1fr); }
         .pillars-bottom-row { flex-wrap: wrap; }
         .pillars-bottom-row .pillar-card { flex: 1 1 calc(50% - 0.625rem); }
-        .manifesto-quote { padding: 1.5rem; font-size: 1.05rem; }
+        .manifesto-quote { padding: 1.5rem; font-size: 1rem; }
     }
 
     @media (max-width: 480px) {
@@ -366,16 +415,19 @@
 {% block content %}
 
 <!-- Hero -->
-<div class="about-hero">
+<section class="about-hero">
     <div class="about-hero-content">
+        <div class="hero-eyebrow">
+            <i class="fas fa-user"></i> The Coach
+        </div>
         <h1 class="hero-title">Meet <span>Sean Flanagan</span></h1>
         <p class="hero-subtitle">Dedicated to sustainable transformation through evidence-based training and compassionate support.</p>
     </div>
-</div>
+</section>
 
 <!-- Story -->
-<div class="section-wrapper story-section">
-    <div class="section-content">
+<section class="story-section">
+    <div class="section-container">
         <div class="story-content">
             <img src="{% static 'images/coach_image.jpg' %}" alt="Sean Flanagan - Vibrant Living Coach" class="story-photo">
             <div class="story-text">
@@ -386,17 +438,20 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 
 <!-- Philosophy & Pillars -->
-<div class="section-wrapper philosophy-section">
-    <div class="section-content">
+<section class="philosophy-section">
+    <div class="section-container">
         <div class="section-header">
-            <h2>Our <span>Philosophy</span></h2>
-            <p>At Vibrant Living, we're so much more than a fitness brand. Wellness involves working out, nourishing your body, connecting with others, and enjoying yourself along the way — all built on seven core pillars.</p>
+            <div class="section-eyebrow">
+                <i class="fas fa-leaf"></i> Our Approach
+            </div>
+            <h2>Coaching <span>Philosophy</span></h2>
+            <p>At Vibrant Living, we are so much more than just a fitness brand. We specialize in personal training designed to help you move your body, feel your best, and achieve your goals. Wellness involves so much more than just exercise. It's about nourishing your body, connecting with others & enjoying yourself along the way.</p><br>
+            <p>We're here to help you make health & fitness part of your everyday life in a way that's enjoyable, sustainable, and fulfilling — creating a welcoming and supportive space where you can thrive physically, mentally, and socially.</p>
         </div>
 
-        <!-- Row 1: 4 pillars -->
         <div class="pillars-grid">
             <div class="pillar-card">
                 <div class="pillar-icon"><i class="fas fa-leaf"></i></div>
@@ -420,7 +475,6 @@
             </div>
         </div>
 
-        <!-- Row 2: 3 pillars centred -->
         <div class="pillars-bottom-row">
             <div class="pillar-card">
                 <div class="pillar-icon"><i class="fas fa-bolt"></i></div>
@@ -438,14 +492,16 @@
                 <p>Building mental strength alongside physical transformation</p>
             </div>
         </div>
-
     </div>
-</div>
+</section>
 
 <!-- Manifesto -->
-<div class="section-wrapper manifesto-section">
-    <div class="section-content">
+<section class="manifesto-section">
+    <div class="section-container">
         <div class="manifesto-inner">
+            <div class="manifesto-eyebrow">
+                <i class="fas fa-fire"></i> What We Stand For
+            </div>
             <h2>Our <span>Manifesto</span></h2>
             <p>What we stand for — and why it matters</p>
 
@@ -485,15 +541,17 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 
 <!-- CTA -->
-<div class="section-wrapper cta-final">
-    <div class="section-content">
-        <h2>Ready to Transform?</h2>
+<section class="cta-strip">
+    <div class="cta-strip-inner">
+        <h2>Ready to <span>Transform?</span></h2>
         <p>Start your journey with personalised coaching that delivers real results.</p>
-        <a href="{% url 'coaching' %}" class="btn btn-primary">Start Your Transformation</a>
+        <a href="{% url 'coaching' %}" class="cta-strip-btn">
+            <i class="fas fa-arrow-right"></i> Start Your Transformation
+        </a>
     </div>
-</div>
+</section>
 
 {% endblock %}
