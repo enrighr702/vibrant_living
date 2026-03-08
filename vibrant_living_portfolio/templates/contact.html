@@ -75,9 +75,7 @@
         letter-spacing: -1px;
     }
 
-    .hero-title span {
-        color: var(--primary-color);
-    }
+    .hero-title span { color: var(--primary-color); }
 
     .hero-subtitle {
         font-size: 1.15rem;
@@ -109,9 +107,7 @@
         gap: 1.25rem;
     }
 
-    .info-header {
-        margin-bottom: 0.5rem;
-    }
+    .info-header { margin-bottom: 0.5rem; }
 
     .info-header h2 {
         font-size: 1.9rem;
@@ -299,9 +295,7 @@
         margin-left: 4px;
     }
 
-    .input-wrap {
-        position: relative;
-    }
+    .input-wrap { position: relative; }
 
     .input-wrap i {
         position: absolute;
@@ -340,11 +334,7 @@
         box-shadow: 0 0 0 4px rgba(143,195,71,0.1);
     }
 
-    .input-wrap input:focus ~ i,
-    .input-wrap textarea:focus ~ i,
-    .input-wrap:focus-within i {
-        color: var(--primary-color);
-    }
+    .input-wrap:focus-within i { color: var(--primary-color); }
 
     .input-wrap textarea {
         height: 140px;
@@ -426,6 +416,195 @@
         border: 1px solid #ffb3b3;
     }
 
+    /* ─── FAQ Section ─── */
+    .faq-section {
+        background: white;
+        padding: 5rem 2rem;
+    }
+
+    .faq-container {
+        max-width: 1140px;
+        margin: 0 auto;
+    }
+
+    .faq-header {
+        text-align: center;
+        margin-bottom: 3.5rem;
+    }
+
+    .faq-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(143,195,71,0.1);
+        border: 1px solid rgba(143,195,71,0.25);
+        color: var(--primary-color);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 5px 14px;
+        border-radius: 50px;
+        margin-bottom: 1rem;
+    }
+
+    .faq-header h2 {
+        font-size: 2.4rem;
+        font-weight: 900;
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.5px;
+    }
+
+    .faq-header h2 span { color: var(--primary-color); }
+
+    .faq-header p {
+        color: var(--text-light);
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    .faq-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .faq-item {
+        background: #f5f5f5;
+        border-radius: 16px;
+        border: 1px solid #e8e8e8;
+        overflow: hidden;
+        transition: box-shadow 0.25s ease;
+    }
+
+    .faq-item:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+
+    .faq-item.open { border-color: rgba(143,195,71,0.35); }
+
+    .faq-question {
+        width: 100%;
+        background: none;
+        border: none;
+        padding: 1.5rem 1.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        cursor: pointer;
+        text-align: left;
+        transition: background 0.2s;
+    }
+
+    .faq-question:hover { background: rgba(143,195,71,0.04); }
+
+    .faq-question-text {
+        font-size: 0.975rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1.4;
+        flex: 1;
+    }
+
+    .faq-icon {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        background: white;
+        border: 1.5px solid #e0e0e0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    .faq-icon i {
+        color: var(--text-light);
+        font-size: 0.75rem;
+        transition: transform 0.3s ease, color 0.2s;
+    }
+
+    .faq-item.open .faq-icon {
+        background: var(--primary-color);
+        border-color: var(--primary-color);
+        box-shadow: 0 4px 12px rgba(143,195,71,0.35);
+    }
+
+    .faq-item.open .faq-icon i {
+        transform: rotate(45deg);
+        color: white;
+    }
+
+    .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+
+    .faq-answer-inner {
+        padding: 0 1.75rem 1.5rem;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        line-height: 1.75;
+        border-top: 1px solid #ebebeb;
+        padding-top: 1.1rem;
+    }
+
+    .faq-item.open .faq-answer {
+        max-height: 300px;
+    }
+
+    /* ─── Bottom CTA ─── */
+    .cta-strip {
+        padding: 5rem 2rem 6rem;
+        text-align: center;
+        border-top: none;
+    }
+
+    .cta-strip-inner { max-width: 600px; margin: 0 auto; }
+
+    .cta-strip h2 {
+        font-size: 2rem;
+        font-weight: 800;
+        color: black;
+        margin-bottom: 0.75rem;
+        letter-spacing: -0.5px;
+    }
+
+    .cta-strip h2 span { color: var(--primary-color); }
+
+    .cta-strip p {
+        color: #777;
+        font-size: 1rem;
+        margin-bottom: 1.75rem;
+        line-height: 1.65;
+    }
+
+    .cta-strip-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        background: var(--primary-color);
+        color: #0a0a0a;
+        padding: 15px 34px;
+        border-radius: 50px;
+        font-weight: 800;
+        font-size: 0.95rem;
+        text-decoration: none;
+        transition: all 0.25s;
+        letter-spacing: 0.2px;
+    }
+
+    .cta-strip-btn:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(143,195,71,0.35);
+    }
+
+    /* ─── Override footer border ─── */
+    .footer { border-top: none !important; }
+
     /* ─── Success Modal ─── */
     .success-modal {
         display: none;
@@ -502,80 +681,27 @@
         transform: translateY(-2px);
     }
 
-    /* ─── Bottom CTA ─── */
-    .cta-strip {
-        padding: 4rem 2rem;
-        text-align: center;
-    }
-
-    .cta-strip-inner {
-        max-width: 600px;
-        margin: 0 auto;
-    }
-
-    .cta-strip h2 {
-        font-size: 2rem;
-        font-weight: 800;
-        color: black;
-        margin-bottom: 0.75rem;
-        letter-spacing: -0.5px;
-    }
-
-    .cta-strip h2 span { color: var(--primary-color); }
-
-    .cta-strip p {
-        color: #777;
-        font-size: 1rem;
-        margin-bottom: 1.75rem;
-        line-height: 1.65;
-    }
-
-    .cta-strip-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 9px;
-        background: var(--primary-color);
-        color: #0a0a0a;
-        padding: 15px 34px;
-        border-radius: 50px;
-        font-weight: 800;
-        font-size: 0.95rem;
-        text-decoration: none;
-        transition: all 0.25s;
-        letter-spacing: 0.2px;
-    }
-
-    .cta-strip-btn:hover {
-        background: var(--primary-dark);
-        transform: translateY(-2px);
-        box-shadow: 0 10px 30px rgba(143,195,71,0.35);
-    }
-
     /* ─── Responsive ─── */
     @media (max-width: 1024px) {
-        .contact-container {
-            grid-template-columns: 1fr;
-        }
-
-        .info-panel {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
+        .contact-container { grid-template-columns: 1fr; }
+        .info-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
         .info-header { grid-column: 1 / -1; }
         .response-badge { grid-column: 1 / -1; }
+        .faq-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 768px) {
         .contact-hero { padding: 5rem 1.5rem 3.5rem; }
         .hero-title { font-size: 2.6rem; }
         .contact-section { padding: 3rem 1.25rem; }
+        .faq-section { padding: 3rem 1.25rem; }
         .form-panel { padding: 2rem 1.5rem; }
         .form-grid { grid-template-columns: 1fr; }
         .form-footer { flex-direction: column; align-items: stretch; text-align: center; }
         .submit-btn { justify-content: center; }
         .info-panel { grid-template-columns: 1fr; }
+        .faq-header h2 { font-size: 2rem; }
+        .cta-strip { padding: 4rem 1.25rem 5rem; }
     }
 </style>
 {% endblock %}
@@ -605,9 +731,7 @@
             </div>
 
             <div class="info-card">
-                <div class="info-icon">
-                    <i class="fas fa-envelope"></i>
-                </div>
+                <div class="info-icon"><i class="fas fa-envelope"></i></div>
                 <div class="info-text">
                     <h3>Email</h3>
                     <a href="mailto:vibrantlivinggg@gmail.com">vibrantlivinggg@gmail.com</a>
@@ -615,9 +739,7 @@
             </div>
 
             <div class="info-card">
-                <div class="info-icon">
-                    <i class="fas fa-calendar-check"></i>
-                </div>
+                <div class="info-icon"><i class="fas fa-calendar-check"></i></div>
                 <div class="info-text">
                     <h3>Free Consultation</h3>
                     <p>15-minute discovery call — no commitment, just a conversation about your goals.</p>
@@ -677,7 +799,7 @@
                     <div class="form-group full">
                         <label for="message">Your Goals</label>
                         <div class="input-wrap textarea-wrap">
-                            <textarea id="message" name="message" placeholder="What are you looking to achieve? Any challenges you're facing? What's your timeline?" required></textarea>
+                            <textarea id="message" name="message" placeholder="What are you looking to achieve? What challenges are you currently facing at the moment? Have you a specific timeline in mind for achieving these goals?" required></textarea>
                             <i class="fas fa-comment-alt"></i>
                         </div>
                     </div>
@@ -698,11 +820,76 @@
     </div>
 </section>
 
+<!-- FAQ Section -->
+<section class="faq-section">
+    <div class="faq-container">
+        <div class="faq-header">
+            <div class="faq-eyebrow">
+                <i class="fas fa-question-circle"></i> FAQ
+            </div>
+            <h2>Common <span>Questions</span></h2>
+            <p>Everything you need to know before getting started</p>
+        </div>
+
+        <div class="faq-grid">
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span class="faq-question-text">How does online coaching work?</span>
+                    <div class="faq-icon"><i class="fas fa-plus"></i></div>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Once you apply and we've had an initial call, I'll build a fully customised training and nutrition plan for you. Everything is delivered digitally — your programme, check-ins, and support all happen through direct messaging and weekly video calls. You can train from anywhere, on your schedule.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span class="faq-question-text">Do I need a gym membership?</span>
+                    <div class="faq-icon"><i class="fas fa-plus"></i></div>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Not necessarily. Programmes can be tailored to a gym, home setup, or a mix of both. During our initial call we'll discuss what equipment you have access to and build your plan around that.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span class="faq-question-text">I'm a complete beginner — is this for me?</span>
+                    <div class="faq-icon"><i class="fas fa-plus"></i></div>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Absolutely. Coaching at Vibrant Living is designed to meet you exactly where you are. Whether you've never stepped foot in a gym or you're returning after a long break, your programme will be built specifically for your current level and progressed at a pace that works for you.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span class="faq-question-text">How often will we check in?</span>
+                    <div class="faq-icon"><i class="fas fa-plus"></i></div>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Weekly check-ins are included as standard — we'll review your progress, adjust your programme if needed, and make sure you're on track. You also have daily messaging support for any questions that come up between sessions.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
 <!-- Bottom CTA -->
 <section class="cta-strip">
     <div class="cta-strip-inner">
         <h2>Prefer to <span>Talk Directly?</span></h2>
-        <p>Book a free 15-minute call and let's figure out the best plan for your goals together.</p>
+        <p>Book a free 30-minute call and figure out the best plan for you specifically.</p>
         <a href="https://forms.gle/dUK8nnaXuxiSNFxD9" class="cta-strip-btn" target="_blank">
             <i class="fas fa-calendar-check"></i> Book a Free Call
         </a>
@@ -712,9 +899,7 @@
 <!-- Success Modal -->
 <div class="success-modal" id="successModal">
     <div class="success-content">
-        <div class="success-icon">
-            <i class="fas fa-check"></i>
-        </div>
+        <div class="success-icon"><i class="fas fa-check"></i></div>
         <h2 class="success-title">Message Sent!</h2>
         <p class="success-message">Thanks for reaching out! I'll get back to you within 24 hours.</p>
         <button class="success-close" onclick="document.getElementById('successModal').classList.remove('active')">
@@ -760,11 +945,22 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Close modal on backdrop click
     document.getElementById('successModal').addEventListener('click', function(e) {
         if (e.target === this) this.classList.remove('active');
     });
 });
+
+// ─── FAQ Accordion ───
+function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+
+    // Close all open items
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+
+    // Open clicked item if it wasn't already open
+    if (!isOpen) item.classList.add('open');
+}
 </script>
 
 {% endblock %}
