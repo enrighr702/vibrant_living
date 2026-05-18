@@ -466,6 +466,54 @@
         box-shadow: 0 10px 30px rgba(143,195,71,0.35);
     }
 
+    /* ─── VSL ─── */
+    .vsl-section {
+        background: #0a0a0a;
+        padding: 5rem 2rem;
+        text-align: center;
+    }
+
+    .vsl-section .section-eyebrow {
+        background: rgba(143,195,71,0.12);
+        border-color: rgba(143,195,71,0.3);
+    }
+
+    .vsl-section .section-header h2 {
+        color: white;
+    }
+
+    .vsl-section .section-header p {
+        color: #888;
+    }
+
+    .vsl-wrapper {
+        position: relative;
+        max-width: 860px;
+        margin: 0 auto 2.5rem;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(143,195,71,0.15);
+    }
+
+    .vsl-wrapper video {
+        width: 100%;
+        display: block;
+        background: #000;
+    }
+
+    .vsl-cta {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .vsl-cta p {
+        color: #666;
+        font-size: 0.875rem;
+        margin: 0;
+    }
+
     /* ─── Responsive ─── */
     @media (max-width: 1024px) {
         .services-grid { grid-template-columns: repeat(2, 1fr); }
@@ -507,6 +555,38 @@
             <a href="https://forms.gle/dUK8nnaXuxiSNFxD9" class="btn btn-secondary">
                 <i class="fas fa-calendar-check"></i> Schedule a Call
             </a>
+        </div>
+    </div>
+</section>
+
+<!-- VSL -->
+<section class="vsl-section">
+    <div class="section-container">
+        <div class="section-header">
+            <div class="section-eyebrow">
+                <i class="fas fa-play-circle"></i> Watch This First
+            </div>
+            <h2>See How We <span>Transform Lives</span></h2>
+            <p>Watch Sean explain exactly how Vibrant Living works and what's possible for you</p>
+        </div>
+
+        <div class="vsl-wrapper">
+            <video
+                controls
+                preload="none"
+                playsinline
+                poster="{% static 'images/coach_image.jpg' %}"
+            >
+                <source src="{% static 'videos/vsl.mp4' %}" type="video/mp4">
+                Your browser does not support HTML5 video.
+            </video>
+        </div>
+
+        <div class="vsl-cta">
+            <a href="https://form.jotform.com/250676883261364" class="btn btn-primary">
+                <i class="fas fa-arrow-right"></i> Apply Now
+            </a>
+            <p>Ready to start? Applications take 2 minutes.</p>
         </div>
     </div>
 </section>
